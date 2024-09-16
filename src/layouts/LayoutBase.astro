@@ -1,0 +1,55 @@
+---
+type Props = {
+  title?: string;
+};
+
+const {title: _title} = Astro.props;
+const title = `satelllte/space${_title ? ` • ${_title}` : ''}`;
+---
+
+<html lang='en' class='h-full'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width' />
+    <title>{title}</title>
+
+    <!-- Temporary solution  -->
+    <link rel='icon' type='image/x-icon' href='/assets/icons/circle.svg' />
+
+    <link rel='preconnect' href='https://rsms.me/' />
+    <link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
+    <style>
+      :root {
+        font-family: Inter, sans-serif;
+        font-feature-settings:
+          'liga' 1,
+          'calt' 1; /* fix for Chrome */
+      }
+      @supports (font-variation-settings: normal) {
+        :root {
+          font-family: InterVariable, sans-serif;
+        }
+      }
+    </style>
+
+    <script is:inline>
+      let theme = window.localStorage.getItem('theme');
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme:dark)').matches
+          ? 'dark'
+          : 'light';
+      }
+
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+
+      window.localStorage.setItem('theme', theme);
+    </script>
+  </head>
+  <body class='h-full bg-gray-1 selection:bg-gray-5'>
+    <slot />
+  </body>
+</html>

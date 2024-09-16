@@ -1,0 +1,1 @@
+export {ParticlesMaterial} from './ParticlesMaterial';

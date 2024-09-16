@@ -1,0 +1,1 @@
+export {ParticlesGeometry} from './ParticlesGeometry';
