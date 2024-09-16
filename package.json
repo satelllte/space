@@ -21,7 +21,7 @@
     "@astrojs/react": "3.6.2",
     "@astrojs/tailwind": "5.1.0",
     "@types/three": "0.168.0",
-    "astro": "4.15.4",
+    "astro": "4.15.6",
     "prettier": "3.3.3",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.6.6",
