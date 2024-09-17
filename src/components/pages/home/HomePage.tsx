@@ -21,6 +21,9 @@ export function HomePage() {
             <SectionTitle>Scenes</SectionTitle>
             <List>
               <ListItem>
+                <Link href='/scenes/cube'>Cube</Link>
+              </ListItem>
+              <ListItem>
                 <Link href='/scenes/particles'>Particles</Link>
               </ListItem>
             </List>
