@@ -1,7 +1,13 @@
+import {Suspense} from 'react';
 import {Canvas, type Dpr} from '@react-three/fiber';
-import {OrbitControls} from '@react-three/drei';
+import {
+  Environment,
+  MeshReflectorMaterial,
+  OrbitControls,
+} from '@react-three/drei';
 import {Theme} from '../../../context/Theme';
 import {Link} from '../../../ui/Link';
+import {Cube} from './Cube';
 
 const DEVICE_PIXEL_RATIO_MIN = 1;
 const DEVICE_PIXEL_RATIO_MAX = 2;
@@ -18,16 +24,41 @@ export function SceneCube() {
           <OrbitControls
             // TODO: move into shared components
             enablePan={false}
-            autoRotateSpeed={0.5}
             minDistance={1.5}
             maxDistance={2.6}
             zoomSpeed={0.18}
             rotateSpeed={0.33}
             dampingFactor={0.0125}
           />
-          <mesh>
-            <boxGeometry />
-            <meshStandardMaterial color={0x666666} />
+          <hemisphereLight
+            args={[0x606060, 0x404040, 3.0]}
+            position={[0.6, 0.5, 1.0]}
+          />
+          <directionalLight args={[0xffffff, 2.0]} position={[0.6, 0.5, 1.0]} />
+          <Environment
+            background
+            backgroundIntensity={0.01}
+            environmentIntensity={0.05}
+            files={['/assets/textures/overcast_soil_puresky_1k.hdr']}
+          />
+          <Suspense>
+            <Cube />
+          </Suspense>
+          <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0.0, -0.75, 0.0]}>
+            <planeGeometry args={[50, 50]} />
+            <MeshReflectorMaterial
+              mirror={1}
+              blur={[50, 100]}
+              resolution={2048}
+              mixBlur={1}
+              mixStrength={80}
+              roughness={1}
+              depthScale={1.2}
+              minDepthThreshold={0.4}
+              maxDepthThreshold={1.4}
+              color={0x111111}
+              metalness={0.9}
+            />
           </mesh>
         </Canvas>
       </SceneLayout>
