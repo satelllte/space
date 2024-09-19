@@ -23,6 +23,9 @@ export function HomePage() {
               <ListItem>
                 <Link href='/scenes/particles'>Particles</Link>
               </ListItem>
+              <ListItem>
+                <Link href='/scenes/transmission'>Transmission</Link>
+              </ListItem>
             </List>
           </Section>
           <Section>
