@@ -20,11 +20,10 @@ export function SceneTransmission() {
         <Canvas dpr={dpr} camera={{position: [0.0, 0.0, 3.4]}}>
           <OrbitControls
             enablePan={false}
-            autoRotateSpeed={0.5}
             minDistance={1.5}
             maxDistance={5.6}
             zoomSpeed={0.18}
-            rotateSpeed={0.33}
+            rotateSpeed={0.53}
             dampingFactor={0.0125}
           />
           <directionalLight
