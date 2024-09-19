@@ -1,20 +1,16 @@
-import {Canvas, type Dpr} from '@react-three/fiber';
 import {OrbitControls} from '@react-three/drei';
 import {Theme} from '../../../context/Theme';
 import {Link} from '../../../ui/Link';
+import {Canvas} from '../_shared/Canvas';
 import {Environment} from './Environment';
 import {Lighting} from './Lighting';
 import {TransmissionObject} from './TransmissionObject';
-
-const DEVICE_PIXEL_RATIO_MIN = 1;
-const DEVICE_PIXEL_RATIO_MAX = 2;
-const dpr = [DEVICE_PIXEL_RATIO_MIN, DEVICE_PIXEL_RATIO_MAX] satisfies Dpr;
 
 export function SceneTransmission() {
   return (
     <Theme>
       <SceneLayout>
-        <Canvas dpr={dpr} camera={{position: [0.0, 0.0, 3.4]}}>
+        <Canvas camera={{position: [0.0, 0.0, 3.4]}}>
           <OrbitControls
             enablePan={false}
             minDistance={1.5}
