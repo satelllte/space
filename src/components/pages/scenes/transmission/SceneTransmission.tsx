@@ -1,13 +1,10 @@
-import {Canvas, useFrame, type Dpr} from '@react-three/fiber';
-import {
-  OrbitControls,
-  MeshTransmissionMaterial,
-  Environment,
-} from '@react-three/drei';
-import {Theme, useTheme} from '../../../context/Theme';
+import {Canvas, type Dpr} from '@react-three/fiber';
+import {OrbitControls} from '@react-three/drei';
+import {Theme} from '../../../context/Theme';
 import {Link} from '../../../ui/Link';
-import {useRef} from 'react';
-import {degToRad} from 'three/src/math/MathUtils.js';
+import {Environment} from './Environment';
+import {Lighting} from './Lighting';
+import {TransmissionObject} from './TransmissionObject';
 
 const DEVICE_PIXEL_RATIO_MIN = 1;
 const DEVICE_PIXEL_RATIO_MAX = 2;
@@ -26,57 +23,12 @@ export function SceneTransmission() {
             rotateSpeed={0.53}
             dampingFactor={0.0125}
           />
-          <directionalLight
-            intensity={10.0}
-            rotation={[degToRad(31.2), degToRad(-12.2), degToRad(10.2)]}
-          />
-          <Env />
+          <Lighting />
+          <Environment />
           <TransmissionObject />
         </Canvas>
       </SceneLayout>
     </Theme>
-  );
-}
-
-function Env() {
-  const theme = useTheme();
-  const themeDark = theme === 'dark';
-
-  return (
-    <Environment
-      backgroundIntensity={themeDark ? 0.001 : 1.0 - 0.001}
-      environmentIntensity={themeDark ? 0.2 : 1 - 0.2}
-      files={[
-        '/assets/textures/overcast_soil_puresky/overcast_soil_puresky_1k.hdr',
-      ]}
-    />
-  );
-}
-
-function TransmissionObject() {
-  const meshRef = useRef<React.ElementRef<'mesh'>>(null);
-
-  useFrame((_, timeDelta) => {
-    const mesh = meshRef.current;
-    if (!mesh) return;
-
-    mesh.rotation.y += timeDelta * -0.21;
-    mesh.rotation.y += timeDelta * 0.31;
-    mesh.rotation.z += timeDelta * 0.03;
-  });
-
-  return (
-    <mesh ref={meshRef}>
-      <boxGeometry />
-      <MeshTransmissionMaterial
-        thickness={0.2}
-        chromaticAberration={0.9}
-        backside
-        samples={4}
-        distortion={0.8}
-        roughness={0.1}
-      />
-    </mesh>
   );
 }
 
