@@ -9,8 +9,7 @@ export function TransmissionObject() {
     const mesh = meshRef.current;
     if (!mesh) return;
 
-    mesh.rotation.x += timeDelta * -0.21;
-    mesh.rotation.y += timeDelta * 0.31;
+    mesh.rotation.y += timeDelta * 0.11;
     mesh.rotation.z += timeDelta * 0.03;
   });
 
