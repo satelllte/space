@@ -5,10 +5,10 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
+    "fix:format": "prettier --write .",
     "test:format": "prettier --check .",
     "test:types": "tsc --noEmit",
-    "test:e2e": "playwright test",
-    "fix:format": "prettier --write ."
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@react-three/drei": "9.112.0",
