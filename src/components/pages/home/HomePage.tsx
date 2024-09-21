@@ -2,6 +2,7 @@ import {Theme} from '../../context/Theme';
 import {IconCircle} from '../../icons/IconCircle';
 import {Link, LinkIcon} from '../../ui/Link';
 import {ThemeToggle} from './ThemeToggle';
+import {ConsoleMessage} from './ConsoleMessage';
 
 export function HomePage() {
   return (
@@ -48,6 +49,7 @@ export function HomePage() {
           <ThemeToggle />
         </footer>
       </div>
+      <ConsoleMessage />
     </Theme>
   );
 }
