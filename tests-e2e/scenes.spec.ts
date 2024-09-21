@@ -42,6 +42,18 @@ test('has error message for each scene when JS disabled', async ({browser}) => {
   await expectDisabledJSMessage({page});
 });
 
+test('has expected visuals', async ({page}) => {
+  await page.goto('/scenes/transmission/snapshot', {waitUntil: 'networkidle'});
+  await expect(page).toHaveScreenshot();
+});
+
+test('has expected visuals (dark)', async ({page}) => {
+  await page.emulateMedia({colorScheme: 'dark'});
+
+  await page.goto('/scenes/transmission/snapshot', {waitUntil: 'networkidle'});
+  await expect(page).toHaveScreenshot();
+});
+
 const expectDisabledJSMessage = async ({page}: {page: Page}) => {
   await expect(
     page.getByText(
