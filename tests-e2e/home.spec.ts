@@ -34,6 +34,7 @@ const expectExternalLink = async ({
   link: Locator;
   href: string;
 }) => {
+  await expect(link).toBeVisible();
   await expect(link).toHaveAttribute('href', href);
   await expect(link).toHaveAttribute('target', '_blank');
   await expect(link).toHaveAttribute('rel', 'noreferrer noopener');
