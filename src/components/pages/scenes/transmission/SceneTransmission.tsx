@@ -6,15 +6,19 @@ import {Environment} from './Environment';
 import {Lighting} from './Lighting';
 import {TransmissionObject} from './TransmissionObject';
 
-export function SceneTransmission() {
+type SceneTransmissionProps = {
+  snapshot?: boolean;
+};
+
+export function SceneTransmission({snapshot = false}: SceneTransmissionProps) {
   return (
     <Theme>
       <SceneLayout>
         <Canvas camera={{position: [0.0, 0.0, 3.4]}}>
-          <OrbitControls />
+          {!snapshot && <OrbitControls />}
           <Lighting />
           <Environment />
-          <TransmissionObject />
+          <TransmissionObject snapshot={snapshot} />
         </Canvas>
       </SceneLayout>
     </Theme>

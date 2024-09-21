@@ -2,10 +2,16 @@ import {useRef} from 'react';
 import {useFrame} from '@react-three/fiber';
 import {MeshTransmissionMaterial} from '@react-three/drei';
 
-export function TransmissionObject() {
+type TransmissionObjectProps = {
+  snapshot: boolean;
+};
+
+export function TransmissionObject({snapshot}: TransmissionObjectProps) {
   const meshRef = useRef<React.ElementRef<'mesh'>>(null);
 
   useFrame((_, timeDelta) => {
+    if (snapshot) return;
+
     const mesh = meshRef.current;
     if (!mesh) return;
 
