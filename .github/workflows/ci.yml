@@ -11,6 +11,7 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
       deployments: write
@@ -23,10 +24,23 @@ jobs:
         run: node --version
       - name: Install dependencies
         run: npm ci
-      - name: Test (format)
+      - name: Test (type safety)
+        run: npm run test:types
+      - name: Test (formatting)
         run: npm run test:format
       - name: Build
         run: npm run build
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+      - name: Test (end-to-end)
+        run: npm run test:e2e
+      - name: Upload E2E test report
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
