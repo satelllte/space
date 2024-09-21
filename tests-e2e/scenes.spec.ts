@@ -1,7 +1,7 @@
 import {test, expect, type Page} from '@playwright/test';
 import {expectDescription, expectTitle} from './_utils';
 
-test('has correct scenes', async ({page}) => {
+test('navigates to scenes', async ({page}) => {
   const back = async () => {
     await page.getByRole('link', {name: '<- Back', exact: true}).click();
     await expect(page).toHaveURL('/');
@@ -31,7 +31,7 @@ test('has correct scenes', async ({page}) => {
   await back();
 });
 
-test('has message for each scene when JS disabled', async ({browser}) => {
+test('has error message for each scene when JS disabled', async ({browser}) => {
   const context = await browser.newContext({javaScriptEnabled: false});
   const page = await context.newPage();
 
