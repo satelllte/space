@@ -1,4 +1,5 @@
-import {test, expect, type Page, type Locator} from '@playwright/test';
+import {test, expect, type Locator} from '@playwright/test';
+import {expectDescription, expectTitle} from './_utils';
 
 test('has correct title & description', async ({page}) => {
   await page.goto('/');
@@ -25,38 +26,6 @@ test('has correct external links', async ({page}) => {
     href: 'https://unsplash.com/@satelllte',
   });
 });
-
-const expectTitle = async ({page, value}: {page: Page; value: string}) => {
-  await expect(page).toHaveTitle(value);
-  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
-    'content',
-    value,
-  );
-  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute(
-    'content',
-    value,
-  );
-};
-
-const expectDescription = async ({
-  page,
-  value,
-}: {
-  page: Page;
-  value: string;
-}) => {
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute(
-    'content',
-    value,
-  );
-  await expect(page.locator('meta[property="og:description"]')).toHaveAttribute(
-    'content',
-    value,
-  );
-  await expect(
-    page.locator('meta[name="twitter:description"]'),
-  ).toHaveAttribute('content', value);
-};
 
 const expectExternalLink = async ({
   link,
