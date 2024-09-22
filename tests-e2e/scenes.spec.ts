@@ -50,7 +50,7 @@ async function testNavigation({page}: {page: Page}) {
         "The creative space of @satelllte's software engineer. Three.js, React Three Fiber (R3F), Shaders, WebGL, WebGPU, and beyond.",
     });
 
-    await page.getByRole('link', {name: '<- Back', exact: true}).click();
+    await page.getByRole('link', {name: 'Go back', exact: true}).click();
     await expect(page).toHaveURL('/');
   }
 }

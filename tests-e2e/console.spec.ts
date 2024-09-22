@@ -17,7 +17,7 @@ test('logs "hello" message only once per session', async ({page}) => {
   await expect(page).toHaveURL('/scenes/particles');
   expect(logs.length).toEqual(1);
 
-  await page.getByRole('link', {name: '<- Back', exact: true}).click();
+  await page.getByRole('link', {name: 'Go back', exact: true}).click();
   await expect(page).toHaveURL('/');
   expect(logs.length).toEqual(1);
 
