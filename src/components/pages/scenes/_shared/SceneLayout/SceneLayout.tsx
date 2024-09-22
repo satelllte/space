@@ -17,7 +17,7 @@ export function SceneLayout({children}: SceneLayoutProps) {
         </div>
       </noscript>
 
-      {children}
+      <main className='h-full w-full'>{children}</main>
 
       <footer className='fixed bottom-6 left-4 right-4 z-20 flex items-end sm:bottom-8 sm:left-8 sm:right-8'>
         <div /* This empty div is required for the link to be aligned the same way it appears on homepage */
