@@ -14,7 +14,7 @@ const SCENES = [
   },
 ] as const;
 
-test('navigates from home', async ({page}) => {
+test('able to navigate from home', async ({page}) => {
   await page.goto('/');
 
   for (const scene of SCENES) {
@@ -34,7 +34,7 @@ test('navigates from home', async ({page}) => {
   }
 });
 
-test('has error message when JS disabled', async ({browser}) => {
+test('have error message when JS disabled', async ({browser}) => {
   const context = await browser.newContext({javaScriptEnabled: false});
   const page = await context.newPage();
   for (const scene of SCENES) {
