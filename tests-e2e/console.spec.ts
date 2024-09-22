@@ -3,6 +3,8 @@ import {test, expect, type ConsoleMessage} from '@playwright/test';
 test('logs "hello" message only once per session', async ({page}) => {
   const logs: ConsoleMessage[] = [];
   page.on('console', (log) => {
+    // In some browsers like WebKit, this kind of message gets logged,
+    // so we have to filter it out
     if (log.text() === 'Successfully preconnected to https://rsms.me/') return;
     logs.push(log);
   });
