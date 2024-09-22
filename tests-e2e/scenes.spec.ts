@@ -1,4 +1,4 @@
-import {test, expect} from '@playwright/test';
+import {test, expect, type Page} from '@playwright/test';
 import {expectDescription, expectTitle} from './_utils';
 
 const SCENES = [
@@ -14,7 +14,28 @@ const SCENES = [
   },
 ] as const;
 
-test('able to navigate from home', async ({page}) => {
+test('able to navigate from home and back', testNavigation);
+
+test.describe('when JS is disabled', () => {
+  test.use({javaScriptEnabled: false});
+
+  test('able to navigate from home and back', testNavigation);
+
+  test('have "Cannot display scene ..." error message', async ({page}) => {
+    for (const scene of SCENES) {
+      const {href} = scene;
+      await page.goto(href);
+      await expect(
+        page.getByText(
+          'Cannot display the scene because JavaScript is disabled in this browser :(',
+          {exact: true},
+        ),
+      ).toBeVisible();
+    }
+  });
+});
+
+async function testNavigation({page}: {page: Page}) {
   await page.goto('/');
 
   for (const scene of SCENES) {
@@ -32,19 +53,4 @@ test('able to navigate from home', async ({page}) => {
     await page.getByRole('link', {name: '<- Back', exact: true}).click();
     await expect(page).toHaveURL('/');
   }
-});
-
-test('have error message when JS disabled', async ({browser}) => {
-  const context = await browser.newContext({javaScriptEnabled: false});
-  const page = await context.newPage();
-  for (const scene of SCENES) {
-    const {href: url} = scene;
-    await page.goto(url);
-    await expect(
-      page.getByText(
-        'Cannot display the scene because JavaScript is disabled in this browser :(',
-        {exact: true},
-      ),
-    ).toBeVisible();
-  }
-});
+}
