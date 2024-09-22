@@ -5,8 +5,10 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
+    "fix:format": "prettier --write .",
     "test:format": "prettier --check .",
-    "fix:format": "prettier --write ."
+    "test:types": "tsc --noEmit",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@react-three/drei": "9.112.0",
@@ -20,6 +22,8 @@
     "@astrojs/check": "0.9.3",
     "@astrojs/react": "3.6.2",
     "@astrojs/tailwind": "5.1.0",
+    "@playwright/test": "1.47.2",
+    "@types/node": "22.5.5",
     "@types/three": "0.168.0",
     "astro": "4.15.4",
     "prettier": "3.3.3",
