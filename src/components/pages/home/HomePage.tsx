@@ -1,3 +1,4 @@
+import {useId} from 'react';
 import {Theme} from '../../context/Theme';
 import {IconCircle} from '../../icons/IconCircle';
 import {Link, LinkIcon} from '../../ui/Link';
@@ -18,32 +19,7 @@ export function HomePage() {
           </LinkIcon>
         </header>
         <main className='flex flex-grow flex-col gap-12 pb-16'>
-          <Section>
-            <SectionTitle>Scenes</SectionTitle>
-            <List>
-              <ListItem>
-                <Link href='/scenes/particles'>Particles</Link>
-              </ListItem>
-              <ListItem>
-                <Link href='/scenes/transmission'>Transmission</Link>
-              </ListItem>
-            </List>
-          </Section>
-          <Section>
-            <SectionTitle>More</SectionTitle>
-            <List>
-              <ListItem>
-                <Link external href='https://github.com/satelllte'>
-                  GitHub
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link external href='https://unsplash.com/@satelllte'>
-                  Unsplash
-                </Link>
-              </ListItem>
-            </List>
-          </Section>
+          <MainContent />
         </main>
         <footer className='flex-shrink-0 flex-grow-0'>
           <ThemeToggle />
@@ -54,16 +30,65 @@ export function HomePage() {
   );
 }
 
+function MainContent() {
+  const titleIdScenes = useId();
+  const titleIdMore = useId();
+  return (
+    <>
+      <Section>
+        <SectionTitle id={titleIdScenes}>Scenes</SectionTitle>
+        <List labelledBy={titleIdScenes}>
+          <ListItem>
+            <Link href='/scenes/particles'>Particles</Link>
+          </ListItem>
+          <ListItem>
+            <Link href='/scenes/transmission'>Transmission</Link>
+          </ListItem>
+        </List>
+      </Section>
+      <Section>
+        <SectionTitle id={titleIdMore}>More</SectionTitle>
+        <List labelledBy={titleIdMore}>
+          <ListItem>
+            <Link external href='https://github.com/satelllte'>
+              GitHub
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link external href='https://unsplash.com/@satelllte'>
+              Unsplash
+            </Link>
+          </ListItem>
+        </List>
+      </Section>
+    </>
+  );
+}
+
 function Section({children}: {children: React.ReactNode}) {
   return <div className='flex flex-col gap-2'>{children}</div>;
 }
 
-function SectionTitle({children}: {children: React.ReactNode}) {
-  return <h2 className='text-xl text-gray-12'>{children}</h2>;
+function SectionTitle({id, children}: {id: string; children: React.ReactNode}) {
+  return (
+    <h2 id={id} className='text-xl text-gray-12'>
+      {children}
+    </h2>
+  );
 }
 
-function List({children}: {children: React.ReactNode}) {
-  return <ul className='flex flex-col gap-1'>{children}</ul>;
+function List({
+  labelledBy,
+  children,
+}: {
+  labelledBy: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <ul aria-labelledby={labelledBy} className='flex flex-col gap-1'>
+      {children}
+    </ul>
+  );
 }
 
 function ListItem({children}: {children: React.ReactNode}) {
