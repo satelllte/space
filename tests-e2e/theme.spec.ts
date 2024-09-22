@@ -56,12 +56,26 @@ test('switches the theme and preserves it (dark -> light)', async ({
   await expectThemeLight({page});
 });
 
+test.describe('when JS is disabled', () => {
+  test.use({javaScriptEnabled: false});
+
+  test('uses light theme', async ({page}) => {
+    await page.goto('/');
+    await expectThemeLight({page});
+  });
+
+  test('has no toggle', async ({page}) => {
+    await page.goto('/');
+    await expect(
+      page.getByLabel(/Switch to (dark|light) theme/),
+    ).not.toBeVisible();
+  });
+});
+
 const expectThemeLight = async ({page}: {page: Page}) => {
   await expect(page.locator(':root')).not.toHaveClass(/dark/);
-  await expect(page.getByLabel('Switch to dark theme')).toHaveText('Light');
 };
 
 const expectThemeDark = async ({page}: {page: Page}) => {
   await expect(page.locator(':root')).toHaveClass(/dark/);
-  await expect(page.getByLabel('Switch to light theme')).toHaveText('Dark');
 };
