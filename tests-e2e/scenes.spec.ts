@@ -1,68 +1,50 @@
-import {test, expect, type Page} from '@playwright/test';
+import {test, expect} from '@playwright/test';
 import {expectDescription, expectTitle} from './_utils';
 
-test('navigates to scenes', async ({page}) => {
-  const back = async () => {
-    await page.getByRole('link', {name: '<- Back', exact: true}).click();
-    await expect(page).toHaveURL('/');
-  };
+const SCENES = [
+  {
+    name: 'Particles',
+    href: '/scenes/particles',
+    title: 'satelllte/space • Particles',
+  },
+  {
+    name: 'Transmission',
+    href: '/scenes/transmission',
+    title: 'satelllte/space • Transmission',
+  },
+] as const;
 
+test('navigates from home', async ({page}) => {
   await page.goto('/');
 
-  const description =
-    "The creative space of @satelllte's software engineer. Three.js, React Three Fiber (R3F), Shaders, WebGL, WebGPU, and beyond.";
+  for (const scene of SCENES) {
+    const {name, href, title} = scene;
+    await page.getByRole('link', {name, exact: true}).click();
 
-  await page.getByRole('link', {name: 'Particles', exact: true}).click();
-  await expectScenePage({
-    page,
-    url: '/scenes/particles',
-    title: 'satelllte/space • Particles',
-    description,
-  });
-  await back();
+    await expect(page).toHaveURL(href);
+    await expectTitle({page, value: title});
+    await expectDescription({
+      page,
+      value:
+        "The creative space of @satelllte's software engineer. Three.js, React Three Fiber (R3F), Shaders, WebGL, WebGPU, and beyond.",
+    });
 
-  await page.getByRole('link', {name: 'Transmission', exact: true}).click();
-  await expectScenePage({
-    page,
-    url: '/scenes/transmission',
-    title: 'satelllte/space • Transmission',
-    description,
-  });
-  await back();
+    await page.getByRole('link', {name: '<- Back', exact: true}).click();
+    await expect(page).toHaveURL('/');
+  }
 });
 
-test('has error message for each scene when JS disabled', async ({browser}) => {
+test('has error message when JS disabled', async ({browser}) => {
   const context = await browser.newContext({javaScriptEnabled: false});
   const page = await context.newPage();
-
-  await page.goto('/scenes/particles');
-  await expectDisabledJSMessage({page});
-
-  await page.goto('/scenes/transmission');
-  await expectDisabledJSMessage({page});
+  for (const scene of SCENES) {
+    const {href: url} = scene;
+    await page.goto(url);
+    await expect(
+      page.getByText(
+        'Cannot display the scene because JavaScript is disabled in this browser :(',
+        {exact: true},
+      ),
+    ).toBeVisible();
+  }
 });
-
-const expectDisabledJSMessage = async ({page}: {page: Page}) => {
-  await expect(
-    page.getByText(
-      'Cannot display the scene because JavaScript is disabled in this browser :(',
-      {exact: true},
-    ),
-  ).toBeVisible();
-};
-
-const expectScenePage = async ({
-  page,
-  url,
-  title,
-  description,
-}: {
-  page: Page;
-  url: string;
-  title: string;
-  description: string;
-}) => {
-  await expect(page).toHaveURL(url);
-  await expectTitle({page, value: title});
-  await expectDescription({page, value: description});
-};
