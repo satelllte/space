@@ -21,11 +21,11 @@ export const Link = forwardRef<LinkRef, LinkProps>(
           size === 'xs' && 'text-xs',
           size === 'base' && 'text-base',
           // Text color
-          'text-gray-11',
+          'text-gray-11 active:text-gray-10',
           // Underline
           'underline underline-offset-4',
           // Underline decoration
-          'decoration-gray-6 [text-decoration-thickness:1px] hover:decoration-gray-8',
+          'decoration-gray-6 [text-decoration-thickness:1px] hover:decoration-gray-8 active:decoration-gray-7',
           // Focus (underline)
           'focus-visible:decoration-gray-8',
           // Focus (outline)
