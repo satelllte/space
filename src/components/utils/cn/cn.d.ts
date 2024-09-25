@@ -1,1 +1,1 @@
-export function cn(...classes: (string | boolean)[]): string {}
+export function cn(...classes: (string | boolean)[]): string;
