@@ -1,7 +1,6 @@
 import {useRef} from 'react';
-import {useFrame, useThree} from '@react-three/fiber';
-import {MeshTransmissionMaterial, useScroll} from '@react-three/drei';
-import {degToRad} from 'three/src/math/MathUtils.js';
+import {useFrame} from '@react-three/fiber';
+import {MeshTransmissionMaterial} from '@react-three/drei';
 
 export function TransmissionObject() {
   const meshRef = useRef<React.ElementRef<'mesh'>>(null);
@@ -9,7 +8,7 @@ export function TransmissionObject() {
   // const viewport = useThree((three) => three.viewport);
   console.debug('scroll: ', scroll);
 
-  useFrame(({clock}, timeDelta) => {
+  useFrame((_, timeDelta) => {
     const mesh = meshRef.current;
     if (!mesh) return;
 
@@ -27,10 +26,7 @@ export function TransmissionObject() {
   });
 
   return (
-    <mesh
-      ref={meshRef}
-      // rotation={[0.0, degToRad(90.0), degToRad(45.0)]}
-    >
+    <mesh ref={meshRef}>
       {/* <torusKnotGeometry args={[1.1, 0.4, 72, 16]} /> */}
       <sphereGeometry args={[1.0, 64, 64]} />
       {/* <boxGeometry /> */}

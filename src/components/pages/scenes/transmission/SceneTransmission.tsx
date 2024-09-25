@@ -5,7 +5,7 @@ import {OrbitControls} from '../_shared/OrbitControls';
 import {Environment} from './Environment';
 import {Lighting} from './Lighting';
 import {TransmissionObject} from './TransmissionObject';
-import {Scroll, ScrollControls} from '@react-three/drei';
+// import {Scroll, ScrollControls} from '@react-three/drei';
 
 export function SceneTransmission() {
   return (
