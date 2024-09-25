@@ -45,3 +45,33 @@ export const MDXParagraph = forwardRef<MDXParagraphRef, MDXParagraphProps>(
     );
   },
 );
+
+type PreRef = React.ElementRef<'pre'>;
+type PreProps = React.ComponentProps<'pre'>;
+
+type MDXPreRef = PreRef;
+type MDXPreProps = Omit<PreProps, 'className'>;
+
+export const MDXPre = forwardRef<MDXPreRef, MDXPreProps>(
+  (props, forwardedRef) => {
+    return (
+      <pre
+        ref={forwardedRef}
+        className='my-4 text-sm text-gray-10'
+        {...props}
+      />
+    );
+  },
+);
+
+type CodeRef = React.ElementRef<'code'>;
+type CodeProps = React.ComponentProps<'code'>;
+
+type MDXCodeRef = CodeRef;
+type MDXCodeProps = Omit<CodeProps, 'className'>;
+
+export const MDXCode = forwardRef<MDXCodeRef, MDXCodeProps>(
+  (props, forwardedRef) => {
+    return <code ref={forwardedRef} {...props} />;
+  },
+);

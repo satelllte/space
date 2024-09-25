@@ -8,4 +8,5 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [mdx(), react(), tailwind()],
   build: {assets: 'assets/_generated'},
+  markdown: {syntaxHighlight: false},
 });
