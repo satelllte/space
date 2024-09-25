@@ -1,5 +1,5 @@
 import {forwardRef} from 'react';
-import clsx from 'clsx';
+import {cn} from '../../utils/cn';
 import {
   HeadlessLink,
   type HeadlessLinkRef,
@@ -22,7 +22,7 @@ export const LinkIcon = forwardRef<LinkIconRef, LinkIconProps>(
     return (
       <HeadlessLink
         ref={forwardedRef}
-        className={clsx(
+        className={cn(
           // Base
           'inline-flex',
           // Icon color (assumming, the icon has "fill='currentColor'" set)

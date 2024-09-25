@@ -1,5 +1,5 @@
 import {forwardRef} from 'react';
-import clsx from 'clsx';
+import {cn} from '../../utils/cn';
 import {
   HeadlessButton,
   type HeadlessButtonRef,
@@ -16,7 +16,7 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
     return (
       <HeadlessButton
         ref={forwardedRef}
-        className={clsx(
+        className={cn(
           // Text size
           size === 'xs' && 'text-xs',
           size === 'base' && 'text-base',

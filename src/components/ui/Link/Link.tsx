@@ -1,5 +1,5 @@
 import {forwardRef} from 'react';
-import clsx from 'clsx';
+import {cn} from '../../utils/cn';
 import {
   HeadlessLink,
   type HeadlessLinkRef,
@@ -16,7 +16,7 @@ export const Link = forwardRef<LinkRef, LinkProps>(
     return (
       <HeadlessLink
         ref={forwardedRef}
-        className={clsx(
+        className={cn(
           // Text size
           size === 'xs' && 'text-xs',
           size === 'base' && 'text-base',
