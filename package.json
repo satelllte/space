@@ -8,12 +8,12 @@
     "fix:format": "prettier --write .",
     "test:format": "prettier --check .",
     "test:types": "tsc --noEmit",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:units": "vitest"
   },
   "dependencies": {
     "@react-three/drei": "9.112.0",
     "@react-three/fiber": "8.17.7",
-    "clsx": "2.1.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "three": "0.168.0"
@@ -29,6 +29,7 @@
     "prettier": "3.3.3",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.6.6",
-    "typescript": "5.6.2"
+    "typescript": "5.6.2",
+    "vitest": "2.1.1"
   }
 }

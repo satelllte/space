@@ -26,8 +26,10 @@ jobs:
         run: node --version
       - name: Install dependencies
         run: npm ci
-      - name: Test (type safety)
+      - name: Test (types)
         run: npm run test:types
+      - name: Test (units)
+        run: npm run test:units
       - name: Test (formatting)
         run: npm run test:format
       - name: Build
