@@ -1,5 +1,6 @@
 import {test, expect, type Locator, type Page} from '@playwright/test';
 import {expectDescription, expectTitle} from './_utils';
+import {SCENES} from './_constants';
 
 test('has metadata', testMetadata);
 
@@ -66,13 +67,8 @@ async function testScenesLinks({page}: {page: Page}) {
   await expect(list).toBeVisible();
   await expect(list.getByRole('listitem')).toHaveCount(2);
 
-  const links = [
-    {name: 'Particles', href: '/scenes/particles'},
-    {name: 'Transmission', href: '/scenes/transmission'},
-  ] as const;
-
-  for (const _link of links) {
-    const {name, href} = _link;
+  for (const scene of SCENES) {
+    const {name, href} = scene;
     const link = list.getByRole('link', {name, exact: true});
     await expect(link).toBeVisible();
     await expect(link).toHaveAttribute('href', href);
