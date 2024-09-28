@@ -2,9 +2,9 @@ import {test, expect, type Page} from '@playwright/test';
 
 test('uses light theme on first visit (if no preference)', async ({
   page,
-  browserName,
+  // browserName,
 }) => {
-  test.skip(browserName === 'webkit'); // This doesn't seem to work properly for WebKit browser(s) for some reason
+  // test.skip(browserName === 'webkit'); // This doesn't seem to work properly for WebKit browser(s) for some reason
   await page.emulateMedia({colorScheme: 'no-preference'});
   await page.goto('/');
   await expectThemeLight({page});
