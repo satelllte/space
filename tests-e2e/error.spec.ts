@@ -32,7 +32,7 @@ async function hasMetadata({page}: {page: Page}) {
 }
 
 async function hasHeading({page}: {page: Page}) {
-  const heading = await page.getByRole('heading', {name: 'Page not found.'});
+  const heading = page.getByRole('heading', {name: 'Page not found.'});
   await expect(heading).toBeVisible();
 }
 
