@@ -4,7 +4,7 @@ test('uses light theme on first visit (if no preference)', async ({
   page,
   browserName,
 }) => {
-  test.skip(browserName === 'webkit'); // This doesn't seem to work properly for WebKit browser(s) for some reason
+  test.skip(browserName === 'webkit'); // If macOS color preference is set to dark, it still falls back to it in WebKit browser(s)
   await page.emulateMedia({colorScheme: 'no-preference'});
   await page.goto('/');
   await expectThemeLight({page});
