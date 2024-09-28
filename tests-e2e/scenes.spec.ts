@@ -1,18 +1,6 @@
 import {test, expect, type Page} from '@playwright/test';
 import {expectDescription, expectTitle} from './_utils';
-
-const SCENES = [
-  {
-    name: 'Particles',
-    href: '/scenes/particles',
-    title: 'satelllte/space • Particles',
-  },
-  {
-    name: 'Transmission',
-    href: '/scenes/transmission',
-    title: 'satelllte/space • Transmission',
-  },
-] as const;
+import {SCENES} from './_constants';
 
 test('able to navigate from home and back', testNavigation);
 
