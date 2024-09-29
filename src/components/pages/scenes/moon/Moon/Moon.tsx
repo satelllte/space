@@ -1,7 +1,7 @@
 import {useRef} from 'react';
 import {extend, useFrame, useLoader, useThree} from '@react-three/fiber';
 import {ScreenQuad, shaderMaterial} from '@react-three/drei';
-import {Texture, TextureLoader, Vector2} from 'three';
+import {Texture, TextureLoader} from 'three';
 import fragmentShader from './Moon.fragment.glsl?raw';
 import vertexShader from './Moon.vertex.glsl?raw';
 
@@ -20,9 +20,9 @@ extend({MoonMaterial});
 
 type MoonMaterialUniforms = {
   uTime: number;
-  uResolution: [number, number] | Vector2;
+  uResolution: [number, number];
   uTexture: Texture;
-  uTextureResolution: [number, number] | Vector2;
+  uTextureResolution: [number, number];
 };
 
 type MoonMaterialImpl = MoonMaterialUniforms &
