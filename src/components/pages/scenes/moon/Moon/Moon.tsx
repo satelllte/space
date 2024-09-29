@@ -50,8 +50,6 @@ export function Moon() {
     material.uniforms.uTime.value = clock.elapsedTime;
   });
 
-  console.debug('[size.width, size.height]: ', [size.width, size.height]);
-
   return (
     <ScreenQuad>
       <moonMaterial
@@ -59,6 +57,7 @@ export function Moon() {
         uTime={0.0}
         uResolution={[size.width, size.height]}
         uTexture={texture}
+        transparent
       />
     </ScreenQuad>
   );

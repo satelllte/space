@@ -8,9 +8,11 @@ export function SceneMoon() {
     <Theme>
       <SceneLayout>
         <div className='flex h-full w-full items-center justify-center'>
-          <Canvas className='max-h-[500px] max-w-[500px]'>
-            <Moon />
-          </Canvas>
+          <div className='relative aspect-square h-[50vh]'>
+            <Canvas>
+              <Moon />
+            </Canvas>
+          </div>
         </div>
       </SceneLayout>
     </Theme>
