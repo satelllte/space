@@ -12,8 +12,8 @@ uniform vec2 uTextureResolution;
 #define PI 3.1415926535
 #define PI_HALF 1.57079632679
 
-const float SPEED_MOON = 0.01;
-const float SPEED_SUN = 0.25;
+const float SPEED_MOON = 0.015;
+const float SPEED_SUN = 0.291;
 
 vec3 sphereNormals(in vec2 uv) {
   uv = fract(uv) * 2.0 - 1.0;
