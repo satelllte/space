@@ -22,6 +22,7 @@ const config: Config = {
     extend: {},
   },
   plugins: [
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     plugin(({addBase}) => {
       addBase({
         // Credit: https://github.com/radix-ui/colors

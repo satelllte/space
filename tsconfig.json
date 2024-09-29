@@ -1,3 +1,13 @@
 {
-  "extends": "astro/tsconfigs/strictest"
+  "extends": "astro/tsconfigs/strictest",
+  "include": [
+    "./.prettierrc.mjs",
+    "./astro.config.mjs",
+    "./eslint.config.js",
+    "./playwright.config.ts",
+    "./tailwind.config.ts",
+    "./src",
+    "./tests-e2e"
+  ],
+  "exclude": ["./dist"]
 }
