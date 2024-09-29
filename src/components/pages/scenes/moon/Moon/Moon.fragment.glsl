@@ -1,3 +1,5 @@
+// Credit: https://github.com/patriciogonzalezvivo/thebookofshaders/blob/master/src/moon/moon.frag
+
 #ifdef GL_ES
 precision mediump float;
 #endif
