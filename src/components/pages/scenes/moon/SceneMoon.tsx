@@ -1,3 +1,4 @@
+import {Suspense} from 'react';
 import {Theme} from '../../../context/Theme';
 import {SceneLayout} from '../_shared/SceneLayout';
 import {Canvas} from '../_shared/Canvas';
@@ -10,7 +11,9 @@ export function SceneMoon() {
         <div className='flex h-full w-full items-center justify-center'>
           <div className='relative aspect-square h-[50vh]'>
             <Canvas>
-              <Moon />
+              <Suspense>
+                <Moon />
+              </Suspense>
             </Canvas>
           </div>
         </div>

@@ -10,6 +10,7 @@ const MoonMaterial = shaderMaterial(
     uTime: 0.0,
     uResolution: [0.0, 0.0],
     uTexture: new Texture(),
+    uTextureResolution: [0.0, 0.0],
   } satisfies MoonMaterialUniforms,
   vertexShader,
   fragmentShader,
@@ -21,6 +22,7 @@ type MoonMaterialUniforms = {
   uTime: number;
   uResolution: [number, number] | Vector2;
   uTexture: Texture;
+  uTextureResolution: [number, number] | Vector2;
 };
 
 type MoonMaterialImpl = MoonMaterialUniforms &
@@ -54,10 +56,11 @@ export function Moon() {
     <ScreenQuad>
       <moonMaterial
         ref={materialRef}
+        transparent
         uTime={0.0}
         uResolution={[size.width, size.height]}
         uTexture={texture}
-        transparent
+        uTextureResolution={[texture.image.width, texture.image.height]}
       />
     </ScreenQuad>
   );
