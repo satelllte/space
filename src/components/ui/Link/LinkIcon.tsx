@@ -26,7 +26,7 @@ export const LinkIcon = forwardRef<LinkIconRef, LinkIconProps>(
           // Base
           'inline-flex',
           // Icon color (assumming, the icon has "fill='currentColor'" set)
-          'text-gray-12 hover:text-gray-10',
+          'text-gray-12 hover:text-gray-11 active:text-gray-10',
           // Focus (icon color)
           'focus-visible:text-gray-10',
           // Focus (outline)

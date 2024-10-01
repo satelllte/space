@@ -41,6 +41,9 @@ function MainContent() {
         <SectionTitle id={titleIdScenes}>Scenes</SectionTitle>
         <List labelledBy={titleIdScenes}>
           <ListItem>
+            <Link href='/scenes/moon'>Moon</Link>
+          </ListItem>
+          <ListItem>
             <Link href='/scenes/particles'>Particles</Link>
           </ListItem>
           <ListItem>
