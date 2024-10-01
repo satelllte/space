@@ -7,7 +7,7 @@ import {Moon} from './Moon';
 export function SceneMoon() {
   return (
     <Theme>
-      <SceneLayout>
+      <SceneLayout title='Moon'>
         <div className='flex h-full w-full items-center justify-center'>
           <div className='relative aspect-square h-[50vh]'>
             <Canvas>
