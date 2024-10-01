@@ -65,7 +65,7 @@ async function testScenesLinks({page}: {page: Page}) {
 
   const list = page.getByRole('list', {name: 'Scenes', exact: true});
   await expect(list).toBeVisible();
-  await expect(list.getByRole('listitem')).toHaveCount(2);
+  await expect(list.getByRole('listitem')).toHaveCount(SCENES.length);
 
   for (const scene of SCENES) {
     const {name, href} = scene;
