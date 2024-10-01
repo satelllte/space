@@ -24,3 +24,8 @@ const expectNoIssues = async ({page}: {page: Page}) => {
   const results = await new AxeBuilder({page}).analyze();
   expect(results.violations).toEqual([]);
 };
+
+///////
+// Since "@axe-core/playwright" uses lots of ".evaluate()" calls,
+// we can't use it for testing "when JS is disabled" scenarious.
+///////
