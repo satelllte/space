@@ -56,6 +56,27 @@ test('switches the theme and preserves it (dark -> light)', async ({
   await expectThemeLight({page});
 });
 
+test('switches theme for multiple tabs', async ({browser}) => {
+  const context = await browser.newContext({colorScheme: 'light'});
+
+  const page1 = await context.newPage();
+  await page1.goto('/');
+
+  const page2 = await context.newPage();
+  await page2.goto('/');
+
+  for (const page of context.pages()) {
+    await expectThemeLight({page});
+  }
+
+  await page1.getByLabel('Switch to dark theme').click();
+  await page1.getByLabel('Switch to light theme').waitFor();
+
+  for (const page of context.pages()) {
+    await expectThemeDark({page});
+  }
+});
+
 test.describe('when JS is disabled', () => {
   test.use({javaScriptEnabled: false});
 
