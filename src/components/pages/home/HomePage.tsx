@@ -10,13 +10,15 @@ export function HomePage() {
     <Theme>
       <div className='flex min-h-full flex-col px-4 pb-6 pt-10 sm:px-8 sm:pb-8 sm:pt-12'>
         <header className='flex-shrink-0 flex-grow-0 pb-12'>
-          <LinkIcon
-            aria-label='GitHub repository'
-            external
-            href='https://github.com/satelllte/space'
-          >
-            <IconCircle />
-          </LinkIcon>
+          <h1>
+            <LinkIcon
+              aria-label='GitHub repository'
+              external
+              href='https://github.com/satelllte/space'
+            >
+              <IconCircle />
+            </LinkIcon>
+          </h1>
         </header>
         <main className='flex flex-grow flex-col gap-12 pb-16'>
           <MainContent />
