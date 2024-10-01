@@ -7,6 +7,11 @@ test("shouldn't have any auto detectable issues (home)", async ({page}) => {
   await expectNoIssues({page});
 });
 
+test("shouldn't have any auto detectable issues (error)", async ({page}) => {
+  await page.goto('/unknown');
+  await expectNoIssues({page});
+});
+
 test("shouldn't have any auto detectable issues (scenes)", async ({page}) => {
   test.fixme(); // TODO: fix issues
 
