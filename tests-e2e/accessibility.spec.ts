@@ -13,8 +13,6 @@ test("shouldn't have any auto detectable issues (error)", async ({page}) => {
 });
 
 test("shouldn't have any auto detectable issues (scenes)", async ({page}) => {
-  test.fixme(); // TODO: fix issues
-
   for (const scene of SCENES) {
     const {href} = scene;
     await page.goto(href);
