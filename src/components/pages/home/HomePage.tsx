@@ -31,10 +31,22 @@ export function HomePage() {
 }
 
 function MainContent() {
+  const titleIdArticles = useId();
   const titleIdScenes = useId();
   const titleIdMore = useId();
   return (
     <>
+      <Section>
+        <SectionTitle id={titleIdArticles}>Articles</SectionTitle>
+        <List labelledBy={titleIdArticles}>
+          <ListItem>
+            <Link href='/blog/test'>Test</Link>
+          </ListItem>
+          <ListItem>
+            <Link href='/blog/test2'>Test 2</Link>
+          </ListItem>
+        </List>
+      </Section>
       <Section>
         <SectionTitle id={titleIdScenes}>Scenes</SectionTitle>
         <List labelledBy={titleIdScenes}>
