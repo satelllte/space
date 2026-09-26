@@ -3,11 +3,11 @@ import {MDXListUnordered} from '../../../ui/mdx/MDXListUnordered';
 import {MDXListOrdered} from '../../../ui/mdx/MDXListOrdered';
 import {MDXListItem} from '../../../ui/mdx/MDXListItem';
 import {MDXLink} from '../../../ui/mdx/MDXLink';
-import {FileTree} from './FileTree';
 import {MDXHeadingH2, MDXHeadingH3} from '../../../ui/mdx/MDXHeading';
 import {MDXThematicBreak} from '../../../ui/mdx/MDXThematicBreak';
 import {MDXCode, MDXCodeBlock} from '../../../ui/mdx/MDXCode';
 import {MDXCallout} from '../../../ui/mdx/MDXCallout';
+import {MDXFileTree} from '../../../ui/mdx/MDXFileTree';
 
 export const components = {
   a: MDXLink,
@@ -21,5 +21,5 @@ export const components = {
   li: MDXListItem,
   hr: MDXThematicBreak,
   Callout: MDXCallout,
-  FileTree, // TODO: Rewrite with TailwindCSS and move to "ui/mdx" folder
+  FileTree: MDXFileTree,
 };

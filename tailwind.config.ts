@@ -24,8 +24,8 @@ const config: Config = {
   plugins: [
     plugin(({addVariant}) => {
       addVariant(
-        'not-in-mdx-code-block',
-        '&:not([data-slot="mdx-code-block"] *)',
+        'mdx-code-inline',
+        '&:not(:is([data-slot="mdx-code-block"], [data-slot="mdx-file-tree"]) *)',
       );
     }),
     plugin(({addBase}) => {

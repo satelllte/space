@@ -9,7 +9,7 @@ export function MDXCode({children}: MDXCodeProps) {
   return (
     <code
       data-slot='mdx-code'
-      className='font-mono not-in-mdx-code-block:rounded-sm not-in-mdx-code-block:border not-in-mdx-code-block:border-gray-5 not-in-mdx-code-block:bg-gray-3 not-in-mdx-code-block:px-1 not-in-mdx-code-block:py-0.5 not-in-mdx-code-block:text-sm'
+      className='font-mono mdx-code-inline:rounded-sm mdx-code-inline:border mdx-code-inline:border-gray-5 mdx-code-inline:bg-gray-3 mdx-code-inline:px-1 mdx-code-inline:py-0.5 mdx-code-inline:text-sm'
     >
       {children}
     </code>
