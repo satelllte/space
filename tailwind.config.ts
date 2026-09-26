@@ -22,6 +22,12 @@ const config: Config = {
     extend: {},
   },
   plugins: [
+    plugin(({addVariant}) => {
+      addVariant(
+        'not-in-mdx-code-block',
+        '&:not([data-slot="mdx-code-block"] *)',
+      );
+    }),
     plugin(({addBase}) => {
       addBase({
         // Credit: https://github.com/radix-ui/colors

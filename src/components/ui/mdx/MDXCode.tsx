@@ -9,8 +9,7 @@ export function MDXCode({children}: MDXCodeProps) {
   return (
     <code
       data-slot='mdx-code'
-      // TODO: Disable these classes with inside [data-slot="mdx-code-block"]
-      className='rounded-sm border border-gray-5 bg-gray-3 px-1 py-0.5 font-mono text-sm'
+      className='not-in-mdx-code-block:rounded-sm not-in-mdx-code-block:border not-in-mdx-code-block:border-gray-5 not-in-mdx-code-block:bg-gray-3 not-in-mdx-code-block:px-1 not-in-mdx-code-block:py-0.5 not-in-mdx-code-block:text-sm font-mono'
     >
       {children}
     </code>
