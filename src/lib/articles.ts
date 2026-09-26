@@ -7,14 +7,19 @@ export const AUTHOR = {
   url: 'https://github.com/satelllte',
 } as const;
 
-export async function getArticles(): Promise<Article[]> {
-  return (
-    (await getCollection('articles'))
-      // .filter((article) => article.slug !== 'test') // TODO: Restore once /articles/test page added
-      .sort(
-        (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-      )
-  );
+export async function getArticles({
+  onlyIndexed,
+}: {
+  onlyIndexed?: boolean;
+} = {}): Promise<Article[]> {
+  return (await getCollection('articles'))
+    .filter((article) => {
+      if (!onlyIndexed) return true;
+      return !article.data.noIndex;
+    })
+    .sort(
+      (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+    );
 }
 
 export const getArticleHref = (article: Article): string =>

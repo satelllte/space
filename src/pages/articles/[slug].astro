@@ -43,6 +43,7 @@ const jsonLd = {
 
 <LayoutBase title={title} description={description} type='article'>
   <Fragment slot='head'>
+    {article.data.noIndex && <meta name='robots' content='noindex, nofollow' />}
     <meta name='author' content={AUTHOR.name} />
     <meta name='keywords' content={tags.join(', ')} />
     <meta
