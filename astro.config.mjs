@@ -3,6 +3,7 @@ import {defineConfig} from 'astro/config';
 import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
+import {createCssVariablesTheme} from 'shiki';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,10 +12,8 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: {
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark',
-      },
+      // CSS variables ("--shiki-*") defined in "tailwind.config.ts"
+      theme: createCssVariablesTheme(),
       transformers: [
         {
           name: 'file',

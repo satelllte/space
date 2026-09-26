@@ -45,6 +45,18 @@ const config: Config = {
           '--color-gray-11': '#646464',
           '--color-gray-12': '#202020',
 
+          '--shiki-foreground': 'var(--color-gray-12)',
+          '--shiki-background': 'var(--color-gray-2)',
+          '--shiki-token-comment': 'var(--color-gray-11)',
+          '--shiki-token-punctuation': 'var(--color-gray-11)',
+          '--shiki-token-keyword': '#8145b5',
+          '--shiki-token-string': '#18794e',
+          '--shiki-token-string-expression': '#18794e',
+          '--shiki-token-constant': '#b54300',
+          '--shiki-token-function': '#0c6bbf',
+          '--shiki-token-parameter': '#9e5a00',
+          '--shiki-token-link': '#0c6bbf',
+
           '&.dark': {
             '--color-gray-1': '#111111',
             '--color-gray-2': '#191919',
@@ -58,6 +70,14 @@ const config: Config = {
             '--color-gray-10': '#7b7b7b',
             '--color-gray-11': '#b4b4b4',
             '--color-gray-12': '#eeeeee',
+
+            '--shiki-token-keyword': '#d19dff',
+            '--shiki-token-string': '#3dd68c',
+            '--shiki-token-string-expression': '#3dd68c',
+            '--shiki-token-constant': '#ffa057',
+            '--shiki-token-function': '#70b8ff',
+            '--shiki-token-parameter': '#ffca16',
+            '--shiki-token-link': '#70b8ff',
           },
         },
         '@supports (color: color(display-p3 1 1 1))': {

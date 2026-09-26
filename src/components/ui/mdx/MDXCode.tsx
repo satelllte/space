@@ -22,7 +22,6 @@ type MDXCodeBlockProps = {
   'data-language'?: string;
 };
 
-// TODO: FIX Shiki config so it chooses the theme correctly. Ideally, put own colors/theme for code highlights
 export function MDXCodeBlock({
   children,
   'data-file': file,
