@@ -9,6 +9,7 @@ export function MDXCode({children}: MDXCodeProps) {
   return (
     <code
       data-slot='mdx-code'
+      // TODO: Disable these classes with inside [data-slot="mdx-code-block"]
       className='rounded-sm border border-gray-5 bg-gray-3 px-1 py-0.5 font-mono text-sm'
     >
       {children}
@@ -22,6 +23,7 @@ type MDXCodeBlockProps = {
   'data-language'?: string;
 };
 
+// TODO: FIX Shiki config so it chooses the theme correctly. Ideally, put own colors/theme for code highlights
 export function MDXCodeBlock({
   children,
   'data-file': file,
