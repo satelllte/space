@@ -8,11 +8,13 @@ export const AUTHOR = {
 } as const;
 
 export async function getArticles(): Promise<Article[]> {
-  return (await getCollection('articles'))
-    .filter((article) => article.slug !== 'test')
-    .sort(
-      (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
-    );
+  return (
+    (await getCollection('articles'))
+      // .filter((article) => article.slug !== 'test') // TODO: Restore once /articles/test page added
+      .sort(
+        (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime(),
+      )
+  );
 }
 
 export const getArticleHref = (article: Article): string =>
