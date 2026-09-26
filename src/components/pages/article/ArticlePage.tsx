@@ -14,7 +14,6 @@ type ArticlePageProps = {
   title: string;
   description: string;
   publishedAt: Date;
-  updatedAt?: Date | undefined;
   tags: string[];
   headings: ArticleHeading[];
   children: React.ReactNode;
@@ -24,7 +23,6 @@ export function ArticlePage({
   title,
   description,
   publishedAt,
-  updatedAt,
   tags,
   headings,
   children,
@@ -49,16 +47,6 @@ export function ArticlePage({
                   <time dateTime={publishedAt.toISOString()}>
                     {formatDate(publishedAt)}
                   </time>
-                  {updatedAt && (
-                    <>
-                      <span aria-hidden='true'>{' · '}</span>
-                      <span className='sr-only'>, </span>
-                      {'Updated '}
-                      <time dateTime={updatedAt.toISOString()}>
-                        {formatDate(updatedAt)}
-                      </time>
-                    </>
-                  )}
                 </p>
                 <h1
                   id={titleId}
