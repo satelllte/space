@@ -7,7 +7,7 @@
     "preview": "astro preview",
     "fix:format": "prettier --write .",
     "test:format": "prettier --check .",
-    "test:types": "tsc --noEmit",
+    "test:types": "astro sync && tsc --noEmit",
     "test:e2e": "playwright test"
   },
   "dependencies": {
