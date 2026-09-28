@@ -70,7 +70,7 @@ export function ArticlePage({
                   </ul>
                 )}
               </header>
-              <div className='--article-content break-words text-base text-gray-12'>
+              <div className='break-words text-base text-gray-12'>
                 {children}
               </div>
             </article>
