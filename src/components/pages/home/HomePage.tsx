@@ -1,5 +1,6 @@
 import {useId} from 'react';
 import {LayoutDefault} from '../../ui/layout/LayoutDefault';
+import {Header} from '../../ui/layout/Header';
 import {IconCircle} from '../../icons/IconCircle';
 import {Link, LinkIcon} from '../../ui/Link';
 import {ThemeToggle} from '../../ui/ThemeToggle';
@@ -17,7 +18,7 @@ type HomePageProps = {
 export function HomePage({articles}: HomePageProps) {
   return (
     <LayoutDefault>
-      <header className='flex-shrink-0 flex-grow-0 pb-12'>
+      <Header>
         <LinkIcon
           aria-label='GitHub repository'
           external
@@ -25,7 +26,7 @@ export function HomePage({articles}: HomePageProps) {
         >
           <IconCircle />
         </LinkIcon>
-      </header>
+      </Header>
       <main className='flex flex-grow flex-col gap-12 pb-16'>
         <MainContent articles={articles} />
       </main>

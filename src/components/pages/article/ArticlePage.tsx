@@ -1,5 +1,6 @@
 import {useId} from 'react';
 import {LayoutDefault} from '../../ui/layout/LayoutDefault';
+import {Header} from '../../ui/layout/Header';
 import {Link} from '../../ui/Link';
 import {ThemeToggle} from '../../ui/ThemeToggle';
 import {Tags} from '../../ui/Tags';
@@ -31,13 +32,13 @@ export function ArticlePage({
   const titleId = useId();
   return (
     <LayoutDefault>
-      <header className='flex-shrink-0 flex-grow-0 pb-12'>
+      <Header>
         <nav aria-label='Primary'>
           <Link size='xs' href='/'>
             Home
           </Link>
         </nav>
-      </header>
+      </Header>
       <div className='flex-grow pb-16 xl:grid xl:grid-cols-[1fr_minmax(0,40rem)_1fr] xl:gap-12'>
         <TableOfContents headings={headings} />
         <main className='mx-auto w-full max-w-[40rem] xl:col-start-2'>
