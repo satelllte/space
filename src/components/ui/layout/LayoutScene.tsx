@@ -28,7 +28,7 @@ export function LayoutScene({children}: LayoutSceneProps) {
           'fixed z-20 flex items-end',
         )}
       >
-        <div /* This extra div is required for the link to be aligned the same way it appears on homepage */
+        <div // this extra div is required for the link to stay in line with LayoutDefault.tsx
         >
           <Link size='xs' href='/' aria-label='Go back'>
             {`<- Back`}
