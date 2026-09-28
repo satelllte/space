@@ -45,6 +45,7 @@ export function MDXCodeBlock({
       >
         <Button
           data-copy-code
+          hidden
           size='xs'
           aria-label={`Copy ${file ?? language} code`}
         >
