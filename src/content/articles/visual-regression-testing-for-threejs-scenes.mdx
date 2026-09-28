@@ -95,7 +95,7 @@ async function expectThreeCanvas({
   engine = 'webgl',
 }: {
   locator: Locator;
-  engine?: 'webgl' | 'webgpu';
+  engine: 'webgl' | 'webgpu';
 }): Promise<void> {
   const canvas = locator.locator('canvas[data-engine]');
   await expect(canvas).toBeVisible();
@@ -129,6 +129,17 @@ test('renders scenes @visual', async ({page}) => {
 
 Playwright's `toHaveScreenshot()` handles the pixel-level comparison. On the first run it creates a baseline PNG; on subsequent runs it diffs against it and fails if the images diverge.
 
+The same tests run across several Playwright projects — desktop Chromium, Firefox and WebKit, plus mobile Chromium (Pixel 5) and mobile Safari (iPhone 12). One exception: headless Firefox on Linux has no WebGL context, so the scene tests skip it there:
+
+```ts file="app.spec.ts"
+function skipIfUnsupported({browserName}: {browserName: string}): void {
+  test.skip(
+    browserName === 'firefox' && process.platform === 'linux',
+    'Headless Firefox on Linux has no WebGL context',
+  );
+}
+```
+
 ## The cross-platform problem
 
 Here's where things get interesting. Run the same test on macOS and Linux, and you'll get different screenshots. Not because the scene changed — because the _rendering pipeline_ is different. GPU drivers, font rasterizers, antialiasing behavior, software rendering fallbacks — all of these produce pixel-level differences between platforms.
@@ -137,30 +148,50 @@ This matters because your CI probably runs on Linux while you develop on macOS.
 
 <Callout title='Heads up'>
 
-**The screenshots will differ between operating systems.** Playwright stores snapshots with a platform suffix (`chromium-darwin` vs `chromium-linux`), so it knows which baseline to compare against. But you need both baselines to exist.
+**The screenshots will differ between operating systems.** Playwright stores snapshots with a project and platform suffix (`chromium-darwin` vs `chromium-linux`), so it knows which baseline to compare against. But you need both baselines to exist.
 
 </Callout>
 
-The solution: run the tests inside Docker locally to generate the Linux baselines, then commit both sets. A short shell script handles this:
+The solution: run the tests inside Docker locally to generate the Linux baselines, then commit both sets. The image is built on top of the official Playwright one, with dependencies installed and the site built inside the container:
+
+```dockerfile file="Dockerfile"
+FROM mcr.microsoft.com/playwright:v1.63.0-noble
+
+WORKDIR /app
+
+RUN npm install -g pnpm@12
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
+
+COPY . .
+RUN pnpm build
+```
+
+Paired with a `.dockerignore`, so the host's build output and macOS-specific `node_modules` never leak into the image:
+
+```txt file=".dockerignore"
+node_modules
+dist
+.astro
+playwright-report
+test-results
+```
+
+A short shell script builds the image and runs the tests in a container:
 
 ```bash file="scripts/docker-e2e.sh"
 #!/usr/bin/env bash
 set -euo pipefail
 
-IMAGE="mcr.microsoft.com/playwright:v1.63.0-noble"
+docker build -t three-visual-testing-e2e .
 
-docker run --rm --ipc=host \
-  -u "$(id -u):$(id -g)" \
-  -e HOME=/tmp \
-  -v "$(pwd)":/app \
-  -w /app \
-  "$IMAGE" \
+docker run --rm --init --ipc=host \
+  -v "$(pwd)/tests-e2e:/app/tests-e2e" \
+  -v "$(pwd)/test-results:/app/test-results" \
+  -v "$(pwd)/playwright-report:/app/playwright-report" \
+  three-visual-testing-e2e \
   /bin/bash -c '
-    wget -qO- https://get.pnpm.io/install.sh | \
-      env ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
-    source "$HOME/.bashrc"
-    pnpm install --frozen-lockfile
-    pnpm build
     pnpm test:e2e "$@"
   ' bash "$@"
 ```
@@ -168,15 +199,18 @@ docker run --rm --ipc=host \
 A few details worth noting:
 
 - **Pin the image version** to match your Playwright npm package. The `v1.63.0-noble` tag corresponds exactly to `@playwright/test@1.63.0`.
-- **`--ipc=host`** is required for Chromium's shared memory. Without it, the browser will crash.
-- **Map the user ID** with `-u "$(id -u):$(id -g)"` so generated snapshot files are owned by your host user, not root.
+- **Mount only what the tests produce.** The tests directory (so updated snapshots land back on the host), `test-results`, and `playwright-report`. The rest of the project lives inside the image, so the container never touches your host `node_modules` — no need to re-run `pnpm install` afterwards.
+- **`--ipc=host`** is required for Chromium's shared memory. Without it, the browser can run out of memory and crash.
+- **`--init`** runs a tiny init process as PID 1, so signals are forwarded and the browser processes get reaped properly.
+
+For more details, see the official [Playwright Docker docs](https://playwright.dev/docs/docker).
 
 To regenerate Linux baselines from macOS:
 
 {/* TODO: Implement "Command" type of MDXCode component */}
 
 ```bash file="Terminal"
-pnpm test:e2e:docker -- --update-snapshots
+pnpm test:e2e:docker --update-snapshots
 ```
 
 The resulting snapshot directory looks like this:
@@ -186,12 +220,13 @@ The resulting snapshot directory looks like this:
 - `tests-e2e/app.spec.ts-snapshots/`
   - `renders-scenes-visual-1-chromium-darwin.png` (macOS)
   - `renders-scenes-visual-1-chromium-linux.png` (CI)
+  - … (same goes for other browsers — `webkit`, `firefox`, etc.)
   - `has-2-scenes-1.aria.yml` (a11y snapshot)
   - `has-2-scenes-2.aria.yml` (a11y snapshot)
 
 </FileTree>
 
-Both PNGs go into version control. When CI runs on Linux, Playwright picks the `chromium-linux` baseline automatically.
+All PNGs go into version control. When CI runs on Linux, Playwright picks the `*-linux` baselines automatically.
 
 ## Making scenes deterministic
 
@@ -215,7 +250,7 @@ This lets your E2E test pick a known frame, giving you a reproducible screenshot
 
 ## The CI pipeline
 
-CI runs inside the same Playwright Docker image to match the Linux baselines exactly:
+CI runs inside the same Playwright Docker image the `Dockerfile` is based on, to match the Linux baselines exactly:
 
 ```yaml file="ci.yml"
 test:
@@ -224,6 +259,12 @@ test:
     image: mcr.microsoft.com/playwright:v1.63.0-noble
     options: --user 1001
   steps:
+    - name: Checkout repository
+      uses: actions/checkout@v7
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v6
+      with:
+        version: 12
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
     - name: Build
@@ -232,21 +273,23 @@ test:
       run: pnpm run test:e2e
 ```
 
-The key: CI uses the container image matching the Docker script's. Same Chromium version, same system libraries, same rendering output. If you bump Playwright in `package.json`, bump the Docker image tag in both places.
+The key: CI uses the same base image as the local `Dockerfile`. Same browser versions, same system libraries, same rendering output. If you bump Playwright in `package.json`, bump the image tag in both the `Dockerfile` and the CI workflow. The same goes for the pnpm version.
 
-Playwright is configured to use a single worker on CI with retries, and to serve the built site via `pnpm preview` rather than the dev server — testing the production build, not the dev build:
+Playwright is configured to use a single worker on CI with retries, and to serve the built site via `astro preview` rather than the dev server — testing the production build, not the dev build:
 
 ```ts file="playwright.config.ts"
 defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   webServer: {
-    command: 'pnpm preview',
+    command: 'exec node node_modules/astro/bin/astro.mjs preview',
     url: 'http://localhost:4321/three-visual-testing',
     reuseExistingServer: !process.env.CI,
   },
 });
 ```
+
+The preview server is started with `exec node ...` instead of `pnpm preview`, so the server process replaces the shell and gets Playwright's shutdown signal directly, without a `pnpm` wrapper in the middle. That matters inside a container, where a leftover server process can keep `docker run` from exiting.
 
 ## What this catches
 
@@ -266,7 +309,7 @@ If you're considering visual tests for your Three.js project, here's the short v
 
 1. **Use `data-engine` as your readiness signal.** Don't guess when the canvas is ready — Three.js tells you.
 2. **Run tests against the production build**, not the dev server. You want to test what ships.
-3. **Commit baselines for every platform you test on.** macOS and Linux will always produce different pixels. Docker bridges the gap.
+3. **Commit baselines for every platform and browser you test on.** macOS and Linux will always produce different pixels. Docker bridges the gap.
 4. **Pin your versions.** Playwright, the Docker image, and Three.js should all be locked. A version bump is a deliberate baseline update, not a surprise.
 5. **Design for determinism.** Disable interactivity, freeze randomness, lock video frames. A flaky test is worse than no test.
 
