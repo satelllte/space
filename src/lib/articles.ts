@@ -22,5 +22,4 @@ export async function getArticles({
     );
 }
 
-export const getArticleHref = (article: Article): string =>
-  `/articles/${article.slug}/`;
+export const getArticleHref = (slug: string): string => `/articles/${slug}/`;

@@ -5,7 +5,7 @@ import {getArticleHref, getArticles} from '../lib/articles';
 
 const articles = (await getArticles({onlyIndexed: true})).map((article) => ({
   title: article.data.title,
-  href: getArticleHref(article),
+  href: getArticleHref(article.slug),
 }));
 ---
 
