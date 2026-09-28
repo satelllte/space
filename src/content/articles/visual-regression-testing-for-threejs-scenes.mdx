@@ -232,7 +232,7 @@ All PNGs go into version control. When CI runs on Linux, Playwright picks the `*
 
 Visual regression tests are only useful if the scene renders identically every time. Any source of randomness or interactivity becomes a source of flaky tests. For this demo, the constraints are simple — disable zoom and pan on OrbitControls, no animations, fixed camera position.
 
-Real-world scenes are harder. From a separate project ([kinect-stretch](https://github.com/satelllte/kinect-stretch)), here are three patterns that work:
+Real-world scenes are harder. Take [kinect-stretch](https://github.com/satelllte/kinect-stretch), a separate project of mine: a particle cloud driven by a Kinect depth video, with post-processing on top. Every frame of the [live scene](https://satelllte.github.io/kinect-stretch/) is different, which makes it impossible to screenshot as is. Here are three patterns that make it testable:
 
 ### 1. Static mode via props
 
@@ -244,9 +244,36 @@ Effects like film grain, chromatic aberration, or custom passes often use random
 
 ### 3. Freeze video textures
 
-If your scene uses video textures, don't play the video in static mode. Instead, seek to a specific frame controlled by a query parameter, for example: `/static?videoCurrentTime=2.5`.
+If your scene uses video textures, don't play the video in static mode. Instead, seek to a specific frame controlled by a query parameter as an option.
 
-This lets your E2E test pick a known frame, giving you a reproducible screenshot every time.
+This lets your E2E test pick a known frame, giving you a reproducible screenshot every time. In kinect-stretch, the [static page](https://satelllte.github.io/kinect-stretch/static/) renders the frame at `0` seconds by default, and any other moment of the video is one query parameter away:
+
+<Figure
+  src='/assets/images/kinect-stretch-24.png'
+  alt='A cloud of pale gray particles forming a shape against a black background'
+  width={2160}
+  height={1439}
+>
+
+Static scene at [`?videoCurrentTime=0.24`](https://satelllte.github.io/kinect-stretch/static/?videoCurrentTime=0.24) second
+
+</Figure>
+
+<Figure
+  src='/assets/images/kinect-stretch-32.png'
+  alt='A bright red band of particles running vertically through a dark red particle cloud'
+  width={2160}
+  height={1439}
+>
+
+Static scene at [`?videoCurrentTime=0.32`](https://satelllte.github.io/kinect-stretch/static/?videoCurrentTime=0.32) second
+
+</Figure>
+
+Same URL, same pixels, on every run.
+
+- Final result: [satelllte.github.io/kinect-stretch](https://satelllte.github.io/kinect-stretch/)
+- Repository: [satelllte/kinect-stretch](https://github.com/satelllte/kinect-stretch)
 
 ## The CI pipeline
 

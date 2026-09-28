@@ -10,6 +10,7 @@ import {MDXThematicBreak} from '../../ui/mdx/MDXThematicBreak';
 import {MDXCode, MDXCodeBlock} from '../../ui/mdx/MDXCode';
 import {MDXCallout} from '../../ui/mdx/MDXCallout';
 import {MDXFileTree} from '../../ui/mdx/MDXFileTree';
+import {MDXFigure} from '../../ui/mdx/MDXFigure';
 
 export const components = {
   a: MDXLink,
@@ -24,4 +25,5 @@ export const components = {
   hr: MDXThematicBreak,
   Callout: MDXCallout,
   FileTree: MDXFileTree,
+  Figure: MDXFigure,
 };
