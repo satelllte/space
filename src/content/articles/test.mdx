@@ -74,7 +74,9 @@ export function Scene({engine}: SceneProps) {
       <ambientLight intensity={0.5} />
       <mesh>
         <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={engine === 'webgl' ? 'orange' : 'hotpink'} />
+        <meshStandardMaterial
+          color={engine === 'webgl' ? 'orange' : 'hotpink'}
+        />
       </mesh>
     </Canvas>
   );
