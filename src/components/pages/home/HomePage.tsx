@@ -1,5 +1,5 @@
 import {useId} from 'react';
-import {Theme} from '../../context/Theme';
+import {LayoutDefault} from '../../ui/layout/LayoutDefault';
 import {IconCircle} from '../../icons/IconCircle';
 import {Link, LinkIcon} from '../../ui/Link';
 import {ThemeToggle} from '../../ui/ThemeToggle';
@@ -16,26 +16,24 @@ type HomePageProps = {
 
 export function HomePage({articles}: HomePageProps) {
   return (
-    <Theme>
-      <div className='flex min-h-full flex-col px-4 pb-6 pt-10 sm:px-8 sm:pb-8 sm:pt-12'>
-        <header className='flex-shrink-0 flex-grow-0 pb-12'>
-          <LinkIcon
-            aria-label='GitHub repository'
-            external
-            href='https://github.com/satelllte/space'
-          >
-            <IconCircle />
-          </LinkIcon>
-        </header>
-        <main className='flex flex-grow flex-col gap-12 pb-16'>
-          <MainContent articles={articles} />
-        </main>
-        <footer className='flex-shrink-0 flex-grow-0'>
-          <ThemeToggle />
-        </footer>
-      </div>
+    <LayoutDefault>
+      <header className='flex-shrink-0 flex-grow-0 pb-12'>
+        <LinkIcon
+          aria-label='GitHub repository'
+          external
+          href='https://github.com/satelllte/space'
+        >
+          <IconCircle />
+        </LinkIcon>
+      </header>
+      <main className='flex flex-grow flex-col gap-12 pb-16'>
+        <MainContent articles={articles} />
+      </main>
+      <footer className='flex-shrink-0 flex-grow-0'>
+        <ThemeToggle />
+      </footer>
       <ConsoleMessage />
-    </Theme>
+    </LayoutDefault>
   );
 }
 

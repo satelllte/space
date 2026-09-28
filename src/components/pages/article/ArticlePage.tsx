@@ -1,6 +1,6 @@
 import {useId} from 'react';
+import {LayoutDefault} from '../../ui/layout/LayoutDefault';
 import {Link} from '../../ui/Link';
-import {Theme} from '../../context/Theme';
 import {ThemeToggle} from '../../ui/ThemeToggle';
 import {Tags} from '../../ui/Tags';
 import {CopyCodeHandler} from './CopyCodeHandler';
@@ -30,48 +30,44 @@ export function ArticlePage({
 }: ArticlePageProps) {
   const titleId = useId();
   return (
-    <Theme>
-      <div className='flex min-h-full flex-col px-4 pb-6 pt-10 sm:px-8 sm:pb-8 sm:pt-12'>
-        <header className='flex-shrink-0 flex-grow-0 pb-12'>
-          <nav aria-label='Primary'>
-            <Link size='xs' href='/'>
-              Home
-            </Link>
-          </nav>
-        </header>
-        <div className='flex-grow pb-16 xl:grid xl:grid-cols-[1fr_minmax(0,40rem)_1fr] xl:gap-12'>
-          <TableOfContents headings={headings} />
-          <main className='mx-auto w-full max-w-[40rem] xl:col-start-2'>
-            <article aria-labelledby={titleId}>
-              <header className='mb-12 flex flex-col gap-4'>
-                <p className='text-sm text-gray-11'>
-                  <time dateTime={publishedAt.toISOString()}>
-                    {formatDate(publishedAt)}
-                  </time>
-                </p>
-                <h1
-                  id={titleId}
-                  className='text-balance text-3xl font-semibold leading-tight tracking-tight text-gray-12 sm:text-4xl'
-                >
-                  {title}
-                </h1>
-                <p className='text-lg leading-relaxed text-gray-11'>
-                  {description}
-                </p>
-                {tags.length > 0 && <Tags tags={tags} />}
-              </header>
-              <div className='break-words text-base text-gray-12'>
-                {children}
-              </div>
-            </article>
-          </main>
-        </div>
-        <footer>
-          <ThemeToggle />
-        </footer>
+    <LayoutDefault>
+      <header className='flex-shrink-0 flex-grow-0 pb-12'>
+        <nav aria-label='Primary'>
+          <Link size='xs' href='/'>
+            Home
+          </Link>
+        </nav>
+      </header>
+      <div className='flex-grow pb-16 xl:grid xl:grid-cols-[1fr_minmax(0,40rem)_1fr] xl:gap-12'>
+        <TableOfContents headings={headings} />
+        <main className='mx-auto w-full max-w-[40rem] xl:col-start-2'>
+          <article aria-labelledby={titleId}>
+            <header className='mb-12 flex flex-col gap-4'>
+              <p className='text-sm text-gray-11'>
+                <time dateTime={publishedAt.toISOString()}>
+                  {formatDate(publishedAt)}
+                </time>
+              </p>
+              <h1
+                id={titleId}
+                className='text-balance text-3xl font-semibold leading-tight tracking-tight text-gray-12 sm:text-4xl'
+              >
+                {title}
+              </h1>
+              <p className='text-lg leading-relaxed text-gray-11'>
+                {description}
+              </p>
+              {tags.length > 0 && <Tags tags={tags} />}
+            </header>
+            <div className='break-words text-base text-gray-12'>{children}</div>
+          </article>
+        </main>
       </div>
+      <footer>
+        <ThemeToggle />
+      </footer>
       <CopyCodeHandler />
-    </Theme>
+    </LayoutDefault>
   );
 }
 
