@@ -64,19 +64,13 @@ Code block with a file name and TSX syntax:
 ```tsx file="Scene.tsx"
 import {Canvas} from '@react-three/fiber';
 
-type SceneProps = {
-  engine: 'webgl' | 'webgpu';
-};
-
-export function Scene({engine}: SceneProps) {
+export function Scene() {
   return (
     <Canvas camera={{position: [2.5, 2.5, 5.0]}}>
       <ambientLight intensity={0.5} />
       <mesh>
         <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial
-          color={engine === 'webgl' ? 'orange' : 'hotpink'}
-        />
+        <meshStandardMaterial color='orange' />
       </mesh>
     </Canvas>
   );
