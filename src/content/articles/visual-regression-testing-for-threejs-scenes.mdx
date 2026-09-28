@@ -291,6 +291,17 @@ defineConfig({
 
 The preview server is started with `exec node ...` instead of `pnpm preview`, so the server process replaces the shell and gets Playwright's shutdown signal directly, without a `pnpm` wrapper in the middle. That matters inside a container, where a leftover server process can keep `docker run` from exiting.
 
+### Skipping visual tests
+
+You may have noticed the `@visual` tag in the screenshot test name. It's there on purpose: it makes it easy to leave screenshot tests out of a run entirely. That's handy if you only ever work on a single OS and don't need cross-platform baselines at all. Playwright's `--grep-invert` can filter them out by name:
+
+```yaml file="ci.yml"
+- name: Test (e2e) [skip visual]
+  run: pnpm run test:e2e --grep-invert @visual
+```
+
+The rest of the suite, including the `data-engine` checks and ARIA snapshots, still runs as usual.
+
 ## What this catches
 
 With this setup running in CI, you get automatic detection of:
