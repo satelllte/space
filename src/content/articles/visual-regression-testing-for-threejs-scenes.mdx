@@ -24,6 +24,17 @@ The project is intentionally minimal — a single page with two canvases showing
 - **Playwright** for E2E and screenshot comparison
 - **Docker** to solve cross-platform snapshot consistency
 
+<Figure
+  src='/assets/images/three-visual-testing-frame.png'
+  alt='Two identical cubes on a black background: a red one labeled WebGL on the left and a blue one labeled WebGPU on the right'
+  width={1280}
+  height={720}
+>
+
+The test scene: the same cube rendered with WebGL (left) and WebGPU (right)
+
+</Figure>
+
 ## Two renderers, one scene
 
 The scene component accepts an `engine` prop that controls which renderer and material system to use. For WebGL, it's the standard R3F `Canvas`. For WebGPU, we pass an async factory function that creates and initializes a `WebGPURenderer`:
