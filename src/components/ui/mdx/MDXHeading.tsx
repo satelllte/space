@@ -11,7 +11,7 @@ export function MDXHeadingH2(props: MDXHeadingProps) {
     <Heading
       data-slot='mdx-heading-h2'
       as='h2'
-      className='mt-12 text-[1.375rem] leading-[1.3]'
+      className='mt-12 text-2xl leading-[1.3]'
       {...props}
     />
   );
@@ -22,7 +22,7 @@ export function MDXHeadingH3(props: MDXHeadingProps) {
     <Heading
       data-slot='mdx-heading-h3'
       as='h3'
-      className='mt-9 text-lg leading-[1.4]'
+      className='mt-9 text-xl leading-[1.4]'
       {...props}
     />
   );
