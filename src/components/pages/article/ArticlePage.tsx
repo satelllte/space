@@ -2,6 +2,7 @@ import {useId} from 'react';
 import {Link} from '../../ui/Link';
 import {Theme} from '../../context/Theme';
 import {ThemeToggle} from '../../ui/ThemeToggle';
+import {Tags} from '../../ui/Tags';
 import {CopyCodeHandler} from './CopyCodeHandler';
 
 type ArticleHeading = {
@@ -57,18 +58,7 @@ export function ArticlePage({
                 <p className='text-lg leading-relaxed text-gray-11'>
                   {description}
                 </p>
-                {tags.length > 0 && (
-                  <ul aria-label='Tags' className='flex flex-wrap gap-2'>
-                    {tags.map((tag) => (
-                      <li
-                        key={tag}
-                        className='rounded-full border border-gray-5 px-2.5 py-0.5 text-xs text-gray-11'
-                      >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                {tags.length > 0 && <Tags tags={tags} />}
               </header>
               <div className='break-words text-base text-gray-12'>
                 {children}
