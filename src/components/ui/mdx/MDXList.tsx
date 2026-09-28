@@ -1,3 +1,11 @@
+import clsx from 'clsx';
+import {CLASS_NAME_MDX_BASE_SPACING} from './constants';
+
+const CLASS_NAMES_MDX_LIST_BASE = clsx(
+  CLASS_NAME_MDX_BASE_SPACING,
+  'flex flex-col gap-0.5 pl-6',
+);
+
 type MDXListItemProps = {
   children: React.ReactNode;
 };
@@ -18,7 +26,7 @@ export function MDXListOrdered({children}: MDXListOrderedProps) {
   return (
     <ol
       data-slot='mdx-list-ordered'
-      className='mt-4 flex list-decimal flex-col gap-0.5 pl-6'
+      className={clsx(CLASS_NAMES_MDX_LIST_BASE, 'list-decimal')}
     >
       {children}
     </ol>
@@ -33,7 +41,7 @@ export function MDXListUnordered({children}: MDXListUnorderedProps) {
   return (
     <ul
       data-slot='mdx-list-unordered'
-      className='mt-4 flex list-disc flex-col gap-0.5 pl-6'
+      className={clsx(CLASS_NAMES_MDX_LIST_BASE, 'list-disc')}
     >
       {children}
     </ul>
