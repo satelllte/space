@@ -1,7 +1,9 @@
 import {MDXParagraph} from '../../ui/mdx/MDXParagraph';
-import {MDXListUnordered} from '../../ui/mdx/MDXListUnordered';
-import {MDXListOrdered} from '../../ui/mdx/MDXListOrdered';
-import {MDXListItem} from '../../ui/mdx/MDXListItem';
+import {
+  MDXListUnordered,
+  MDXListOrdered,
+  MDXListItem,
+} from '../../ui/mdx/MDXList';
 import {MDXLink} from '../../ui/mdx/MDXLink';
 import {MDXHeadingH2, MDXHeadingH3} from '../../ui/mdx/MDXHeading';
 import {MDXThematicBreak} from '../../ui/mdx/MDXThematicBreak';
