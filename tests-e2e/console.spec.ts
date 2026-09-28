@@ -1,5 +1,5 @@
 import {test, expect, type ConsoleMessage} from '@playwright/test';
-import {SCENES} from './_constants';
+import {ARTICLES, SCENES} from './_constants';
 
 test('logs "hello" message only once per session', async ({page}) => {
   const TEXT =
@@ -16,6 +16,15 @@ test('logs "hello" message only once per session', async ({page}) => {
 
   await page.goto('/');
   expect(logs.length).toEqual(1);
+
+  for (const article of ARTICLES) {
+    const {name, href} = article;
+    await page.getByRole('link', {name, exact: true}).click();
+    await expect(page).toHaveURL(href);
+
+    await page.getByRole('link', {name: 'Home', exact: true}).click();
+    await expect(page).toHaveURL('/');
+  }
 
   for (const scene of SCENES) {
     const {name, href} = scene;
