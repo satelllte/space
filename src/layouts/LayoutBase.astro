@@ -10,7 +10,7 @@ const {
   description = "The creative space of @satelllte's software engineer. Three.js, React Three Fiber (R3F), Shaders, WebGL, WebGPU, and beyond.",
   type = 'website',
 } = Astro.props;
-const title = `satelllte/space${_title ? ` • ${_title}` : ''}`;
+const title = _title ? `${_title} • satelllte/space` : `satelllte/space`;
 const ogUrl = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL('/assets/images/og.png', Astro.site).href;
 ---
