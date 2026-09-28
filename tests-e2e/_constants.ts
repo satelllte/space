@@ -23,7 +23,7 @@ export const ARTICLES = [
     title: 'satelllte/space • Visual Regression Testing for Three.js Scenes',
     description:
       "How to screenshot-test WebGL and WebGPU renderers with Playwright, and the cross-platform pitfalls you'll hit along the way.",
-    publishedAt: '2026-09-26',
+    publishedAt: '2026-09-28',
     tags: ['Three.js', 'React Three Fiber', 'Playwright', 'WebGPU', 'Testing'],
   },
 ] as const;
