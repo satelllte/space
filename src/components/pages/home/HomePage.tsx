@@ -30,7 +30,7 @@ export function HomePage({articles}: HomePageProps) {
       <main className='flex flex-grow flex-col gap-12 pb-16'>
         <MainContent articles={articles} />
       </main>
-      <footer className='flex-shrink-0 flex-grow-0'>
+      <footer>
         <ThemeToggle />
       </footer>
       <ConsoleMessage />
