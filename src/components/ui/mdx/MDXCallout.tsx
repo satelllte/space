@@ -6,6 +6,7 @@ type MDXCalloutProps = {
 export function MDXCallout({title = 'Note', children}: MDXCalloutProps) {
   return (
     <div
+      data-slot='mdx-callout'
       role='note'
       className='mt-4 rounded-r-md border-l-2 border-l-gray-8 bg-gray-2 px-5 py-4'
     >
