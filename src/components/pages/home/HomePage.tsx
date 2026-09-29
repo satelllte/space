@@ -1,40 +1,59 @@
 import {useId} from 'react';
-import {Theme} from '../../context/Theme';
+import {LayoutDefault} from '../../ui/layout/LayoutDefault';
+import {Header} from '../../ui/layout/Header';
 import {IconCircle} from '../../icons/IconCircle';
 import {Link, LinkIcon} from '../../ui/Link';
-import {ThemeToggle} from './ThemeToggle';
+import {ThemeToggle} from '../../ui/ThemeToggle';
 import {ConsoleMessage} from './ConsoleMessage';
 
-export function HomePage() {
+type Article = {
+  title: string;
+  href: string;
+};
+
+type HomePageProps = {
+  articles: Article[];
+};
+
+export function HomePage({articles}: HomePageProps) {
   return (
-    <Theme>
-      <div className='flex min-h-full flex-col px-4 pb-6 pt-10 sm:px-8 sm:pb-8 sm:pt-12'>
-        <header className='flex-shrink-0 flex-grow-0 pb-12'>
-          <LinkIcon
-            aria-label='GitHub repository'
-            external
-            href='https://github.com/satelllte/space'
-          >
-            <IconCircle />
-          </LinkIcon>
-        </header>
-        <main className='flex flex-grow flex-col gap-12 pb-16'>
-          <MainContent />
-        </main>
-        <footer className='flex-shrink-0 flex-grow-0'>
-          <ThemeToggle />
-        </footer>
-      </div>
+    <LayoutDefault>
+      <Header>
+        <LinkIcon
+          aria-label='GitHub repository'
+          external
+          href='https://github.com/satelllte/space'
+        >
+          <IconCircle />
+        </LinkIcon>
+      </Header>
+      <main className='flex flex-grow flex-col gap-12 pb-16'>
+        <MainContent articles={articles} />
+      </main>
+      <footer>
+        <ThemeToggle />
+      </footer>
       <ConsoleMessage />
-    </Theme>
+    </LayoutDefault>
   );
 }
 
-function MainContent() {
+function MainContent({articles}: HomePageProps) {
+  const titleIdArticles = useId();
   const titleIdScenes = useId();
   const titleIdMore = useId();
   return (
     <>
+      <Section>
+        <SectionTitle id={titleIdArticles}>Articles</SectionTitle>
+        <List labelledBy={titleIdArticles}>
+          {articles.map(({title, href}) => (
+            <ListItem key={href}>
+              <Link href={href}>{title}</Link>
+            </ListItem>
+          ))}
+        </List>
+      </Section>
       <Section>
         <SectionTitle id={titleIdScenes}>Scenes</SectionTitle>
         <List labelledBy={titleIdScenes}>

@@ -22,6 +22,12 @@ const config: Config = {
     extend: {},
   },
   plugins: [
+    plugin(({addVariant}) => {
+      addVariant(
+        'mdx-code-inline',
+        '&:not(:is([data-slot="mdx-code-block"], [data-slot="mdx-file-tree"]) *)',
+      );
+    }),
     plugin(({addBase}) => {
       addBase({
         // Credit: https://github.com/radix-ui/colors
@@ -39,6 +45,18 @@ const config: Config = {
           '--color-gray-11': '#646464',
           '--color-gray-12': '#202020',
 
+          '--shiki-foreground': 'var(--color-gray-12)',
+          '--shiki-background': 'var(--color-gray-2)',
+          '--shiki-token-comment': 'var(--color-gray-11)',
+          '--shiki-token-punctuation': 'var(--color-gray-11)',
+          '--shiki-token-keyword': '#8145b5',
+          '--shiki-token-string': '#18794e',
+          '--shiki-token-string-expression': '#18794e',
+          '--shiki-token-constant': '#b54300',
+          '--shiki-token-function': '#0c6bbf',
+          '--shiki-token-parameter': '#9e5a00',
+          '--shiki-token-link': '#0c6bbf',
+
           '&.dark': {
             '--color-gray-1': '#111111',
             '--color-gray-2': '#191919',
@@ -52,22 +70,39 @@ const config: Config = {
             '--color-gray-10': '#7b7b7b',
             '--color-gray-11': '#b4b4b4',
             '--color-gray-12': '#eeeeee',
+
+            '--shiki-token-keyword': '#d19dff',
+            '--shiki-token-string': '#3dd68c',
+            '--shiki-token-string-expression': '#3dd68c',
+            '--shiki-token-constant': '#ffa057',
+            '--shiki-token-function': '#70b8ff',
+            '--shiki-token-parameter': '#ffca16',
+            '--shiki-token-link': '#70b8ff',
           },
         },
         '@supports (color: color(display-p3 1 1 1))': {
           ':root': {
-            '--color-gray1': 'color(display-p3 0.988 0.988 0.988)',
-            '--color-gray2': 'color(display-p3 0.975 0.975 0.975)',
-            '--color-gray3': 'color(display-p3 0.939 0.939 0.939)',
-            '--color-gray4': 'color(display-p3 0.908 0.908 0.908)',
-            '--color-gray5': 'color(display-p3 0.88 0.88 0.88)',
-            '--color-gray6': 'color(display-p3 0.849 0.849 0.849)',
-            '--color-gray7': 'color(display-p3 0.807 0.807 0.807)',
-            '--color-gray8': 'color(display-p3 0.732 0.732 0.732)',
-            '--color-gray9': 'color(display-p3 0.553 0.553 0.553)',
-            '--color-gray10': 'color(display-p3 0.512 0.512 0.512)',
-            '--color-gray11': 'color(display-p3 0.392 0.392 0.392)',
-            '--color-gray12': 'color(display-p3 0.125 0.125 0.125)',
+            '--color-gray-1': 'color(display-p3 0.988 0.988 0.988)',
+            '--color-gray-2': 'color(display-p3 0.975 0.975 0.975)',
+            '--color-gray-3': 'color(display-p3 0.939 0.939 0.939)',
+            '--color-gray-4': 'color(display-p3 0.908 0.908 0.908)',
+            '--color-gray-5': 'color(display-p3 0.88 0.88 0.88)',
+            '--color-gray-6': 'color(display-p3 0.849 0.849 0.849)',
+            '--color-gray-7': 'color(display-p3 0.807 0.807 0.807)',
+            '--color-gray-8': 'color(display-p3 0.732 0.732 0.732)',
+            '--color-gray-9': 'color(display-p3 0.553 0.553 0.553)',
+            '--color-gray-10': 'color(display-p3 0.512 0.512 0.512)',
+            '--color-gray-11': 'color(display-p3 0.392 0.392 0.392)',
+            '--color-gray-12': 'color(display-p3 0.125 0.125 0.125)',
+
+            '--shiki-token-keyword': 'color(display-p3 0.473 0.281 0.687)',
+            '--shiki-token-string': 'color(display-p3 0.225 0.467 0.32)',
+            '--shiki-token-string-expression':
+              'color(display-p3 0.225 0.467 0.32)',
+            '--shiki-token-constant': 'color(display-p3 0.658 0.293 0.112)',
+            '--shiki-token-function': 'color(display-p3 0.187 0.413 0.725)',
+            '--shiki-token-parameter': 'color(display-p3 0.583 0.366 0.119)',
+            '--shiki-token-link': 'color(display-p3 0.187 0.413 0.725)',
 
             '&.dark': {
               '--color-gray-1': 'color(display-p3 0.067 0.067 0.067)',
@@ -82,6 +117,15 @@ const config: Config = {
               '--color-gray-10': 'color(display-p3 0.484 0.484 0.484)',
               '--color-gray-11': 'color(display-p3 0.706 0.706 0.706)',
               '--color-gray-12': 'color(display-p3 0.933 0.933 0.933)',
+
+              '--shiki-token-keyword': 'color(display-p3 0.8 0.62 1)',
+              '--shiki-token-string': 'color(display-p3 0.434 0.828 0.573)',
+              '--shiki-token-string-expression':
+                'color(display-p3 0.434 0.828 0.573)',
+              '--shiki-token-constant': 'color(display-p3 1 0.63 0.38)',
+              '--shiki-token-function': 'color(display-p3 0.49 0.72 1)',
+              '--shiki-token-parameter': 'color(display-p3 1 0.8 0.29)',
+              '--shiki-token-link': 'color(display-p3 0.49 0.72 1)',
             },
           },
         },

@@ -7,7 +7,7 @@
     "preview": "astro preview",
     "fix:format": "prettier --write .",
     "test:format": "prettier --check .",
-    "test:types": "tsc --noEmit",
+    "test:types": "astro sync && tsc --noEmit",
     "test:e2e": "playwright test"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.3",
+    "@astrojs/mdx": "3.1.9",
     "@astrojs/react": "3.6.2",
     "@astrojs/tailwind": "5.1.0",
     "@playwright/test": "1.47.2",
@@ -29,6 +30,7 @@
     "prettier": "3.3.3",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.6.6",
+    "shiki": "1.29.2",
     "typescript": "5.6.2"
   }
 }

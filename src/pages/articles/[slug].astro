@@ -1,0 +1,35 @@
+---
+import type {GetStaticPaths} from 'astro';
+import LayoutArticle from '../../layouts/LayoutArticle.astro';
+import {ArticlePage, components} from '../../components/pages/article';
+import {AUTHOR, getArticles, type Article} from '../../lib/articles';
+
+export const getStaticPaths = (async () => {
+  const articles = await getArticles();
+  return articles.map((article) => ({
+    params: {slug: article.slug},
+    props: {article},
+  }));
+}) satisfies GetStaticPaths;
+
+type Props = {
+  article: Article;
+};
+
+const {article} = Astro.props;
+const {title, description, publishedAt, tags} = article.data;
+const {Content, headings} = await article.render();
+---
+
+<LayoutArticle slug={article.slug} data={article.data} author={AUTHOR}>
+  <ArticlePage
+    title={title}
+    description={description}
+    publishedAt={publishedAt}
+    tags={tags}
+    headings={headings}
+    client:load
+  >
+    <Content components={components} />
+  </ArticlePage>
+</LayoutArticle>

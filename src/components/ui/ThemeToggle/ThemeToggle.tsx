@@ -1,5 +1,5 @@
-import {useThemeState} from '../../../context/Theme';
-import {Button} from '../../../ui/Button';
+import {useThemeState} from '../../context/Theme';
+import {Button} from '../Button';
 
 export function ThemeToggle() {
   const [theme, setTheme] = useThemeState();

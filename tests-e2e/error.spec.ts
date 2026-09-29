@@ -23,7 +23,7 @@ test.describe('when JS is disabled', () => {
 });
 
 async function hasMetadata({page}: {page: Page}) {
-  await expectTitle({page, value: 'satelllte/space • Not found'});
+  await expectTitle({page, value: 'Not found • satelllte/space'});
   await expectDescription({
     page,
     value:

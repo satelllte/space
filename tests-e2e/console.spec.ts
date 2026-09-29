@@ -1,18 +1,30 @@
 import {test, expect, type ConsoleMessage} from '@playwright/test';
-import {SCENES} from './_constants';
+import {ARTICLES, SCENES} from './_constants';
 
 test('logs "hello" message only once per session', async ({page}) => {
+  const TEXT =
+    'Hello and welcome :)\nFeel free to check out the source code:\nhttps://github.com/satelllte/space';
+
   const logs: ConsoleMessage[] = [];
+
   page.on('console', (log) => {
-    // In some browsers like WebKit, this kind of message gets logged,
-    // so we have to filter it out
-    if (log.text() === 'Successfully preconnected to https://rsms.me/') return;
+    if (log.text() !== TEXT) return;
     logs.push(log);
   });
+
   expect(logs.length).toEqual(0);
 
   await page.goto('/');
   expect(logs.length).toEqual(1);
+
+  for (const article of ARTICLES) {
+    const {name, href} = article;
+    await page.getByRole('link', {name, exact: true}).click();
+    await expect(page).toHaveURL(href);
+
+    await page.getByRole('link', {name: 'Home', exact: true}).click();
+    await expect(page).toHaveURL('/');
+  }
 
   for (const scene of SCENES) {
     const {name, href} = scene;
@@ -24,10 +36,7 @@ test('logs "hello" message only once per session', async ({page}) => {
   }
 
   expect(logs.length).toEqual(1);
-
   const log = logs[0];
   expect(log?.type()).toEqual('info');
-  expect(log?.text()).toEqual(
-    'Hello and welcome :)\nFeel free to check out the source code:\nhttps://github.com/satelllte/space',
-  );
+  expect(log?.text()).toEqual(TEXT);
 });

@@ -1,10 +1,12 @@
 import {test, expect, type Locator, type Page} from '@playwright/test';
 import {expectDescription, expectTitle} from './_utils';
-import {SCENES} from './_constants';
+import {ARTICLES, SCENES} from './_constants';
 
 test('has metadata', testMetadata);
 
 test('has header with repository link', testHeader);
+
+test('has articles links', testArticlesLinks);
 
 test('has scenes links', testScenesLinks);
 
@@ -24,6 +26,8 @@ test.describe('when JS is disabled', () => {
   test('has metadata', testMetadata);
 
   test('has header with repository link', testHeader);
+
+  test('has articles links', testArticlesLinks);
 
   test('has scenes links', testScenesLinks);
 
@@ -58,6 +62,22 @@ async function testHeader({page}: {page: Page}) {
     exact: true,
   });
   await expectExternalLink({link, href: 'https://github.com/satelllte/space'});
+}
+
+async function testArticlesLinks({page}: {page: Page}) {
+  await page.goto('/');
+
+  const list = page.getByRole('list', {name: 'Articles', exact: true});
+  await expect(list).toBeVisible();
+  await expect(list.getByRole('listitem')).toHaveCount(ARTICLES.length);
+
+  for (const article of ARTICLES) {
+    const {name, href} = article;
+    const link = list.getByRole('link', {name, exact: true});
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('href', href);
+    await expect(link).toHaveAttribute('target', '_self');
+  }
 }
 
 async function testScenesLinks({page}: {page: Page}) {

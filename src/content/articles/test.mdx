@@ -1,0 +1,168 @@
+---
+noIndex: true
+title: Test
+description: Article used for testing the article page and MDX integration end-to-end.
+publishedAt: 2026-09-27
+tags:
+  - Test
+  - MDX
+  - Astro
+---
+
+This is the article that is used for internal testing. It exercises every element the article page and MDX pipeline support, so any regression in rendering, styling or behavior shows up here first.
+
+## Text formatting
+
+A plain paragraph followed by inline formatting: _emphasis_, **strong**, **_strong emphasis_**, ~~strikethrough~~, and `inline code`. Inline code inside **`strong`** and _`emphasis`_ should keep its styling.
+
+A second paragraph to verify vertical rhythm between consecutive paragraphs. It is intentionally long enough to wrap across multiple lines on narrow viewports, which also checks line height and `break-words` behavior with a very long token: `aVeryLongIdentifierThatHasNoNaturalBreakPointsAndShouldWrapInsteadOfOverflowingTheContainer`.
+
+Escaped characters: \*not emphasis\*, \`not code\`, \{not an expression\}, and HTML entities &amp; &lt; &gt; &copy;.
+
+## Links
+
+- Internal link: [Home](/)
+- Internal link to a scene: [Moon scene](/scenes/moon)
+- Anchor link: [jump to code blocks](#code-blocks)
+- External link: [GitHub](https://github.com/satelllte)
+- Autolinked URL: https://github.com/satelllte/space
+
+## Headings
+
+The `h2` and `h3` elements are mapped to custom components with anchor links and appear in the table of contents.
+
+### Heading 3
+
+A paragraph under a third-level heading.
+
+### Heading 3 (2)
+
+Another paragraph under a third-level heading.
+
+## Lists
+
+Unordered list:
+
+- First item
+- Second item with **strong** and `code`
+- Third item with a [link](https://example.com)
+  - Nested item
+  - Another nested item
+
+Ordered list:
+
+1. First step
+2. Second step
+3. Third step
+   1. Nested step
+   2. Another nested step
+
+## Code blocks
+
+Code block with a file name and TSX syntax:
+
+```tsx file="Scene.tsx"
+import {Canvas} from '@react-three/fiber';
+
+export function Scene() {
+  return (
+    <Canvas camera={{position: [2.5, 2.5, 5.0]}}>
+      <ambientLight intensity={0.5} />
+      <mesh>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color='orange' />
+      </mesh>
+    </Canvas>
+  );
+}
+```
+
+Code block without a language:
+
+```
+Plain text without syntax highlighting.
+    Indentation is preserved.
+```
+
+Code block with a very long line to verify horizontal scrolling:
+
+{/* prettier-ignore */}
+```js file="long-line.js"
+const message = 'This line is intentionally very long so that it overflows the code block container horizontally and requires scrolling instead of wrapping onto the next line.';
+```
+
+Code blocks in other languages:
+
+```bash file="Terminal"
+npm install
+```
+
+```yaml file="ci.yml"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+```
+
+## Callouts
+
+<Callout>
+
+A callout with the default title. It can contain **strong** text, `inline code` and [links](https://example.com).
+
+</Callout>
+
+<Callout title='Heads up'>
+
+A callout with a custom title.
+
+It can contain multiple paragraphs and lists:
+
+- First item
+- Second item
+
+</Callout>
+
+## File tree
+
+<FileTree label='Project structure'>
+
+- `src/`
+  - `content/`
+    - `articles/`
+      - `test.mdx` (this file)
+  - `pages/`
+    - `articles/`
+      - `[slug].astro`
+- `package.json`
+
+</FileTree>
+
+## Figures
+
+A figure with a caption containing inline formatting, `code` and a [link](https://github.com/satelllte/three-visual-testing):
+
+<Figure
+  src='/assets/images/three-visual-testing-frame.png'
+  alt='Two identical cubes on a black background: a red one labeled WebGL on the left and a blue one labeled WebGPU on the right'
+  width={1280}
+  height={720}
+>
+
+The **same** cube rendered with `WebGL` and `WebGPU`, from [three-visual-testing](https://github.com/satelllte/three-visual-testing)
+
+</Figure>
+
+A figure without a caption:
+
+<Figure
+  src='/assets/images/kinect-stretch-32.png'
+  alt='A bright red band of particles running vertically through a dark red particle cloud'
+  width={2160}
+  height={1439}
+/>
+
+---
+
+The final paragraph after a thematic break, verifying spacing at the end of the article.

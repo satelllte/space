@@ -1,8 +1,14 @@
 ---
 import LayoutBase from '../layouts/LayoutBase.astro';
 import {HomePage} from '../components/pages/home';
+import {getArticleHref, getArticles} from '../lib/articles';
+
+const articles = (await getArticles({onlyIndexed: true})).map((article) => ({
+  title: article.data.title,
+  href: getArticleHref(article.slug),
+}));
 ---
 
 <LayoutBase>
-  <HomePage client:load />
+  <HomePage client:load articles={articles} />
 </LayoutBase>
