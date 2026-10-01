@@ -36,9 +36,13 @@ const jsonLd = {
 };
 ---
 
-<LayoutBase title={title} description={description} type='article'>
+<LayoutBase
+  title={title}
+  description={description}
+  type='article'
+  robots={noIndex ? 'noindex, nofollow' : undefined}
+>
   <Fragment slot='head'>
-    {noIndex && <meta name='robots' content='noindex, nofollow' />}
     <meta name='author' content={AUTHOR.name} />
     <meta name='keywords' content={keywords} />
     <meta property='article:published_time' content={publishedAtISOString} />

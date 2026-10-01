@@ -3,12 +3,14 @@ type Props = {
   title?: string;
   description?: string;
   type?: 'website' | 'article';
+  robots?: 'noindex, nofollow' | 'noindex' | undefined;
 };
 
 const {
   title: _title,
   description = "The creative space of @satelllte's software engineer. Three.js, React Three Fiber (R3F), Shaders, WebGL, WebGPU, and beyond.",
   type = 'website',
+  robots,
 } = Astro.props;
 const title = _title ? `${_title} • satelllte/space` : `satelllte/space`;
 const ogUrl = new URL(Astro.url.pathname, Astro.site).href;
@@ -22,6 +24,7 @@ const ogImage = new URL('/assets/images/og.png', Astro.site).href;
       name='viewport'
       content='width=device-width, initial-scale=1, viewport-fit=cover'
     />
+    {robots && <meta name='robots' content={robots} />}
     <title>{title}</title>
     <meta name='description' content={description} />
     <link rel='canonical' href={ogUrl} />
