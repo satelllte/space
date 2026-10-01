@@ -3,12 +3,13 @@
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/en)
+- [pnpm](https://pnpm.io/)
 
 ## Quick start
 
 ```sh
-npm i
-npm run dev
+pnpm i
+pnpm dev
 ```
 
 ## Testing
