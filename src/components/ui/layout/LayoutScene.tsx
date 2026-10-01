@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import {Theme} from '../../context/Theme';
 import {Link} from '../Link';
 import {CLASS_NAME_PAGE_SPACING_FIXED} from './constants';
+import {SceneError} from './SceneError';
 
 type LayoutSceneProps = {
   title: string;
@@ -14,13 +15,10 @@ export function LayoutScene({title, children}: LayoutSceneProps) {
       <main className='h-full w-full'>
         <h1 className='sr-only'>{title}</h1>
         <noscript>
-          <div className='fixed z-10 flex h-full w-full items-center justify-center'>
-            <p className='text-gray-12'>
-              {
-                'Cannot display the scene because JavaScript is disabled in this browser :('
-              }
-            </p>
-          </div>
+          <SceneError
+            fixed
+            message='Cannot display the scene because JavaScript is disabled in this browser :('
+          />
         </noscript>
         {children}
       </main>

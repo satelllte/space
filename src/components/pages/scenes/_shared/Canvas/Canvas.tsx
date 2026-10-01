@@ -1,5 +1,6 @@
 import {forwardRef} from 'react';
 import {Canvas as R3FCanvas, type Dpr} from '@react-three/fiber';
+import {CanvasErrorBoundary} from './CanvasErrorBoundary';
 
 type R3FCanvasRef = React.ElementRef<typeof R3FCanvas>;
 type R3FCanvasProps = React.ComponentProps<typeof R3FCanvas>;
@@ -19,6 +20,10 @@ const dpr = [DEVICE_PIXEL_RATIO_MIN, DEVICE_PIXEL_RATIO_MAX] satisfies Dpr;
 
 export const Canvas = forwardRef<CanvasRef, CanvasProps>(
   (props, forwardedRef) => {
-    return <R3FCanvas ref={forwardedRef} dpr={dpr} {...props} />;
+    return (
+      <CanvasErrorBoundary>
+        <R3FCanvas ref={forwardedRef} dpr={dpr} {...props} />
+      </CanvasErrorBoundary>
+    );
   },
 );
