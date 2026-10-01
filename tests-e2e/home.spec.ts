@@ -1,5 +1,5 @@
 import {test, expect, type Locator, type Page} from '@playwright/test';
-import {expectDescription, expectTitle} from './_utils';
+import {expectDescription, expectIndexing, expectTitle} from './_utils';
 import {ARTICLES, SCENES} from './_constants';
 
 test('has metadata', testMetadata);
@@ -43,6 +43,7 @@ test.describe('when JS is disabled', () => {
 
 async function testMetadata({page}: {page: Page}) {
   await page.goto('/');
+  await expectIndexing({page});
   await expectTitle({page, value: 'satelllte/space'});
   await expectDescription({
     page,

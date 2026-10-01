@@ -1,5 +1,5 @@
 import {test, expect, type Page} from '@playwright/test';
-import {expectDescription, expectTitle} from './_utils';
+import {expectDescription, expectIndexing, expectTitle} from './_utils';
 import {SCENES} from './_constants';
 
 test('able to navigate from home and back', testNavigation);
@@ -31,6 +31,7 @@ async function testNavigation({page}: {page: Page}) {
     await page.getByRole('link', {name, exact: true}).click();
 
     await expect(page).toHaveURL(href);
+    await expectIndexing({page});
     await expectTitle({page, value: title});
     await expectDescription({
       page,
