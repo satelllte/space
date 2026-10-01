@@ -25,6 +25,7 @@
     "@astrojs/tailwind": "5.1.0",
     "@playwright/test": "1.47.2",
     "@types/node": "22.5.5",
+    "@types/react": "18.3.31",
     "@types/three": "0.168.0",
     "astro": "4.15.4",
     "prettier": "3.3.3",
