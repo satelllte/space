@@ -52,7 +52,12 @@ export function MDXCodeBlock({
           Copy
         </Button>
       </div>
-      <pre className='col-span-2 row-start-2 m-0 overflow-x-auto rounded-b-lg p-4 font-mono text-xs leading-[1.7] text-gray-12 outline-none [tab-size:2] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8'>
+      <pre
+        tabIndex={0} // make scrollable region keyboard accessible
+        role='group'
+        aria-label={`${file ?? language} code`}
+        className='col-span-2 row-start-2 m-0 overflow-x-auto rounded-b-lg p-4 font-mono text-xs leading-[1.7] text-gray-12 outline-none [tab-size:2] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8'
+      >
         {children}
       </pre>
     </figure>
