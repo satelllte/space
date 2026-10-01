@@ -19,32 +19,34 @@ jobs:
       deployments: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # https://github.com/actions/checkout/releases/tag/v7.0.1
       - name: Node.js version
         run: node --version
+      - name: Setup pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # https://github.com/pnpm/action-setup/releases/tag/v6.1.0
+        with:
+          version: 12
       - name: Install dependencies
-        run: npm ci
-      - name: Test (type safety)
-        run: npm run test:types
+        run: pnpm install --frozen-lockfile
+      - name: Test (types)
+        run: pnpm test:types
       - name: Test (formatting)
-        run: npm run test:format
+        run: pnpm test:format
       - name: Build
-        run: npm run build
+        run: pnpm build
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: pnpm exec playwright install --with-deps --only-shell
       - name: Test (end-to-end)
-        run: npm run test:e2e -- --grep-invert @visual
+        run: pnpm test:e2e --grep-invert @visual
       - name: Upload E2E test report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # https://github.com/actions/upload-artifact/releases/tag/v7.0.1
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v4
+        uses: cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0 # https://github.com/cloudflare/wrangler-action/releases/tag/v4.1.3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
