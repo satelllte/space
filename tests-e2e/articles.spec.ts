@@ -137,6 +137,60 @@ test.describe('/articles/test/', () => {
     await expectNoIndexing({page});
   });
 
+  test('has tab order', async ({page, browserName}) => {
+    await page.goto('/articles/test/');
+
+    const tabKey = browserName === 'webkit' ? 'Alt+Tab' : 'Tab'; // webkit skips links on tab by default, alt+tab includes them
+
+    const primaryNav = page.getByRole('navigation', {name: 'Primary'});
+    await page.keyboard.press(tabKey);
+    await expect(
+      primaryNav.getByRole('link', {name: 'Home', exact: true}),
+    ).toBeFocused();
+
+    const tocNav = page.getByRole('navigation', {name: 'On this page'});
+    for (const name of [
+      'Text formatting',
+      'Links',
+      'Headings',
+      'Heading 3',
+      'Heading 3 (2)',
+      'Lists',
+      'Code blocks',
+      'Callouts',
+      'File tree',
+      'Figures',
+    ]) {
+      await page.keyboard.press(tabKey);
+      await expect(tocNav.getByRole('link', {name, exact: true})).toBeFocused();
+    }
+
+    const article = page.getByRole('article');
+    await page.keyboard.press(tabKey);
+    await expect(
+      article
+        .getByRole('heading', {name: 'Text formatting', level: 2})
+        .getByRole('link'),
+    ).toBeFocused();
+
+    // skip the rest of the article until the footer is reached
+    const themeToggle = page
+      .getByRole('contentinfo')
+      .getByLabel(/Switch to (dark|light) theme/);
+    const maxTabs = 100;
+    for (let i = 0; i < maxTabs; i++) {
+      await page.keyboard.press(tabKey);
+      if (await themeToggle.evaluate((el) => el === document.activeElement)) {
+        break;
+      }
+      expect(
+        await article.evaluate((el) => el.contains(document.activeElement)),
+      ).toBe(true);
+    }
+
+    await expect(themeToggle).toBeFocused();
+  });
+
   test('matches snapshot @visual', async ({page}) => {
     await page.goto('/articles/test/');
     await waitBeforeSnapshot(page);
