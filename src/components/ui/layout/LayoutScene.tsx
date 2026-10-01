@@ -4,23 +4,26 @@ import {Link} from '../Link';
 import {CLASS_NAME_PAGE_SPACING_FIXED} from './constants';
 
 type LayoutSceneProps = {
+  title: string;
   children: React.ReactNode;
 };
 
-export function LayoutScene({children}: LayoutSceneProps) {
+export function LayoutScene({title, children}: LayoutSceneProps) {
   return (
     <Theme>
-      <noscript>
-        <div className='fixed z-10 flex h-full w-full items-center justify-center'>
-          <p className='text-gray-12'>
-            {
-              'Cannot display the scene because JavaScript is disabled in this browser :('
-            }
-          </p>
-        </div>
-      </noscript>
-
-      {children}
+      <main className='h-full w-full'>
+        <h1 className='sr-only'>{title}</h1>
+        <noscript>
+          <div className='fixed z-10 flex h-full w-full items-center justify-center'>
+            <p className='text-gray-12'>
+              {
+                'Cannot display the scene because JavaScript is disabled in this browser :('
+              }
+            </p>
+          </div>
+        </noscript>
+        {children}
+      </main>
 
       <footer
         className={clsx(

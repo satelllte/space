@@ -5,7 +5,7 @@ import {Particles} from './Particles';
 
 export function SceneParticles() {
   return (
-    <LayoutScene>
+    <LayoutScene title='Particles'>
       <Canvas camera={{position: [0.0, 0.0, 2.4]}}>
         <OrbitControls
           autoRotateSpeed={0.5}

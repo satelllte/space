@@ -7,7 +7,7 @@ import {TransmissionObject} from './TransmissionObject';
 
 export function SceneTransmission() {
   return (
-    <LayoutScene>
+    <LayoutScene title='Transmission'>
       <Canvas camera={{position: [0.0, 0.0, 3.4]}}>
         <OrbitControls />
         <Lighting />
