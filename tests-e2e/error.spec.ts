@@ -1,5 +1,5 @@
 import {test, expect, type Page} from '@playwright/test';
-import {expectDescription, expectTitle} from './_utils';
+import {expectDescription, expectNoIndexing, expectTitle} from './_utils';
 
 test.beforeEach(async ({page}) => {
   const response = await page.goto('/unknown');
@@ -23,6 +23,7 @@ test.describe('when JS is disabled', () => {
 });
 
 async function hasMetadata({page}: {page: Page}) {
+  await expectNoIndexing({page, noFollow: true});
   await expectTitle({page, value: 'Not found • satelllte/space'});
   await expectDescription({
     page,

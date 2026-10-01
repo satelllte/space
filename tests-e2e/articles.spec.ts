@@ -1,5 +1,10 @@
 import {test, expect, type Page} from '@playwright/test';
-import {expectDescription, expectTitle} from './_utils';
+import {
+  expectDescription,
+  expectIndexing,
+  expectNoIndexing,
+  expectTitle,
+} from './_utils';
 import {ARTICLES} from './_constants';
 
 const SITE = 'https://satelllte.pages.dev';
@@ -7,7 +12,7 @@ const SITE = 'https://satelllte.pages.dev';
 for (const article of ARTICLES) {
   const {name, href, title, description, publishedAt, tags} = article;
 
-  test.describe(name, () => {
+  test.describe(href, () => {
     test('has metadata', async ({page}) => {
       await page.goto(href);
       await expectArticleMetadata({page});
@@ -80,6 +85,7 @@ for (const article of ARTICLES) {
     });
 
     async function expectArticleMetadata({page}: {page: Page}) {
+      await expectIndexing({page});
       await expectTitle({page, value: title});
       await expectDescription({page, value: description});
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
@@ -124,3 +130,38 @@ for (const article of ARTICLES) {
     }
   });
 }
+
+test.describe('/articles/test/', () => {
+  test('has no indexing', async ({page}) => {
+    await page.goto('/articles/test/');
+    await expectNoIndexing({page});
+  });
+
+  test('matches snapshot @visual', async ({page}) => {
+    await page.goto('/articles/test/');
+    await waitBeforeSnapshot(page);
+    await expect(page).toHaveScreenshot({fullPage: true});
+  });
+
+  test('matches snapshot dark @visual', async ({page}) => {
+    await page.goto('/articles/test/');
+    await page.getByLabel('Switch to dark theme').click();
+    await waitBeforeSnapshot(page);
+    await expect(page).toHaveScreenshot({fullPage: true});
+  });
+
+  async function waitBeforeSnapshot(page: Page) {
+    // wait for all images to be loaded
+    const images = await page.getByRole('img').all();
+    for (const img of images) {
+      await img.scrollIntoViewIfNeeded();
+    }
+    await page.waitForFunction(() => {
+      const imgs = Array.from(document.querySelectorAll('img'));
+      return imgs.every((img) => img.complete);
+    });
+
+    // scroll to top so sticky elements will stay on their initial positions
+    await page.evaluate(() => window.scrollTo(0, 0));
+  }
+});

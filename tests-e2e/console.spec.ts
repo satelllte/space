@@ -1,4 +1,4 @@
-import {test, expect, type ConsoleMessage} from '@playwright/test';
+import {test, expect, type ConsoleMessage, type Page} from '@playwright/test';
 import {ARTICLES, SCENES} from './_constants';
 
 test('logs "hello" message only once per session', async ({page}) => {
@@ -15,6 +15,7 @@ test('logs "hello" message only once per session', async ({page}) => {
   expect(logs.length).toEqual(0);
 
   await page.goto('/');
+  await waitClientLoad(page);
   expect(logs.length).toEqual(1);
 
   for (const article of ARTICLES) {
@@ -24,6 +25,7 @@ test('logs "hello" message only once per session', async ({page}) => {
 
     await page.getByRole('link', {name: 'Home', exact: true}).click();
     await expect(page).toHaveURL('/');
+    await waitClientLoad(page);
   }
 
   for (const scene of SCENES) {
@@ -33,6 +35,7 @@ test('logs "hello" message only once per session', async ({page}) => {
 
     await page.getByRole('link', {name: 'Go back', exact: true}).click();
     await expect(page).toHaveURL('/');
+    await waitClientLoad(page);
   }
 
   expect(logs.length).toEqual(1);
@@ -40,3 +43,7 @@ test('logs "hello" message only once per session', async ({page}) => {
   expect(log?.type()).toEqual('info');
   expect(log?.text()).toEqual(TEXT);
 });
+
+async function waitClientLoad(page: Page) {
+  await expect(page.locator('astro-island[ssr]')).toHaveCount(0);
+}
