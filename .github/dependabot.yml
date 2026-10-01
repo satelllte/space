@@ -6,10 +6,6 @@ updates:
       interval: 'monthly'
     commit-message:
       prefix: 'npm'
-    groups:
-      all:
-        patterns:
-          - '*' # Group all of the updates into a single pull request
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
