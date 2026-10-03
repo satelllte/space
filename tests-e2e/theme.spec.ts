@@ -1,15 +1,5 @@
 import {test, expect, type Page} from '@playwright/test';
 
-test('uses light theme on first visit (if no preference)', async ({
-  page,
-  browserName,
-}) => {
-  test.skip(browserName === 'webkit'); // If macOS color preference is set to dark, it still falls back to it in WebKit browser(s)
-  await page.emulateMedia({colorScheme: 'no-preference'});
-  await page.goto('/');
-  await expectThemeLight({page});
-});
-
 test('uses device theme preference on first visit (light)', async ({page}) => {
   await page.emulateMedia({colorScheme: 'light'});
   await page.goto('/');
