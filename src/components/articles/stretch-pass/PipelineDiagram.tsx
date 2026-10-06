@@ -16,7 +16,7 @@ export function PipelineDiagram() {
   return (
     <figure
       aria-label='Render pipeline'
-      className='mt-6 rounded-lg border border-gray-5 bg-gray-2 p-4 [&+*]:mt-6'
+      className='my-6 rounded-lg border border-gray-5 bg-gray-2 p-4'
     >
       <ol className='flex flex-col items-stretch gap-1.5 font-mono text-xs md:flex-row md:items-center'>
         {PASSES.map(({name, variant}, index) => (

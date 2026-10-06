@@ -9,7 +9,7 @@ export function MDXCode({children}: MDXCodeProps) {
   return (
     <code
       data-slot='mdx-code'
-      className='font-mono mdx-code-inline:rounded-sm mdx-code-inline:border mdx-code-inline:border-gray-5 mdx-code-inline:bg-gray-3 mdx-code-inline:px-1 mdx-code-inline:py-0.5 mdx-code-inline:text-sm mdx-code-in-h2:text-lg mdx-code-in-h3:text-base'
+      className='mdx-code-in-h2:text-lg mdx-code-in-h3:text-base font-mono mdx-code-inline:rounded-sm mdx-code-inline:border mdx-code-inline:border-gray-5 mdx-code-inline:bg-gray-3 mdx-code-inline:px-1 mdx-code-inline:py-0.5 mdx-code-inline:text-sm'
     >
       {children}
     </code>
@@ -31,7 +31,7 @@ export function MDXCodeBlock({
     <figure
       data-slot='mdx-code-block'
       data-language={language}
-      className='mt-6 grid grid-cols-[minmax(0,1fr)_auto] rounded-lg border border-gray-5 bg-gray-2 [&+*]:mt-6'
+      className='my-6 grid grid-cols-[minmax(0,1fr)_auto] rounded-lg border border-gray-5 bg-gray-2'
     >
       {file && (
         <figcaption className='col-start-1 row-start-1 flex min-h-10 items-center truncate border-b border-gray-5 pl-4 font-mono text-xs text-gray-11'>
