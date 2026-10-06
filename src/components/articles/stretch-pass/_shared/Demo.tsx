@@ -5,7 +5,7 @@ type DemoProps = {
 
 export function Demo({caption, children}: DemoProps) {
   return (
-    <figure className='mt-6 rounded-lg border border-gray-5 bg-gray-2 p-4 [&+*]:mt-6'>
+    <figure className='my-6 rounded-lg border border-gray-5 bg-gray-2 p-4'>
       {children}
       {caption && (
         <figcaption className='mt-4 text-center text-sm text-gray-11'>
