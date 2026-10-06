@@ -1,3 +1,6 @@
+import clsx from 'clsx';
+import {CLASS_NAME_MDX_CODE_SPACING} from '../../../ui/mdx/constants';
+
 type DemoProps = {
   caption?: React.ReactNode;
   children: React.ReactNode;
@@ -5,7 +8,12 @@ type DemoProps = {
 
 export function Demo({caption, children}: DemoProps) {
   return (
-    <figure className='my-6 rounded-lg border border-gray-5 bg-gray-2 p-4'>
+    <figure
+      className={clsx(
+        CLASS_NAME_MDX_CODE_SPACING,
+        'rounded-lg border border-gray-5 bg-gray-2 p-4',
+      )}
+    >
       {children}
       {caption && (
         <figcaption className='mt-4 text-center text-sm text-gray-11'>

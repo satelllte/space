@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import {CLASS_NAME_MDX_CODE_SPACING} from '../../ui/mdx/constants';
 
 type Pass = {
   name: string;
@@ -16,7 +17,10 @@ export function PipelineDiagram() {
   return (
     <figure
       aria-label='Render pipeline'
-      className='my-6 rounded-lg border border-gray-5 bg-gray-2 p-4'
+      className={clsx(
+        CLASS_NAME_MDX_CODE_SPACING,
+        'rounded-lg border border-gray-5 bg-gray-2 p-4',
+      )}
     >
       <ol className='flex flex-col items-stretch gap-1.5 font-mono text-xs md:flex-row md:items-center'>
         {PASSES.map(({name, variant}, index) => (

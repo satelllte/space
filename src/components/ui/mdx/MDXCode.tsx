@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import {Button} from '../Button';
+import {CLASS_NAME_MDX_CODE_SPACING} from './constants';
 
 type MDXCodeProps = {
   children: React.ReactNode;
@@ -31,7 +32,10 @@ export function MDXCodeBlock({
     <figure
       data-slot='mdx-code-block'
       data-language={language}
-      className='my-6 grid grid-cols-[minmax(0,1fr)_auto] rounded-lg border border-gray-5 bg-gray-2'
+      className={clsx(
+        CLASS_NAME_MDX_CODE_SPACING,
+        'grid grid-cols-[minmax(0,1fr)_auto] rounded-lg border border-gray-5 bg-gray-2',
+      )}
     >
       {file && (
         <figcaption className='col-start-1 row-start-1 flex min-h-10 items-center truncate border-b border-gray-5 pl-4 font-mono text-xs text-gray-11'>
