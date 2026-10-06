@@ -2,14 +2,13 @@ import clsx from 'clsx';
 
 type Pass = {
   name: string;
-  note?: string;
   variant?: 'highlighted' | 'output';
 };
 
 const PASSES: Pass[] = [
   {name: 'RenderPass'},
   {name: 'UnrealBloomPass'},
-  {name: 'ShaderPass', note: 'stretch', variant: 'highlighted'},
+  {name: 'StretchPass', variant: 'highlighted'},
   {name: 'screen', variant: 'output'},
 ];
 
@@ -20,7 +19,7 @@ export function PipelineDiagram() {
       className='mt-6 rounded-lg border border-gray-5 bg-gray-2 p-4 [&+*]:mt-6'
     >
       <ol className='flex flex-col items-stretch gap-1.5 font-mono text-xs md:flex-row md:items-center'>
-        {PASSES.map(({name, note, variant}, index) => (
+        {PASSES.map(({name, variant}, index) => (
           <li
             key={name}
             className='flex flex-auto flex-col items-center gap-1.5 md:flex-row'
@@ -35,8 +34,7 @@ export function PipelineDiagram() {
                   'border-dashed border-gray-7 text-gray-11',
               )}
             >
-              <span>{name}</span>
-              {note && <span className='text-gray-11'>{note}</span>}
+              {name}
             </div>
             {index < PASSES.length - 1 && (
               <span aria-hidden='true' className='text-gray-9'>

@@ -49,7 +49,7 @@ In React Three Fiber, the composer is just JSX:
 </effectComposer>
 ```
 
-A `ShaderPass` draws a single full-screen quad. Its fragment shader runs once per pixel, and it receives the previous pass's output as a texture uniform called `tDiffuse`. So our job boils down to one question, asked for every pixel on screen: _which pixel of `tDiffuse` should I show here?_
+`StretchPass` is based on three.js's [`ShaderPass`](https://threejs.org/docs/#ShaderPass), so it draws a single full-screen quad. Its fragment shader runs once per pixel, and it receives the previous pass's output as a texture uniform called `tDiffuse`. So our job boils down to one question, asked for every pixel on screen: _which pixel of `tDiffuse` should I show here?_
 
 ## The whole shader
 
