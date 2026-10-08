@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {extend, useThree} from '@react-three/fiber';
+import {extend, useThree, type ThreeElement} from '@react-three/fiber';
 import {ScreenQuad, shaderMaterial} from '@react-three/drei';
 import {CanvasTexture, MathUtils, Texture} from 'three';
 import {Canvas} from '../../pages/scenes/_shared/Canvas';
@@ -33,7 +33,7 @@ const DemoStretchMaterial = shaderMaterial(
     amplitude: 0.0,
     seed: 0.0,
     steps: 1.0,
-    view: 0,
+    view: 0 as View,
   } satisfies DemoStretchMaterialUniforms,
   vertexShader,
   fragmentShader,
@@ -49,14 +49,9 @@ type DemoStretchMaterialUniforms = {
   view: View;
 };
 
-type DemoStretchMaterialImpl = DemoStretchMaterialUniforms &
-  JSX.IntrinsicElements['shaderMaterial'];
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      demoStretchMaterial: DemoStretchMaterialImpl;
-    }
+declare module '@react-three/fiber' {
+  interface ThreeElements {
+    demoStretchMaterial: ThreeElement<typeof DemoStretchMaterial>;
   }
 }
 

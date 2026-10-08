@@ -1,5 +1,11 @@
 import {useRef} from 'react';
-import {extend, useFrame, useLoader, useThree} from '@react-three/fiber';
+import {
+  extend,
+  useFrame,
+  useLoader,
+  useThree,
+  type ThreeElement,
+} from '@react-three/fiber';
 import {ScreenQuad, shaderMaterial} from '@react-three/drei';
 import {Texture, TextureLoader} from 'three';
 import fragmentShader from './Moon.fragment.glsl?raw';
@@ -25,20 +31,15 @@ type MoonMaterialUniforms = {
   uTextureResolution: [number, number];
 };
 
-type MoonMaterialImpl = MoonMaterialUniforms &
-  JSX.IntrinsicElements['shaderMaterial'];
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      moonMaterial: MoonMaterialImpl;
-    }
+declare module '@react-three/fiber' {
+  interface ThreeElements {
+    moonMaterial: ThreeElement<typeof MoonMaterial>;
   }
 }
 
 export function Moon() {
   const size = useThree(({size}) => size);
-  const materialRef = useRef<React.ElementRef<'moonMaterial'>>(null);
+  const materialRef = useRef<InstanceType<typeof MoonMaterial>>(null);
   const texture = useLoader(
     TextureLoader,
     '/assets/textures/moon/moon_1280x640.jpg',

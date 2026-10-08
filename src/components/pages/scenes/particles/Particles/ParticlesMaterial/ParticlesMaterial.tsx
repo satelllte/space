@@ -1,6 +1,6 @@
 import {useEffect, useMemo, useRef} from 'react';
 import {useFrame} from '@react-three/fiber';
-import {AdditiveBlending} from 'three';
+import {AdditiveBlending, type ShaderMaterial} from 'three';
 import {useTheme} from '../../../../../context/Theme';
 import fragmentShader from './ParticlesMaterial.fragment.glsl?raw';
 import vertexShader from './ParticlesMaterial.vertex.glsl?raw';
@@ -14,7 +14,7 @@ export function ParticlesMaterial() {
   const theme = useTheme();
   const themeDark = theme === 'dark';
 
-  const materialRef = useRef<React.ElementRef<'shaderMaterial'>>(null);
+  const materialRef = useRef<ShaderMaterial>(null);
   const uniforms = useMemo(
     () => ({
       uColor1: {value: COLOR_1_LIGHT},

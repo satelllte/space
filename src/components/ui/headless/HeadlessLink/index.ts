@@ -1,5 +1,1 @@
-export {
-  HeadlessLink,
-  type HeadlessLinkRef,
-  type HeadlessLinkProps,
-} from './HeadlessLink';
+export {HeadlessLink, type HeadlessLinkProps} from './HeadlessLink';

@@ -1,5 +1,1 @@
-export {
-  HeadlessButton,
-  type HeadlessButtonRef,
-  type HeadlessButtonProps,
-} from './HeadlessButton';
+export {HeadlessButton, type HeadlessButtonProps} from './HeadlessButton';
