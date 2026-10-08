@@ -1,6 +1,6 @@
 import {useCallback, useState} from 'react';
 import {MDXCode} from '../../ui/mdx/MDXCode';
-import {Demo, DemoControls} from './_shared/Demo';
+import {Demo, DemoCaption, DemoControls} from './_shared/Demo';
 import {Canvas2D, type Canvas2DDraw} from './_shared/Canvas2D';
 import {FONT_FAMILY_MONO, getCSSVariable} from '../../utils/css';
 import {Slider} from '../../ui/Slider/Slider';
@@ -19,15 +19,7 @@ export function DemoHash() {
     [k],
   );
   return (
-    <Demo
-      caption={
-        <>
-          Plotting <MDXCode>fract(sin(x) * k)</MDXCode>. With small{' '}
-          <MDXCode>k</MDXCode> you can still see the sine. Push it to the right
-          and the wave shatters into noise.
-        </>
-      }
-    >
+    <Demo>
       <Canvas2D
         label={`Plot of fract(sin(x) * k) for x from 0 to ${X_MAX}, with k = ${formatK(k)}`}
         height={200}
@@ -44,6 +36,11 @@ export function DemoHash() {
           onChange={setT}
         />
       </DemoControls>
+      <DemoCaption>
+        Plotting <MDXCode>fract(sin(x) * k)</MDXCode>. With small{' '}
+        <MDXCode>k</MDXCode> you can still see the sine. Push it to the right
+        and the wave shatters into noise.
+      </DemoCaption>
     </Demo>
   );
 }

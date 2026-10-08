@@ -2,11 +2,10 @@ import clsx from 'clsx';
 import {CLASS_NAME_MDX_CODE_SPACING} from '../../../ui/mdx/constants';
 
 type DemoProps = {
-  caption?: React.ReactNode;
   children: React.ReactNode;
 };
 
-export function Demo({caption, children}: DemoProps) {
+export function Demo({children}: DemoProps) {
   return (
     <figure
       className={clsx(
@@ -15,11 +14,6 @@ export function Demo({caption, children}: DemoProps) {
       )}
     >
       {children}
-      {caption && (
-        <figcaption className='mt-4 text-center text-sm text-gray-11'>
-          {caption}
-        </figcaption>
-      )}
     </figure>
   );
 }
@@ -33,5 +27,17 @@ export function DemoControls({children}: DemoControlsProps) {
     <div className='mt-4 grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-x-5 gap-y-3'>
       {children}
     </div>
+  );
+}
+
+type DemoCaptionProps = {
+  children: React.ReactNode;
+};
+
+export function DemoCaption({children}: DemoCaptionProps) {
+  return (
+    <figcaption className='mt-4 text-center text-sm text-gray-11'>
+      {children}
+    </figcaption>
   );
 }
