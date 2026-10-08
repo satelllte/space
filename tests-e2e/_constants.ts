@@ -33,7 +33,7 @@ export const ARTICLES = [
       'Stretching Pixels: A Glitchy Post-Processing Pass in 25 Lines of GLSL • satelllte/space',
     description:
       'How a single clamp, a pinch of fract(sin(x)) and a floor turn a clean render into a jittery, VHS-flavored smear.',
-    publishedAt: '2026-10-06',
+    publishedAt: '2026-10-09',
     tags: [
       'GLSL',
       'Shaders',
