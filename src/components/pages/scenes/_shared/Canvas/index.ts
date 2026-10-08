@@ -1,1 +1,1 @@
-export {Canvas, type CanvasRef, type CanvasProps} from './Canvas';
+export {Canvas, type CanvasProps} from './Canvas';
