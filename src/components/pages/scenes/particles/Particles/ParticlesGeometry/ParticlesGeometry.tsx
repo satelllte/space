@@ -25,12 +25,7 @@ export function ParticlesGeometry() {
 
   return (
     <bufferGeometry>
-      <bufferAttribute
-        attach='attributes-position'
-        count={count}
-        itemSize={itemSize}
-        array={array}
-      />
+      <bufferAttribute attach='attributes-position' args={[array, itemSize]} />
     </bufferGeometry>
   );
 }

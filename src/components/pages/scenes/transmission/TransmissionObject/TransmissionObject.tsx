@@ -1,9 +1,10 @@
 import {useRef} from 'react';
 import {useFrame} from '@react-three/fiber';
 import {MeshTransmissionMaterial} from '@react-three/drei';
+import {type Mesh} from 'three';
 
 export function TransmissionObject() {
-  const meshRef = useRef<React.ElementRef<'mesh'>>(null);
+  const meshRef = useRef<Mesh>(null);
 
   useFrame((_, timeDelta) => {
     const mesh = meshRef.current;
