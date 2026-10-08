@@ -3,15 +3,17 @@ import {CLASS_NAME_MDX_CODE_SPACING} from '../../../ui/mdx/constants';
 
 type DemoProps = {
   children: React.ReactNode;
+  'aria-label'?: string;
 };
 
-export function Demo({children}: DemoProps) {
+export function Demo({children, ...rest}: DemoProps) {
   return (
     <figure
       className={clsx(
         CLASS_NAME_MDX_CODE_SPACING,
         'rounded-lg border border-gray-5 bg-gray-2 p-4',
       )}
+      {...rest}
     >
       {children}
     </figure>

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import {CLASS_NAME_MDX_CODE_SPACING} from '../../ui/mdx/constants';
+import {Demo, DemoCaption} from './_shared/Demo';
 
 type Pass = {
   name: string;
@@ -15,13 +15,7 @@ const PASSES: Pass[] = [
 
 export function PipelineDiagram() {
   return (
-    <figure
-      aria-label='Render pipeline'
-      className={clsx(
-        CLASS_NAME_MDX_CODE_SPACING,
-        'rounded-lg border border-gray-5 bg-gray-2 p-4',
-      )}
-    >
+    <Demo aria-label='Render pipeline'>
       <ol className='flex flex-col items-stretch gap-1.5 font-mono text-xs md:flex-row md:items-center'>
         {PASSES.map(({name, variant}, index) => (
           <li
@@ -49,10 +43,10 @@ export function PipelineDiagram() {
           </li>
         ))}
       </ol>
-      <figcaption className='mt-4 text-center text-sm text-gray-11'>
+      <DemoCaption>
         Each pass renders into a texture. The stretch pass reads the previous
         output as <code className='font-mono'>tDiffuse</code>.
-      </figcaption>
-    </figure>
+      </DemoCaption>
+    </Demo>
   );
 }
