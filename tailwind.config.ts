@@ -27,6 +27,8 @@ const config: Config = {
         'mdx-code-inline',
         '&:not(:is([data-slot="mdx-code-block"], [data-slot="mdx-file-tree"]) *)',
       );
+      addVariant('mdx-code-in-h2', '[data-slot="mdx-heading-h2"] &');
+      addVariant('mdx-code-in-h3', '[data-slot="mdx-heading-h3"] &');
     }),
     plugin(({addBase}) => {
       addBase({

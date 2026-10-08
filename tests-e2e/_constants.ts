@@ -26,4 +26,20 @@ export const ARTICLES = [
     publishedAt: '2026-09-28',
     tags: ['Three.js', 'React Three Fiber', 'Playwright', 'WebGPU', 'Testing'],
   },
+  {
+    name: 'Stretching Pixels: A Glitchy Post-Processing Pass in 25 Lines of GLSL',
+    href: '/articles/stretching-pixels-with-glsl/',
+    title:
+      'Stretching Pixels: A Glitchy Post-Processing Pass in 25 Lines of GLSL • satelllte/space',
+    description:
+      'How a single clamp, a pinch of fract(sin(x)) and a floor turn a clean render into a jittery, VHS-flavored smear.',
+    publishedAt: '2026-10-09',
+    tags: [
+      'GLSL',
+      'Shaders',
+      'Post-processing',
+      'Three.js',
+      'React Three Fiber',
+    ],
+  },
 ] as const;
