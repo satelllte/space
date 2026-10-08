@@ -10,7 +10,7 @@ export function MDXCode({children}: MDXCodeProps) {
   return (
     <code
       data-slot='mdx-code'
-      className='mdx-code-in-h2:text-lg mdx-code-in-h3:text-base font-mono mdx-code-inline:rounded-sm mdx-code-inline:border mdx-code-inline:border-gray-5 mdx-code-inline:bg-gray-3 mdx-code-inline:px-1 mdx-code-inline:py-0.5 mdx-code-inline:text-sm'
+      className='font-mono mdx-code-inline:rounded-sm mdx-code-inline:border mdx-code-inline:border-gray-5 mdx-code-inline:bg-gray-3 mdx-code-inline:px-1 mdx-code-inline:py-0.5 mdx-code-inline:text-sm mdx-code-in-h2:text-lg mdx-code-in-h3:text-base'
     >
       {children}
     </code>
