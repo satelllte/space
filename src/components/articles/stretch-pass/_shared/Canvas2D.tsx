@@ -39,7 +39,6 @@ export function Canvas2D({label, height, draw}: Canvas2DProps) {
     const resizeObserver = new ResizeObserver(render);
     resizeObserver.observe(canvas);
 
-    // Colors are read from CSS variables, so redraw when the theme class changes
     const themeObserver = new MutationObserver(render);
     themeObserver.observe(document.documentElement, {
       attributeFilter: ['class'],
