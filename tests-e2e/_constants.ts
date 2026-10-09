@@ -1,3 +1,5 @@
+export const SITE = 'https://satelllte.pages.dev';
+
 export const SCENES = [
   {
     name: 'Moon',

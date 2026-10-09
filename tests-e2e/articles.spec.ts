@@ -5,9 +5,7 @@ import {
   expectNoIndexing,
   expectTitle,
 } from './_utils';
-import {ARTICLES} from './_constants';
-
-const SITE = 'https://satelllte.pages.dev';
+import {ARTICLES, SITE} from './_constants';
 
 for (const article of ARTICLES) {
   const {name, href, title, description, publishedAt, tags} = article;
