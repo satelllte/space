@@ -6,6 +6,7 @@ export const GET: APIRoute = ({site}) => {
     'Allow: /',
     '',
     `Sitemap: ${new URL('/sitemap.xml', site).href}`,
+    '',
   ].join('\n');
 
   return new Response(txt, {

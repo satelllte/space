@@ -29,6 +29,7 @@ export const GET: APIRoute = async ({site}) => {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...urls,
     '</urlset>',
+    '',
   ].join('\n');
 
   return new Response(xml, {
