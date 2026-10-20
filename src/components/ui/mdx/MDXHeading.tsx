@@ -44,14 +44,14 @@ function Heading({
       data-slot={dataSlot}
       id={id}
       className={clsx(
-        'scroll-mt-8 text-balance font-semibold tracking-[-0.01em] text-gray-12',
+        'scroll-mt-8 font-semibold tracking-[-0.01em] text-balance text-gray-12',
         className,
       )}
     >
       {id ? (
         <HeadlessLink
           href={`#${id}`}
-          className='group relative outline-none [color:inherit] focus-visible:decoration-gray-8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-8'
+          className='group relative text-inherit outline-hidden focus-visible:decoration-gray-8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-8 focus-visible:outline-solid'
         >
           <span
             className='absolute right-full pr-2 text-gray-9 opacity-0 transition-opacity duration-150 ease-[ease] group-hover:opacity-100 group-focus-visible:opacity-100'

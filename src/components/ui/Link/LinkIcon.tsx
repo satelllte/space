@@ -22,7 +22,7 @@ export function LinkIcon(props: LinkIconProps) {
         // Focus (icon color)
         'focus-visible:text-gray-10',
         // Focus (outline)
-        'outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-8',
+        'outline-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-8 focus-visible:outline-solid',
       )}
       {...props}
     />

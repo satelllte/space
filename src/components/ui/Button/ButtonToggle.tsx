@@ -16,7 +16,7 @@ export function ButtonToggle({pressed, onClick, ...rest}: ButtonToggleProps) {
       onClick={onClick}
       className={clsx(
         'rounded-full border px-3 py-1 text-xs',
-        'outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8',
+        'outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8 focus-visible:outline-solid',
         pressed
           ? 'border-gray-8 bg-gray-4 text-gray-12'
           : 'border-gray-5 text-gray-11 hover:border-gray-7 hover:text-gray-12',

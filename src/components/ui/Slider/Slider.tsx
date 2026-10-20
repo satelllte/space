@@ -40,7 +40,7 @@ export function Slider({
         value={value}
         aria-valuetext={valueText}
         onChange={(event) => onChange(event.currentTarget.valueAsNumber)}
-        className='w-full accent-gray-12 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8'
+        className='w-full accent-gray-12 outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8 focus-visible:outline-solid'
       />
     </div>
   );

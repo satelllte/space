@@ -39,9 +39,9 @@ export function ArticlePage({
           </Link>
         </nav>
       </Header>
-      <div className='flex-grow pb-16 xl:grid xl:grid-cols-[1fr_minmax(0,40rem)_1fr] xl:gap-12'>
+      <div className='grow pb-16 xl:grid xl:grid-cols-[1fr_minmax(0,40rem)_1fr] xl:gap-12'>
         <TableOfContents headings={headings} />
-        <main className='mx-auto w-full max-w-[40rem] xl:col-start-2'>
+        <main className='mx-auto w-full max-w-160 xl:col-start-2'>
           <article aria-labelledby={titleId}>
             <header className='mb-12 flex flex-col gap-4'>
               <p className='text-sm text-gray-11'>
@@ -51,7 +51,7 @@ export function ArticlePage({
               </p>
               <h1
                 id={titleId}
-                className='text-balance text-3xl font-semibold leading-tight tracking-tight text-gray-12 sm:text-4xl'
+                className='text-3xl leading-tight font-semibold tracking-tight text-balance text-gray-12 sm:text-4xl/10'
               >
                 {title}
               </h1>
@@ -60,7 +60,9 @@ export function ArticlePage({
               </p>
               {tags.length > 0 && <Tags tags={tags} />}
             </header>
-            <div className='break-words text-base text-gray-12'>{children}</div>
+            <div className='text-base wrap-break-word text-gray-12'>
+              {children}
+            </div>
           </article>
         </main>
       </div>
@@ -95,7 +97,7 @@ function TableOfContentsList({items}: {items: TableOfContentsItem[]}) {
         <li key={heading.slug}>
           <a
             href={`#${heading.slug}`}
-            className='text-xs text-gray-11 outline-none hover:text-gray-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8'
+            className='text-xs text-gray-11 outline-hidden hover:text-gray-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8 focus-visible:outline-solid'
           >
             {heading.text}
           </a>

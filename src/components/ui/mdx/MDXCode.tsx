@@ -10,7 +10,7 @@ export function MDXCode({children}: MDXCodeProps) {
   return (
     <code
       data-slot='mdx-code'
-      className='font-mono mdx-code-inline:rounded-sm mdx-code-inline:border mdx-code-inline:border-gray-5 mdx-code-inline:bg-gray-3 mdx-code-inline:px-1 mdx-code-inline:py-0.5 mdx-code-inline:text-sm mdx-code-in-h2:text-lg mdx-code-in-h3:text-base'
+      className='font-mono mdx-code-inline:rounded-xs mdx-code-inline:border mdx-code-inline:border-gray-5 mdx-code-inline:bg-gray-3 mdx-code-inline:px-1 mdx-code-inline:py-0.5 mdx-code-inline:text-sm mdx-code-in-h2:text-lg mdx-code-in-h3:text-base'
     >
       {children}
     </code>
@@ -60,7 +60,7 @@ export function MDXCodeBlock({
         tabIndex={0} // make scrollable region keyboard accessible
         role='group'
         aria-label={`${file ?? language} code`}
-        className='col-span-2 row-start-2 m-0 overflow-x-auto rounded-b-lg p-4 font-mono text-xs leading-[1.7] text-gray-12 outline-none [tab-size:2] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8'
+        className='col-span-2 row-start-2 m-0 overflow-x-auto rounded-b-lg p-4 font-mono text-xs leading-[1.7] tab-2 text-gray-12 outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8 focus-visible:outline-solid'
       >
         {children}
       </pre>
