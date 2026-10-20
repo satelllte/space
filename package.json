@@ -8,6 +8,7 @@
     "fix:format": "prettier --write .",
     "test:format": "prettier --check .",
     "test:types": "astro sync && tsc --noEmit",
+    "test:colors": "node scripts/check-p3.mjs",
     "test:e2e": "playwright test"
   },
   "dependencies": {
