@@ -102,7 +102,7 @@ export function DemoStretch() {
       <div
         role='img'
         aria-label='Live WebGL preview of the stretch shader applied to a test image'
-        className='relative mt-4 aspect-[16/10] w-full overflow-hidden rounded-md bg-gray-2'
+        className='relative mt-4 aspect-16/10 w-full overflow-hidden rounded-md bg-gray-2'
       >
         <Canvas
           frameloop='demand'

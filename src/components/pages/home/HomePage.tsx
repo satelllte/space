@@ -27,7 +27,7 @@ export function HomePage({articles}: HomePageProps) {
           <IconCircle />
         </LinkIcon>
       </Header>
-      <main className='flex flex-grow flex-col gap-12 pb-16'>
+      <main className='flex grow flex-col gap-12 pb-16'>
         <h1 className='sr-only'>satelllte/space</h1>
         <MainContent articles={articles} />
       </main>

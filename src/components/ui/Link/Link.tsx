@@ -17,11 +17,11 @@ export function Link({size = 'base', ...rest}: LinkProps) {
         // Underline
         'underline underline-offset-4',
         // Underline decoration
-        'decoration-gray-6 [text-decoration-thickness:1px] hover:decoration-gray-8 active:decoration-gray-7',
+        'decoration-gray-6 decoration-1 hover:decoration-gray-8 active:decoration-gray-7',
         // Focus (underline)
         'focus-visible:decoration-gray-8',
         // Focus (outline)
-        'outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-8',
+        'outline-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-8 focus-visible:outline-solid',
       )}
       {...rest}
     />

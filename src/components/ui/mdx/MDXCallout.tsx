@@ -16,10 +16,10 @@ export function MDXCallout({title = 'Note', children}: MDXCalloutProps) {
         'rounded-r-md border-l-2 border-l-gray-8 bg-gray-2 px-5 py-4',
       )}
     >
-      <p className='mb-1 text-xs font-semibold uppercase tracking-wider text-gray-11'>
+      <p className='mb-1 text-xs font-semibold tracking-wider text-gray-11 uppercase'>
         {title}
       </p>
-      <div className='space-y-3'>{children}</div>
+      <div className='*:not-first:mt-3'>{children}</div>
     </div>
   );
 }
