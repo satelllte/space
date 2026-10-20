@@ -60,7 +60,7 @@ function drawHash(
   const toX = (x: number) => PADDING.left + (x / X_MAX) * plotWidth;
   const toY = (y: number) => PADDING.top + (1 - y) * plotHeight;
 
-  context.strokeStyle = getCSSVariable('--color-gray-6');
+  context.strokeStyle = getCSSVariable('--tw-color-gray-6');
   context.lineWidth = 1;
   context.beginPath();
   context.moveTo(PADDING.left, toY(0));
@@ -69,14 +69,14 @@ function drawHash(
   context.lineTo(PADDING.left + plotWidth, toY(1));
   context.stroke();
 
-  context.fillStyle = getCSSVariable('--color-gray-11');
+  context.fillStyle = getCSSVariable('--tw-color-gray-11');
   context.font = `11px ${FONT_FAMILY_MONO}`;
   context.fillText('1', 8, toY(1) + 4);
   context.fillText('0', 8, toY(0) + 4);
   context.textAlign = 'right';
   context.fillText('x →', PADDING.left + plotWidth, height - 5);
 
-  const colorPlot = getCSSVariable('--color-gray-12');
+  const colorPlot = getCSSVariable('--tw-color-gray-12');
   if (k < K_LINE_MAX) {
     context.strokeStyle = colorPlot;
     context.lineWidth = 1.75;

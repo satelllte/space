@@ -16,28 +16,29 @@ const PASSES: Pass[] = [
 export function PipelineDiagram() {
   return (
     <Demo aria-label='Render pipeline'>
-      <ol className='flex flex-col items-stretch gap-1.5 font-mono text-xs md:flex-row md:items-center'>
+      <ol className='tw:flex tw:flex-col tw:items-stretch tw:gap-1.5 tw:font-mono tw:text-xs tw:md:flex-row tw:md:items-center'>
         {PASSES.map(({name, variant}, index) => (
           <li
             key={name}
-            className='flex flex-auto flex-col items-center gap-1.5 md:flex-row'
+            className='tw:flex tw:flex-auto tw:flex-col tw:items-center tw:gap-1.5 tw:md:flex-row'
           >
             <div
               className={clsx(
-                'flex min-h-12 w-full flex-col items-center justify-center rounded-md border px-2 py-1.5 text-center',
-                variant === undefined && 'border-gray-6 bg-gray-3 text-gray-12',
+                'tw:flex tw:min-h-12 tw:w-full tw:flex-col tw:items-center tw:justify-center tw:rounded-md tw:border tw:px-2 tw:py-1.5 tw:text-center',
+                variant === undefined &&
+                  'tw:border-gray-6 tw:bg-gray-3 tw:text-gray-12',
                 variant === 'highlighted' &&
-                  'border-dashed border-gray-10 bg-gray-3 text-gray-12',
+                  'tw:border-dashed tw:border-gray-10 tw:bg-gray-3 tw:text-gray-12',
                 variant === 'output' &&
-                  'border-dashed border-gray-7 text-gray-11',
+                  'tw:border-dashed tw:border-gray-7 tw:text-gray-11',
               )}
             >
               {name}
             </div>
             {index < PASSES.length - 1 && (
-              <span aria-hidden='true' className='text-gray-9'>
-                <span className='md:hidden'>↓</span>
-                <span className='hidden md:inline'>→</span>
+              <span aria-hidden='true' className='tw:text-gray-9'>
+                <span className='tw:md:hidden'>↓</span>
+                <span className='tw:hidden tw:md:inline'>→</span>
               </span>
             )}
           </li>
@@ -45,7 +46,7 @@ export function PipelineDiagram() {
       </ol>
       <DemoCaption>
         Each pass renders into a texture. The stretch pass reads the previous
-        output as <code className='font-mono'>tDiffuse</code>.
+        output as <code className='tw:font-mono'>tDiffuse</code>.
       </DemoCaption>
     </Demo>
   );

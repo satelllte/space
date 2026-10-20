@@ -10,7 +10,7 @@ export function MDXLink({href = '', children}: MDXLinkProps) {
   return (
     <Link data-slot='mdx-link' external={external} href={href}>
       {children}
-      {external && <span className='sr-only'> (opens in a new tab)</span>}
+      {external && <span className='tw:sr-only'> (opens in a new tab)</span>}
     </Link>
   );
 }

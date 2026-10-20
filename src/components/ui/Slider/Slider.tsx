@@ -22,12 +22,12 @@ export function Slider({
   const id = useId();
   const valueText = format(value);
   return (
-    <div className='flex flex-col gap-1'>
-      <div className='flex items-baseline justify-between gap-2 font-mono text-xs'>
-        <label htmlFor={id} className='text-gray-11'>
+    <div className='tw:flex tw:flex-col tw:gap-1'>
+      <div className='tw:flex tw:items-baseline tw:justify-between tw:gap-2 tw:font-mono tw:text-xs'>
+        <label htmlFor={id} className='tw:text-gray-11'>
           {label}
         </label>
-        <output htmlFor={id} className='text-gray-12'>
+        <output htmlFor={id} className='tw:text-gray-12'>
           {valueText}
         </output>
       </div>
@@ -40,7 +40,7 @@ export function Slider({
         value={value}
         aria-valuetext={valueText}
         onChange={(event) => onChange(event.currentTarget.valueAsNumber)}
-        className='w-full accent-gray-12 outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8 focus-visible:outline-solid'
+        className='tw:w-full tw:accent-gray-12 tw:outline-hidden tw:focus-visible:outline-2 tw:focus-visible:outline-offset-2 tw:focus-visible:outline-gray-8 tw:focus-visible:outline-solid'
       />
     </div>
   );

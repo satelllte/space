@@ -56,9 +56,9 @@ export function Canvas2D({label, height, draw}: Canvas2DProps) {
       role='img'
       aria-label={label}
       className={clsx(
-        'block w-full',
-        height === 150 && 'h-[150px]',
-        height === 200 && 'h-[200px]',
+        'tw:block tw:w-full',
+        height === 150 && 'tw:h-[150px]',
+        height === 200 && 'tw:h-[200px]',
       )}
     />
   );

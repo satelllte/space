@@ -16,13 +16,13 @@ export function LinkIcon(props: LinkIconProps) {
     <HeadlessLink
       className={clsx(
         // Base
-        'inline-flex',
+        'tw:inline-flex',
         // Icon color (assumming, the icon has "fill='currentColor'" set)
-        'text-gray-12 hover:text-gray-11 active:text-gray-10',
+        'tw:text-gray-12 tw:hover:text-gray-11 tw:active:text-gray-10',
         // Focus (icon color)
-        'focus-visible:text-gray-10',
+        'tw:focus-visible:text-gray-10',
         // Focus (outline)
-        'outline-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-8 focus-visible:outline-solid',
+        'tw:outline-hidden tw:focus-visible:outline-2 tw:focus-visible:outline-offset-4 tw:focus-visible:outline-gray-8 tw:focus-visible:outline-solid',
       )}
       {...props}
     />

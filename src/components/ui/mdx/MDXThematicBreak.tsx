@@ -2,7 +2,7 @@ export function MDXThematicBreak() {
   return (
     <hr
       data-slot='mdx-thematic-break'
-      className='my-12 border-t border-t-gray-5'
+      className='tw:my-12 tw:border-t tw:border-t-gray-5'
     />
   );
 }

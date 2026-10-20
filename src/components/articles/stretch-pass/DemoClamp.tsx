@@ -47,8 +47,8 @@ function drawClamp(
   {width}: {width: number},
   noise: number,
 ) {
-  const colorText = getCSSVariable('--color-gray-11');
-  const colorLine = getCSSVariable('--color-gray-12');
+  const colorText = getCSSVariable('--tw-color-gray-11');
+  const colorLine = getCSSVariable('--tw-color-gray-12');
   const {fontFamily} = getComputedStyle(context.canvas);
   const cellWidth = width / CELLS;
 

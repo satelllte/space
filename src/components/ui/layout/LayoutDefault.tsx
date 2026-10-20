@@ -10,7 +10,10 @@ export function LayoutDefault({children}: LayoutDefaultProps) {
   return (
     <Theme>
       <div
-        className={clsx(CLASS_NAME_PAGE_SPACING, 'flex min-h-full flex-col')}
+        className={clsx(
+          CLASS_NAME_PAGE_SPACING,
+          'tw:flex tw:min-h-full tw:flex-col',
+        )}
       >
         {children}
       </div>

@@ -8,8 +8,8 @@ type ErrorPageProps = {
 export function ErrorPage({message}: ErrorPageProps) {
   return (
     <LayoutDefault>
-      <main className='flex flex-col gap-4'>
-        <h1 className='text-lg text-gray-12'>{message}</h1>
+      <main className='tw:flex tw:flex-col tw:gap-4'>
+        <h1 className='tw:text-lg tw:text-gray-12'>{message}</h1>
         <Link size='xs' href='/' aria-label='Go back'>
           {'<- Back'}
         </Link>

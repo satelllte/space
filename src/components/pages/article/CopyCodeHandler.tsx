@@ -69,5 +69,5 @@ export function CopyCodeHandler() {
     };
   }, []);
 
-  return <div data-copy-code-status role='status' className='sr-only'></div>;
+  return <div data-copy-code-status role='status' className='tw:sr-only'></div>;
 }

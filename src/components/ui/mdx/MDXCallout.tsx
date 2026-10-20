@@ -13,13 +13,13 @@ export function MDXCallout({title = 'Note', children}: MDXCalloutProps) {
       role='note'
       className={clsx(
         CLASS_NAME_MDX_BASE_SPACING,
-        'rounded-r-md border-l-2 border-l-gray-8 bg-gray-2 px-5 py-4',
+        'tw:rounded-r-md tw:border-l-2 tw:border-l-gray-8 tw:bg-gray-2 tw:px-5 tw:py-4',
       )}
     >
-      <p className='mb-1 text-xs font-semibold tracking-wider text-gray-11 uppercase'>
+      <p className='tw:mb-1 tw:text-xs tw:font-semibold tw:tracking-wider tw:text-gray-11 tw:uppercase'>
         {title}
       </p>
-      <div className='*:not-first:mt-3'>{children}</div>
+      <div className='tw:*:not-first:mt-3'>{children}</div>
     </div>
   );
 }

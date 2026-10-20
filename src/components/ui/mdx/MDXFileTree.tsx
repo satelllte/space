@@ -13,7 +13,7 @@ export function MDXFileTree({label, children}: MDXFileTreeProps) {
       aria-label={label}
       className={clsx(
         CLASS_NAME_MDX_BASE_SPACING,
-        'overflow-x-auto rounded-lg border border-gray-5 bg-gray-2 px-5 py-4 font-mono text-xs leading-[1.7] text-gray-11 [&_code]:text-gray-12 [&_li]:whitespace-nowrap [&_ul]:mt-0 [&_ul]:list-none [&_ul]:gap-0 [&_ul]:pl-0 [&_ul_ul]:ml-1 [&_ul_ul]:pl-5',
+        'tw:overflow-x-auto tw:rounded-lg tw:border tw:border-gray-5 tw:bg-gray-2 tw:px-5 tw:py-4 tw:font-mono tw:text-xs tw:leading-[1.7] tw:text-gray-11 tw:[&_code]:text-gray-12 tw:[&_li]:whitespace-nowrap tw:[&_ul]:mt-0 tw:[&_ul]:list-none tw:[&_ul]:gap-0 tw:[&_ul]:pl-0 tw:[&_ul_ul]:ml-1 tw:[&_ul_ul]:pl-5',
       )}
     >
       {children}

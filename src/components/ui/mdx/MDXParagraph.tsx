@@ -4,7 +4,7 @@ type MDXParagraphProps = {
 
 export function MDXParagraph({children}: MDXParagraphProps) {
   return (
-    <p data-slot='mdx-paragraph' className='mt-4'>
+    <p data-slot='mdx-paragraph' className='tw:mt-4'>
       {children}
     </p>
   );
