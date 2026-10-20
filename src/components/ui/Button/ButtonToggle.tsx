@@ -15,11 +15,11 @@ export function ButtonToggle({pressed, onClick, ...rest}: ButtonToggleProps) {
       aria-pressed={pressed}
       onClick={onClick}
       className={clsx(
-        'rounded-full border px-3 py-1 text-xs',
-        'outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8 focus-visible:outline-solid',
+        'tw:rounded-full tw:border tw:px-3 tw:py-1 tw:text-xs',
+        'tw:outline-hidden tw:focus-visible:outline-2 tw:focus-visible:outline-offset-2 tw:focus-visible:outline-gray-8 tw:focus-visible:outline-solid',
         pressed
-          ? 'border-gray-8 bg-gray-4 text-gray-12'
-          : 'border-gray-5 text-gray-11 hover:border-gray-7 hover:text-gray-12',
+          ? 'tw:border-gray-8 tw:bg-gray-4 tw:text-gray-12'
+          : 'tw:border-gray-5 tw:text-gray-11 tw:hover:border-gray-7 tw:hover:text-gray-12',
       )}
       {...rest}
     />

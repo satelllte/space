@@ -12,8 +12,8 @@ type LayoutSceneProps = {
 export function LayoutScene({title, children}: LayoutSceneProps) {
   return (
     <Theme>
-      <main className='h-full w-full'>
-        <h1 className='sr-only'>{title}</h1>
+      <main className='tw:h-full tw:w-full'>
+        <h1 className='tw:sr-only'>{title}</h1>
         <noscript>
           <SceneError
             fixed
@@ -26,7 +26,7 @@ export function LayoutScene({title, children}: LayoutSceneProps) {
       <footer
         className={clsx(
           CLASS_NAME_PAGE_SPACING_FIXED,
-          'fixed z-20 flex items-end',
+          'tw:fixed tw:z-20 tw:flex tw:items-end',
         )}
       >
         <div // this extra div is required for the link to stay in line with LayoutDefault.tsx

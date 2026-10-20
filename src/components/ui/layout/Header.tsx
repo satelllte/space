@@ -3,5 +3,5 @@ type HeaderProps = {
 };
 
 export function Header({children}: HeaderProps) {
-  return <header className='pb-12'>{children}</header>;
+  return <header className='tw:pb-12'>{children}</header>;
 }

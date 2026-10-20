@@ -9,11 +9,11 @@ export function SceneError({message, fixed = false}: SceneErrorProps) {
   return (
     <div
       className={clsx(
-        'z-10 flex h-full w-full items-center justify-center',
-        fixed && 'fixed',
+        'tw:z-10 tw:flex tw:h-full tw:w-full tw:items-center tw:justify-center',
+        fixed && 'tw:fixed',
       )}
     >
-      <p className='text-gray-12'>{message}</p>
+      <p className='tw:text-gray-12'>{message}</p>
     </div>
   );
 }

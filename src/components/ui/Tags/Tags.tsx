@@ -4,7 +4,7 @@ type TagsProps = {
 
 export function Tags({tags}: TagsProps) {
   return (
-    <ul aria-label='Tags' className='flex flex-wrap gap-2'>
+    <ul aria-label='Tags' className='tw:flex tw:flex-wrap tw:gap-2'>
       {tags.map((tag) => (
         <Tag key={tag} text={tag} />
       ))}
@@ -18,7 +18,7 @@ type TagProps = {
 
 function Tag({text}: TagProps) {
   return (
-    <li className='rounded-full border border-gray-5 px-2.5 py-0.5 text-xs text-gray-11'>
+    <li className='tw:rounded-full tw:border tw:border-gray-5 tw:px-2.5 tw:py-0.5 tw:text-xs tw:text-gray-11'>
       {text}
     </li>
   );

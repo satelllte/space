@@ -6,8 +6,8 @@ import {Moon} from './Moon';
 export function SceneMoon() {
   return (
     <LayoutScene title='Moon'>
-      <div className='flex h-full w-full items-center justify-center'>
-        <div className='relative aspect-square h-[50vh]'>
+      <div className='tw:flex tw:h-full tw:w-full tw:items-center tw:justify-center'>
+        <div className='tw:relative tw:aspect-square tw:h-[50vh]'>
           <Canvas>
             <Suspense>
               <Moon />

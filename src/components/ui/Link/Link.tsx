@@ -10,18 +10,18 @@ export function Link({size = 'base', ...rest}: LinkProps) {
     <HeadlessLink
       className={clsx(
         // Text size
-        size === 'xs' && 'text-xs',
-        size === 'base' && 'text-base',
+        size === 'xs' && 'tw:text-xs',
+        size === 'base' && 'tw:text-base',
         // Text color
-        'text-gray-11 active:text-gray-10',
+        'tw:text-gray-11 tw:active:text-gray-10',
         // Underline
-        'underline underline-offset-4',
+        'tw:underline tw:underline-offset-4',
         // Underline decoration
-        'decoration-gray-6 decoration-1 hover:decoration-gray-8 active:decoration-gray-7',
+        'tw:decoration-gray-6 tw:decoration-1 tw:hover:decoration-gray-8 tw:active:decoration-gray-7',
         // Focus (underline)
-        'focus-visible:decoration-gray-8',
+        'tw:focus-visible:decoration-gray-8',
         // Focus (outline)
-        'outline-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-8 focus-visible:outline-solid',
+        'tw:outline-hidden tw:focus-visible:outline-2 tw:focus-visible:outline-offset-4 tw:focus-visible:outline-gray-8 tw:focus-visible:outline-solid',
       )}
       {...rest}
     />

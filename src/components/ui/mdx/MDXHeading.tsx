@@ -11,7 +11,7 @@ export function MDXHeadingH2(props: MDXHeadingProps) {
     <Heading
       data-slot='mdx-heading-h2'
       as='h2'
-      className='mt-12 text-2xl leading-[1.3]'
+      className='tw:mt-12 tw:text-2xl tw:leading-[1.3]'
       {...props}
     />
   );
@@ -22,7 +22,7 @@ export function MDXHeadingH3(props: MDXHeadingProps) {
     <Heading
       data-slot='mdx-heading-h3'
       as='h3'
-      className='mt-9 text-xl leading-[1.4]'
+      className='tw:mt-9 tw:text-xl tw:leading-[1.4]'
       {...props}
     />
   );
@@ -44,17 +44,17 @@ function Heading({
       data-slot={dataSlot}
       id={id}
       className={clsx(
-        'scroll-mt-8 font-semibold tracking-[-0.01em] text-balance text-gray-12',
+        'tw:scroll-mt-8 tw:font-semibold tw:tracking-[-0.01em] tw:text-balance tw:text-gray-12',
         className,
       )}
     >
       {id ? (
         <HeadlessLink
           href={`#${id}`}
-          className='group relative text-inherit outline-hidden focus-visible:decoration-gray-8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-8 focus-visible:outline-solid'
+          className='tw:group tw:relative tw:text-inherit tw:outline-hidden tw:focus-visible:decoration-gray-8 tw:focus-visible:outline-2 tw:focus-visible:outline-offset-4 tw:focus-visible:outline-gray-8 tw:focus-visible:outline-solid'
         >
           <span
-            className='absolute right-full pr-2 text-gray-9 opacity-0 transition-opacity duration-150 ease-[ease] group-hover:opacity-100 group-focus-visible:opacity-100'
+            className='tw:absolute tw:right-full tw:pr-2 tw:text-gray-9 tw:opacity-0 tw:transition-opacity tw:duration-150 tw:ease-[ease] tw:group-hover:opacity-100 tw:group-focus-visible:opacity-100'
             aria-hidden='true'
           >
             #

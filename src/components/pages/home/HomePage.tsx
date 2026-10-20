@@ -27,8 +27,8 @@ export function HomePage({articles}: HomePageProps) {
           <IconCircle />
         </LinkIcon>
       </Header>
-      <main className='flex grow flex-col gap-12 pb-16'>
-        <h1 className='sr-only'>satelllte/space</h1>
+      <main className='tw:flex tw:grow tw:flex-col tw:gap-12 tw:pb-16'>
+        <h1 className='tw:sr-only'>satelllte/space</h1>
         <MainContent articles={articles} />
       </main>
       <footer>
@@ -89,12 +89,12 @@ function MainContent({articles}: HomePageProps) {
 }
 
 function Section({children}: {children: React.ReactNode}) {
-  return <div className='flex flex-col gap-2'>{children}</div>;
+  return <div className='tw:flex tw:flex-col tw:gap-2'>{children}</div>;
 }
 
 function SectionTitle({id, children}: {id: string; children: React.ReactNode}) {
   return (
-    <h2 id={id} className='text-xl text-gray-12'>
+    <h2 id={id} className='tw:text-xl tw:text-gray-12'>
       {children}
     </h2>
   );
@@ -108,7 +108,7 @@ function List({
   children: React.ReactNode;
 }) {
   return (
-    <ul aria-labelledby={labelledBy} className='flex flex-col gap-1'>
+    <ul aria-labelledby={labelledBy} className='tw:flex tw:flex-col tw:gap-1'>
       {children}
     </ul>
   );

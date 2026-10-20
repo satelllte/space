@@ -80,8 +80,12 @@ export function DemoStretch() {
 
   return (
     <Demo>
-      <div className='flex flex-wrap items-center justify-between gap-2'>
-        <div role='group' aria-label='View' className='flex flex-wrap gap-1.5'>
+      <div className='tw:flex tw:flex-wrap tw:items-center tw:justify-between tw:gap-2'>
+        <div
+          role='group'
+          aria-label='View'
+          className='tw:flex tw:flex-wrap tw:gap-1.5'
+        >
           {VIEWS.map(({label, value}) => (
             <ButtonToggle
               key={value}
@@ -102,7 +106,7 @@ export function DemoStretch() {
       <div
         role='img'
         aria-label='Live WebGL preview of the stretch shader applied to a test image'
-        className='relative mt-4 aspect-16/10 w-full overflow-hidden rounded-md bg-gray-2'
+        className='tw:relative tw:mt-4 tw:aspect-16/10 tw:w-full tw:overflow-hidden tw:rounded-md tw:bg-gray-2'
       >
         <Canvas
           frameloop='demand'

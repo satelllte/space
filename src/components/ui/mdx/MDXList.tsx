@@ -3,7 +3,7 @@ import {CLASS_NAME_MDX_BASE_SPACING} from './constants';
 
 const CLASS_NAMES_MDX_LIST_BASE = clsx(
   CLASS_NAME_MDX_BASE_SPACING,
-  'flex flex-col gap-0.5 pl-6',
+  'tw:flex tw:flex-col tw:gap-0.5 tw:pl-6',
 );
 
 type MDXListItemProps = {
@@ -12,7 +12,7 @@ type MDXListItemProps = {
 
 export function MDXListItem({children}: MDXListItemProps) {
   return (
-    <li data-slot='mdx-list-item' className='marker:text-gray-9'>
+    <li data-slot='mdx-list-item' className='tw:marker:text-gray-9'>
       {children}
     </li>
   );
@@ -26,7 +26,7 @@ export function MDXListOrdered({children}: MDXListOrderedProps) {
   return (
     <ol
       data-slot='mdx-list-ordered'
-      className={clsx(CLASS_NAMES_MDX_LIST_BASE, 'list-decimal')}
+      className={clsx(CLASS_NAMES_MDX_LIST_BASE, 'tw:list-decimal')}
     >
       {children}
     </ol>
@@ -41,7 +41,7 @@ export function MDXListUnordered({children}: MDXListUnorderedProps) {
   return (
     <ul
       data-slot='mdx-list-unordered'
-      className={clsx(CLASS_NAMES_MDX_LIST_BASE, 'list-disc')}
+      className={clsx(CLASS_NAMES_MDX_LIST_BASE, 'tw:list-disc')}
     >
       {children}
     </ul>

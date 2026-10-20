@@ -39,28 +39,28 @@ export function ArticlePage({
           </Link>
         </nav>
       </Header>
-      <div className='grow pb-16 xl:grid xl:grid-cols-[1fr_minmax(0,40rem)_1fr] xl:gap-12'>
+      <div className='tw:grow tw:pb-16 tw:xl:grid tw:xl:grid-cols-[1fr_minmax(0,40rem)_1fr] tw:xl:gap-12'>
         <TableOfContents headings={headings} />
-        <main className='mx-auto w-full max-w-160 xl:col-start-2'>
+        <main className='tw:mx-auto tw:w-full tw:max-w-160 tw:xl:col-start-2'>
           <article aria-labelledby={titleId}>
-            <header className='mb-12 flex flex-col gap-4'>
-              <p className='text-sm text-gray-11'>
+            <header className='tw:mb-12 tw:flex tw:flex-col tw:gap-4'>
+              <p className='tw:text-sm tw:text-gray-11'>
                 <time dateTime={publishedAt.toISOString()}>
                   {formatDate(publishedAt)}
                 </time>
               </p>
               <h1
                 id={titleId}
-                className='text-3xl leading-tight font-semibold tracking-tight text-balance text-gray-12 sm:text-4xl/10'
+                className='tw:text-3xl tw:leading-tight tw:font-semibold tw:tracking-tight tw:text-balance tw:text-gray-12 tw:sm:text-4xl/10'
               >
                 {title}
               </h1>
-              <p className='text-lg leading-relaxed text-gray-11'>
+              <p className='tw:text-lg tw:leading-relaxed tw:text-gray-11'>
                 {description}
               </p>
               {tags.length > 0 && <Tags tags={tags} />}
             </header>
-            <div className='text-base wrap-break-word text-gray-12'>
+            <div className='tw:text-base tw:wrap-break-word tw:text-gray-12'>
               {children}
             </div>
           </article>
@@ -79,9 +79,15 @@ function TableOfContents({headings}: {headings: ArticleHeading[]}) {
   const items = nestHeadings(headings);
   if (items.length === 0) return null;
   return (
-    <aside className='hidden xl:col-start-3 xl:row-start-1 xl:block'>
-      <nav aria-labelledby={labelId} className='sticky top-12 max-w-[16rem]'>
-        <p id={labelId} className='mb-3 text-xs font-medium text-gray-12'>
+    <aside className='tw:hidden tw:xl:col-start-3 tw:xl:row-start-1 tw:xl:block'>
+      <nav
+        aria-labelledby={labelId}
+        className='tw:sticky tw:top-12 tw:max-w-[16rem]'
+      >
+        <p
+          id={labelId}
+          className='tw:mb-3 tw:text-xs tw:font-medium tw:text-gray-12'
+        >
           On this page
         </p>
         <TableOfContentsList items={items} />
@@ -92,17 +98,17 @@ function TableOfContents({headings}: {headings: ArticleHeading[]}) {
 
 function TableOfContentsList({items}: {items: TableOfContentsItem[]}) {
   return (
-    <ul className='flex flex-col gap-2'>
+    <ul className='tw:flex tw:flex-col tw:gap-2'>
       {items.map(({heading, children}) => (
         <li key={heading.slug}>
           <a
             href={`#${heading.slug}`}
-            className='text-xs text-gray-11 outline-hidden hover:text-gray-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-8 focus-visible:outline-solid'
+            className='tw:text-xs tw:text-gray-11 tw:outline-hidden tw:hover:text-gray-12 tw:focus-visible:outline-2 tw:focus-visible:outline-offset-2 tw:focus-visible:outline-gray-8 tw:focus-visible:outline-solid'
           >
             {heading.text}
           </a>
           {children.length > 0 && (
-            <div className='mt-2 pl-3'>
+            <div className='tw:mt-2 tw:pl-3'>
               <TableOfContentsList items={children} />
             </div>
           )}
