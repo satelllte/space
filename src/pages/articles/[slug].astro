@@ -1,5 +1,6 @@
 ---
 import type {GetStaticPaths} from 'astro';
+import {render} from 'astro:content';
 import LayoutArticle from '../../layouts/LayoutArticle.astro';
 import {ArticlePage, components} from '../../components/pages/article';
 import {AUTHOR, getArticles, type Article} from '../../lib/articles';
@@ -7,7 +8,7 @@ import {AUTHOR, getArticles, type Article} from '../../lib/articles';
 export const getStaticPaths = (async () => {
   const articles = await getArticles();
   return articles.map((article) => ({
-    params: {slug: article.slug},
+    params: {slug: article.id},
     props: {article},
   }));
 }) satisfies GetStaticPaths;
@@ -18,10 +19,10 @@ type Props = {
 
 const {article} = Astro.props;
 const {title, description, publishedAt, tags} = article.data;
-const {Content, headings} = await article.render();
+const {Content, headings} = await render(article);
 ---
 
-<LayoutArticle slug={article.slug} data={article.data} author={AUTHOR}>
+<LayoutArticle slug={article.id} data={article.data} author={AUTHOR}>
   <ArticlePage
     title={title}
     description={description}
