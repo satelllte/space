@@ -34,6 +34,8 @@ jobs:
         run: pnpm test:types
       - name: Test (formatting)
         run: pnpm test:format
+      - name: Test (colors)
+        run: pnpm test:colors
       - name: Build
         run: pnpm build
       - name: Install Playwright browsers
