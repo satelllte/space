@@ -13,7 +13,7 @@ export const GET: APIRoute = async ({site}) => {
   const entries: Page[] = [
     ...pages,
     ...articles.map((article) => ({
-      path: getArticleHref(article.slug),
+      path: getArticleHref(article.id),
       lastmod: article.data.publishedAt,
     })),
   ];
