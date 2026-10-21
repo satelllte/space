@@ -56,8 +56,10 @@ export function MDXCodeBlock({
           Copy
         </Button>
       </div>
+      {/* biome-ignore lint/a11y/useSemanticElements: labels the scrollable code region for screen readers */}
       <pre
-        tabIndex={0} // make scrollable region keyboard accessible
+        // biome-ignore lint/a11y/noNoninteractiveTabindex: scrollable code region must be keyboard-focusable
+        tabIndex={0}
         role='group'
         aria-label={`${file ?? language} code`}
         className='tw:tab-2 tw:col-span-2 tw:row-start-2 tw:m-0 tw:overflow-x-auto tw:rounded-b-lg tw:p-4 tw:font-mono tw:text-gray-12 tw:text-xs tw:leading-[1.7] tw:outline-hidden tw:focus-visible:outline-2 tw:focus-visible:outline-gray-8 tw:focus-visible:outline-solid tw:focus-visible:outline-offset-2'
