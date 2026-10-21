@@ -16,7 +16,6 @@
         "noTailwindRawColors": "error",
         "useSortedClasses": {
           "level": "error",
-          "fix": "safe",
           "options": {
             "functions": ["clsx"]
           }
