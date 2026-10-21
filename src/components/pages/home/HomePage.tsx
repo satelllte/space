@@ -94,7 +94,7 @@ function Section({children}: {children: React.ReactNode}) {
 
 function SectionTitle({id, children}: {id: string; children: React.ReactNode}) {
   return (
-    <h2 id={id} className='tw:text-xl tw:text-gray-12'>
+    <h2 id={id} className='tw:text-gray-12 tw:text-xl'>
       {children}
     </h2>
   );

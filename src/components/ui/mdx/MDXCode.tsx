@@ -10,7 +10,7 @@ export function MDXCode({children}: MDXCodeProps) {
   return (
     <code
       data-slot='mdx-code'
-      className='tw:font-mono tw:mdx-code-inline:rounded-xs tw:mdx-code-inline:border tw:mdx-code-inline:border-gray-5 tw:mdx-code-inline:bg-gray-3 tw:mdx-code-inline:px-1 tw:mdx-code-inline:py-0.5 tw:mdx-code-inline:text-sm tw:mdx-code-in-h2:text-lg tw:mdx-code-in-h3:text-base'
+      className='tw:font-mono tw:mdx-code-inline:rounded-xs tw:mdx-code-inline:border tw:mdx-code-inline:border-gray-5 tw:mdx-code-inline:bg-gray-3 tw:mdx-code-inline:px-1 tw:mdx-code-inline:py-0.5 tw:mdx-code-in-h2:text-lg tw:mdx-code-in-h3:text-base tw:mdx-code-inline:text-sm'
     >
       {children}
     </code>
@@ -38,13 +38,13 @@ export function MDXCodeBlock({
       )}
     >
       {file && (
-        <figcaption className='tw:col-start-1 tw:row-start-1 tw:flex tw:min-h-10 tw:items-center tw:truncate tw:border-b tw:border-gray-5 tw:pl-4 tw:font-mono tw:text-xs tw:text-gray-11'>
+        <figcaption className='tw:col-start-1 tw:row-start-1 tw:flex tw:min-h-10 tw:items-center tw:truncate tw:border-gray-5 tw:border-b tw:pl-4 tw:font-mono tw:text-gray-11 tw:text-xs'>
           {file}
         </figcaption>
       )}
       <div
         className={clsx(
-          'tw:row-start-1 tw:flex tw:min-h-10 tw:items-center tw:justify-end tw:gap-3 tw:border-b tw:border-gray-5 tw:pr-2 tw:font-mono tw:text-xs tw:text-gray-11',
+          'tw:row-start-1 tw:flex tw:min-h-10 tw:items-center tw:justify-end tw:gap-3 tw:border-gray-5 tw:border-b tw:pr-2 tw:font-mono tw:text-gray-11 tw:text-xs',
         )}
       >
         <Button
@@ -60,7 +60,7 @@ export function MDXCodeBlock({
         tabIndex={0} // make scrollable region keyboard accessible
         role='group'
         aria-label={`${file ?? language} code`}
-        className='tw:col-span-2 tw:row-start-2 tw:m-0 tw:overflow-x-auto tw:rounded-b-lg tw:p-4 tw:font-mono tw:text-xs tw:leading-[1.7] tw:tab-2 tw:text-gray-12 tw:outline-hidden tw:focus-visible:outline-2 tw:focus-visible:outline-offset-2 tw:focus-visible:outline-gray-8 tw:focus-visible:outline-solid'
+        className='tw:tab-2 tw:col-span-2 tw:row-start-2 tw:m-0 tw:overflow-x-auto tw:rounded-b-lg tw:p-4 tw:font-mono tw:text-gray-12 tw:text-xs tw:leading-[1.7] tw:outline-hidden tw:focus-visible:outline-2 tw:focus-visible:outline-gray-8 tw:focus-visible:outline-solid tw:focus-visible:outline-offset-2'
       >
         {children}
       </pre>

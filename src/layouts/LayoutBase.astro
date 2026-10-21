@@ -19,59 +19,59 @@ const ogUrl = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL('/assets/images/og.png', Astro.site).href;
 ---
 
-<html lang='en' class='tw:h-full'>
+<html lang="en" class="tw:h-full">
   <head>
-    <meta charset='utf-8' />
+    <meta charset="utf-8" />
     <meta
-      name='viewport'
-      content='width=device-width, initial-scale=1, viewport-fit=cover'
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     {robots && <meta name='robots' content={robots} />}
     <title>{title}</title>
-    <meta name='description' content={description} />
-    <link rel='canonical' href={ogUrl} />
-    <meta property='og:title' content={title} />
-    <meta property='og:description' content={description} />
-    <meta property='og:image' content={ogImage} />
-    <meta property='og:url' content={ogUrl} />
-    <meta property='og:type' content={type} />
-    <meta property='og:site_name' content='satelllte/space' />
-    <meta property='og:locale' content='en_US' />
-    <meta name='twitter:card' content='summary_large_image' />
-    <meta name='twitter:site' content='@isatelllte' />
-    <meta name='twitter:creator' content='@isatelllte' />
-    <meta name='twitter:title' content={title} />
-    <meta name='twitter:description' content={description} />
-    <meta name='twitter:image' content={ogImage} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={ogUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={ogUrl} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="satelllte/space" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@isatelllte" />
+    <meta name="twitter:creator" content="@isatelllte" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <meta
-      name='google-site-verification'
-      content='ig9tAlHofR1acdMspm0nCrvH8jWSJcAdR3viHt-zCHE'
+      name="google-site-verification"
+      content="ig9tAlHofR1acdMspm0nCrvH8jWSJcAdR3viHt-zCHE"
     />
-    <slot name='head' />
-    <link rel='icon' sizes='32x32' href='/favicon.ico' />
+    <slot name="head" />
+    <link rel="icon" sizes="32x32" href="/favicon.ico" />
     <link
-      rel='icon'
-      sizes='any'
-      type='image/svg+xml'
-      href='/assets/icons/favicon.svg'
+      rel="icon"
+      sizes="any"
+      type="image/svg+xml"
+      href="/assets/icons/favicon.svg"
     />
     <link
-      rel='apple-touch-icon'
-      sizes='180x180'
-      href='/assets/icons/apple-touch-icon.png'
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/icons/apple-touch-icon.png"
     />
     <meta
-      name='theme-color'
-      media='(prefers-color-scheme: light)'
-      content='#fcfcfc'
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#fcfcfc"
     />
     <meta
-      name='theme-color'
-      media='(prefers-color-scheme: dark)'
-      content='#111111'
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#111111"
     />
-    <link rel='preconnect' href='https://rsms.me/' />
-    <link rel='stylesheet' href='https://rsms.me/inter/inter.css' />
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <style>
       :root {
         font-family: Inter, sans-serif;
@@ -105,12 +105,12 @@ const ogImage = new URL('/assets/images/og.png', Astro.site).href;
     </script>
     <!-- Cloudflare Web Analytics -->
     <script
-      type='module'
-      src='https://static.cloudflareinsights.com/beacon.min.js'
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon='{"token": "4ebe6bcb65b94befbe4e5b8edf5852a0"}'
     ></script>
   </head>
-  <body class='tw:h-full tw:bg-gray-1 tw:selection:bg-gray-5'>
+  <body class="tw:h-full tw:bg-gray-1 tw:selection:bg-gray-5">
     <slot />
   </body>
 </html>

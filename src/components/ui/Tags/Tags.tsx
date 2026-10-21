@@ -18,7 +18,7 @@ type TagProps = {
 
 function Tag({text}: TagProps) {
   return (
-    <li className='tw:rounded-full tw:border tw:border-gray-5 tw:px-2.5 tw:py-0.5 tw:text-xs tw:text-gray-11'>
+    <li className='tw:rounded-full tw:border tw:border-gray-5 tw:px-2.5 tw:py-0.5 tw:text-gray-11 tw:text-xs'>
       {text}
     </li>
   );

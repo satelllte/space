@@ -28,9 +28,9 @@ export function PipelineDiagram() {
                 variant === undefined &&
                   'tw:border-gray-6 tw:bg-gray-3 tw:text-gray-12',
                 variant === 'highlighted' &&
-                  'tw:border-dashed tw:border-gray-10 tw:bg-gray-3 tw:text-gray-12',
+                  'tw:border-gray-10 tw:border-dashed tw:bg-gray-3 tw:text-gray-12',
                 variant === 'output' &&
-                  'tw:border-dashed tw:border-gray-7 tw:text-gray-11',
+                  'tw:border-gray-7 tw:border-dashed tw:text-gray-11',
               )}
             >
               {name}

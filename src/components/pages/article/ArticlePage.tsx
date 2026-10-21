@@ -44,23 +44,23 @@ export function ArticlePage({
         <main className='tw:mx-auto tw:w-full tw:max-w-160 tw:xl:col-start-2'>
           <article aria-labelledby={titleId}>
             <header className='tw:mb-12 tw:flex tw:flex-col tw:gap-4'>
-              <p className='tw:text-sm tw:text-gray-11'>
+              <p className='tw:text-gray-11 tw:text-sm'>
                 <time dateTime={publishedAt.toISOString()}>
                   {formatDate(publishedAt)}
                 </time>
               </p>
               <h1
                 id={titleId}
-                className='tw:text-3xl tw:leading-tight tw:font-semibold tw:tracking-tight tw:text-balance tw:text-gray-12 tw:sm:text-4xl/10'
+                className='tw:text-balance tw:font-semibold tw:text-3xl tw:text-gray-12 tw:leading-tight tw:tracking-tight tw:sm:text-4xl/10'
               >
                 {title}
               </h1>
-              <p className='tw:text-lg tw:leading-relaxed tw:text-gray-11'>
+              <p className='tw:text-gray-11 tw:text-lg tw:leading-relaxed'>
                 {description}
               </p>
               {tags.length > 0 && <Tags tags={tags} />}
             </header>
-            <div className='tw:text-base tw:wrap-break-word tw:text-gray-12'>
+            <div className='tw:wrap-break-word tw:text-base tw:text-gray-12'>
               {children}
             </div>
           </article>
@@ -86,7 +86,7 @@ function TableOfContents({headings}: {headings: ArticleHeading[]}) {
       >
         <p
           id={labelId}
-          className='tw:mb-3 tw:text-xs tw:font-medium tw:text-gray-12'
+          className='tw:mb-3 tw:font-medium tw:text-gray-12 tw:text-xs'
         >
           On this page
         </p>
@@ -103,7 +103,7 @@ function TableOfContentsList({items}: {items: TableOfContentsItem[]}) {
         <li key={heading.slug}>
           <a
             href={`#${heading.slug}`}
-            className='tw:text-xs tw:text-gray-11 tw:outline-hidden tw:hover:text-gray-12 tw:focus-visible:outline-2 tw:focus-visible:outline-offset-2 tw:focus-visible:outline-gray-8 tw:focus-visible:outline-solid'
+            className='tw:text-gray-11 tw:text-xs tw:outline-hidden tw:hover:text-gray-12 tw:focus-visible:outline-2 tw:focus-visible:outline-gray-8 tw:focus-visible:outline-solid tw:focus-visible:outline-offset-2'
           >
             {heading.text}
           </a>
