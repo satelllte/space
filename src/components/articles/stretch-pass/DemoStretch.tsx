@@ -81,11 +81,8 @@ export function DemoStretch() {
   return (
     <Demo>
       <div className='tw:flex tw:flex-wrap tw:items-center tw:justify-between tw:gap-2'>
-        <div
-          role='group'
-          aria-label='View'
-          className='tw:flex tw:flex-wrap tw:gap-1.5'
-        >
+        <fieldset className='tw:flex tw:flex-wrap tw:gap-1.5'>
+          <legend className='tw:sr-only'>View</legend>
           {VIEWS.map(({label, value}) => (
             <ButtonToggle
               key={value}
@@ -95,7 +92,7 @@ export function DemoStretch() {
               {label}
             </ButtonToggle>
           ))}
-        </div>
+        </fieldset>
         <ButtonToggle
           pressed={isShuffling}
           onClick={() => setIsShuffling((isShuffling) => !isShuffling)}
