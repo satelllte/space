@@ -1,7 +1,7 @@
-import {useRef} from 'react';
-import {useFrame} from '@react-three/fiber';
 import {MeshTransmissionMaterial} from '@react-three/drei';
-import {type Mesh} from 'three';
+import {useFrame} from '@react-three/fiber';
+import {useRef} from 'react';
+import type {Mesh} from 'three';
 
 export function TransmissionObject() {
   const meshRef = useRef<Mesh>(null);

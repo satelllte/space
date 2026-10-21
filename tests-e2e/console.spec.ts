@@ -1,4 +1,4 @@
-import {test, expect, type ConsoleMessage, type Page} from '@playwright/test';
+import {type ConsoleMessage, expect, type Page, test} from '@playwright/test';
 import {ARTICLES, SCENES} from './_constants';
 
 test('logs "hello" message only once per session', async ({page}) => {

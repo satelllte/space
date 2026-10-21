@@ -1,9 +1,9 @@
 import {useId} from 'react';
-import {LayoutDefault} from '../../ui/layout/LayoutDefault';
-import {Header} from '../../ui/layout/Header';
 import {Link} from '../../ui/Link';
-import {ThemeToggle} from '../../ui/ThemeToggle';
+import {Header} from '../../ui/layout/Header';
+import {LayoutDefault} from '../../ui/layout/LayoutDefault';
 import {Tags} from '../../ui/Tags';
+import {ThemeToggle} from '../../ui/ThemeToggle';
 import {CopyCodeHandler} from './CopyCodeHandler';
 
 type ArticleHeading = {

@@ -1,4 +1,4 @@
-import {test, expect, type Page} from '@playwright/test';
+import {expect, type Page, test} from '@playwright/test';
 import {expectDescription, expectNoIndexing, expectTitle} from './_utils';
 
 test.beforeEach(async ({page}) => {

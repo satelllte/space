@@ -1,6 +1,6 @@
-import {test, expect, type Locator, type Page} from '@playwright/test';
-import {expectDescription, expectIndexing, expectTitle} from './_utils';
+import {expect, type Locator, type Page, test} from '@playwright/test';
 import {ARTICLES, SCENES} from './_constants';
+import {expectDescription, expectIndexing, expectTitle} from './_utils';
 
 test('has metadata', testMetadata);
 

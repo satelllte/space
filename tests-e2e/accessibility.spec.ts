@@ -1,5 +1,5 @@
-import {test, expect, type Page} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import {expect, type Page, test} from '@playwright/test';
 import {ARTICLES, SCENES} from './_constants';
 
 const PAGES = [

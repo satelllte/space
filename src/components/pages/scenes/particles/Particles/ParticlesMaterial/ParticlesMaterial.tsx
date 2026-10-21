@@ -1,5 +1,5 @@
-import {useEffect, useMemo, useRef} from 'react';
 import {useFrame} from '@react-three/fiber';
+import {useEffect, useMemo, useRef} from 'react';
 import {AdditiveBlending, type ShaderMaterial} from 'three';
 import {useTheme} from '../../../../../context/Theme';
 import fragmentShader from './ParticlesMaterial.fragment.glsl?raw';

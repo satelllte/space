@@ -1,5 +1,5 @@
-import {useEffect, useRef} from 'react';
 import clsx from 'clsx';
+import {useEffect, useRef} from 'react';
 
 const DEVICE_PIXEL_RATIO_MAX = 2;
 

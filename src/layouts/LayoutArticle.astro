@@ -1,7 +1,6 @@
 ---
+import {type Article, AUTHOR, getArticleHref} from '../lib/articles';
 import LayoutBase from './LayoutBase.astro';
-import {getArticleHref, type Article} from '../lib/articles';
-import {AUTHOR} from '../lib/articles';
 
 type Props = {
   slug: Article['id'];

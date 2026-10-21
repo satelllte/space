@@ -1,4 +1,4 @@
-import {test, expect, type Page} from '@playwright/test';
+import {expect, type Page, test} from '@playwright/test';
 
 test('uses light theme on first visit (if no preference)', async ({
   page,

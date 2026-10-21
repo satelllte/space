@@ -1,12 +1,12 @@
-import {useRef} from 'react';
+import {ScreenQuad, shaderMaterial} from '@react-three/drei';
 import {
   extend,
+  type ThreeElement,
   useFrame,
   useLoader,
   useThree,
-  type ThreeElement,
 } from '@react-three/fiber';
-import {ScreenQuad, shaderMaterial} from '@react-three/drei';
+import {useRef} from 'react';
 import {Texture, TextureLoader} from 'three';
 import fragmentShader from './Moon.fragment.glsl?raw';
 import vertexShader from './Moon.vertex.glsl?raw';

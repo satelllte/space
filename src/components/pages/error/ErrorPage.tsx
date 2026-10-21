@@ -1,5 +1,5 @@
-import {LayoutDefault} from '../../ui/layout/LayoutDefault';
 import {Link} from '../../ui/Link';
+import {LayoutDefault} from '../../ui/layout/LayoutDefault';
 
 type ErrorPageProps = {
   message: string;

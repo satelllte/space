@@ -1,9 +1,9 @@
 import {useCallback, useState} from 'react';
 import {MDXCode} from '../../ui/mdx/MDXCode';
-import {Demo, DemoCaption, DemoControls} from './_shared/Demo';
-import {Canvas2D, type Canvas2DDraw} from './_shared/Canvas2D';
-import {FONT_FAMILY_MONO, getCSSVariable} from '../../utils/css';
 import {Slider} from '../../ui/Slider/Slider';
+import {FONT_FAMILY_MONO, getCSSVariable} from '../../utils/css';
+import {Canvas2D, type Canvas2DDraw} from './_shared/Canvas2D';
+import {Demo, DemoCaption, DemoControls} from './_shared/Demo';
 
 const K_MAX = 43758.5453;
 const K_LINE_MAX = 60; // above this, the plot is drawn as dots, since a line would turn into a solid block
@@ -13,7 +13,7 @@ const PADDING = {left: 28, right: 8, top: 10, bottom: 22} as const;
 export function DemoHash() {
   // The slider is logarithmic, so the multiplier is K_MAX^t, where t is in [0, 1]
   const [t, setT] = useState(0);
-  const k = Math.pow(K_MAX, t);
+  const k = K_MAX ** t;
   const draw = useCallback<Canvas2DDraw>(
     (context, size) => drawHash(context, size, k),
     [k],
@@ -32,7 +32,7 @@ export function DemoHash() {
           min={0}
           max={1}
           step={0.001}
-          format={(value) => formatK(Math.pow(K_MAX, value))}
+          format={(value) => formatK(K_MAX ** value)}
           onChange={setT}
         />
       </DemoControls>

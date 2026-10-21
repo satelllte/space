@@ -1,14 +1,14 @@
-import {useEffect, useState} from 'react';
-import {extend, useThree, type ThreeElement} from '@react-three/fiber';
 import {ScreenQuad, shaderMaterial} from '@react-three/drei';
+import {extend, type ThreeElement, useThree} from '@react-three/fiber';
+import {useEffect, useState} from 'react';
 import {CanvasTexture, MathUtils, Texture} from 'three';
 import {Canvas} from '../../pages/scenes/_shared/Canvas';
-import {Demo, DemoControls} from './_shared/Demo';
-import fragmentShader from './DemoStretch.fragment.glsl?raw';
-import vertexShader from './DemoStretch.vertex.glsl?raw';
 import {ButtonToggle} from '../../ui/Button';
 import {Slider} from '../../ui/Slider/Slider';
 import {getHSLA} from '../../utils/css';
+import {Demo, DemoControls} from './_shared/Demo';
+import fragmentShader from './DemoStretch.fragment.glsl?raw';
+import vertexShader from './DemoStretch.vertex.glsl?raw';
 
 type View = (typeof VIEWS)[number]['value'];
 const VIEWS = [

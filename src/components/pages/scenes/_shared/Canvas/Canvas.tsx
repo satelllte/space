@@ -1,4 +1,4 @@
-import {Canvas as R3FCanvas, type Dpr} from '@react-three/fiber';
+import {type Dpr, Canvas as R3FCanvas} from '@react-three/fiber';
 import {CanvasErrorBoundary} from './CanvasErrorBoundary';
 
 type R3FCanvasProps = React.ComponentProps<typeof R3FCanvas>;
