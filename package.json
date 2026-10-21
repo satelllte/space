@@ -5,8 +5,8 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "fix:format": "biome check --write",
-    "test:format": "biome ci",
+    "format": "biome check --write",
+    "test:lint": "biome ci",
     "test:types": "astro sync && tsc --noEmit",
     "test:e2e": "playwright test"
   },

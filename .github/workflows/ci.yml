@@ -32,8 +32,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Test (types)
         run: pnpm test:types
-      - name: Test (formatting)
-        run: pnpm test:format
+      - name: Test (lint)
+        run: pnpm test:lint
       - name: Build
         run: pnpm build
       - name: Install Playwright browsers
