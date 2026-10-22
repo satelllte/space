@@ -1,1 +1,1 @@
-export {Theme, useThemeState, useTheme} from './Theme';
+export {Theme, useTheme, useThemeState} from './Theme';

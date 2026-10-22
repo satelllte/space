@@ -1,6 +1,6 @@
-import {test, expect, type Page} from '@playwright/test';
-import {expectDescription, expectIndexing, expectTitle} from './_utils';
+import {expect, type Page, test} from '@playwright/test';
 import {SCENES} from './_constants';
+import {expectDescription, expectIndexing, expectTitle} from './_utils';
 
 test('able to navigate from home and back', testNavigation);
 

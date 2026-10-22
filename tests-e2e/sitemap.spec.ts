@@ -1,5 +1,5 @@
 import {readFile} from 'node:fs/promises';
-import {test, expect} from '@playwright/test';
+import {expect, test} from '@playwright/test';
 
 const readSnapshot = (name: string): Promise<string> =>
   readFile(new URL(`./sitemap-snapshots/${name}`, import.meta.url), 'utf8');

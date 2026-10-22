@@ -1,7 +1,9 @@
 @import 'tailwindcss' source('..') prefix(tw);
 
 @custom-variant dark (&:where(.dark, .dark *));
-@custom-variant mdx-code-inline (&:not(:is([data-slot='mdx-code-block'], [data-slot='mdx-file-tree']) *));
+@custom-variant mdx-code-inline (
+  &:not(:is([data-slot='mdx-code-block'], [data-slot='mdx-file-tree']) *)
+);
 @custom-variant mdx-code-in-h2 ([data-slot='mdx-heading-h2'] &);
 @custom-variant mdx-code-in-h3 ([data-slot='mdx-heading-h3'] &);
 

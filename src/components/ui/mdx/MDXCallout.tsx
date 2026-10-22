@@ -16,7 +16,7 @@ export function MDXCallout({title = 'Note', children}: MDXCalloutProps) {
         'tw:rounded-r-md tw:border-l-2 tw:border-l-gray-8 tw:bg-gray-2 tw:px-5 tw:py-4',
       )}
     >
-      <p className='tw:mb-1 tw:text-xs tw:font-semibold tw:tracking-wider tw:text-gray-11 tw:uppercase'>
+      <p className='tw:mb-1 tw:font-semibold tw:text-gray-11 tw:text-xs tw:uppercase tw:tracking-wider'>
         {title}
       </p>
       <div className='tw:*:not-first:mt-3'>{children}</div>

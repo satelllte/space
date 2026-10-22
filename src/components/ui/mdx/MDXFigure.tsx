@@ -21,7 +21,7 @@ export function MDXFigure({src, alt, width, height, children}: MDXFigureProps) {
         className='tw:h-auto tw:w-full tw:rounded-lg tw:border tw:border-gray-5 tw:bg-gray-5'
       />
       {children && (
-        <figcaption className='tw:mt-2 tw:text-center tw:text-sm tw:text-gray-11 tw:**:data-[slot=mdx-paragraph]:mt-0'>
+        <figcaption className='tw:mt-2 tw:text-center tw:text-gray-11 tw:text-sm tw:**:data-[slot=mdx-paragraph]:mt-0'>
           {children}
         </figcaption>
       )}

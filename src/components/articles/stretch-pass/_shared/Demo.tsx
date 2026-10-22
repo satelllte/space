@@ -38,7 +38,7 @@ type DemoCaptionProps = {
 
 export function DemoCaption({children}: DemoCaptionProps) {
   return (
-    <figcaption className='tw:mt-4 tw:text-center tw:text-sm tw:text-gray-11'>
+    <figcaption className='tw:mt-4 tw:text-center tw:text-gray-11 tw:text-sm'>
       {children}
     </figcaption>
   );

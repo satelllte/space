@@ -1,8 +1,8 @@
 import {useId} from 'react';
-import {LayoutDefault} from '../../ui/layout/LayoutDefault';
-import {Header} from '../../ui/layout/Header';
 import {IconCircle} from '../../icons/IconCircle';
 import {Link, LinkIcon} from '../../ui/Link';
+import {Header} from '../../ui/layout/Header';
+import {LayoutDefault} from '../../ui/layout/LayoutDefault';
 import {ThemeToggle} from '../../ui/ThemeToggle';
 import {ConsoleMessage} from './ConsoleMessage';
 
@@ -94,7 +94,7 @@ function Section({children}: {children: React.ReactNode}) {
 
 function SectionTitle({id, children}: {id: string; children: React.ReactNode}) {
   return (
-    <h2 id={id} className='tw:text-xl tw:text-gray-12'>
+    <h2 id={id} className='tw:text-gray-12 tw:text-xl'>
       {children}
     </h2>
   );

@@ -1,16 +1,16 @@
-import {MDXParagraph} from '../../ui/mdx/MDXParagraph';
-import {
-  MDXListUnordered,
-  MDXListOrdered,
-  MDXListItem,
-} from '../../ui/mdx/MDXList';
-import {MDXLink} from '../../ui/mdx/MDXLink';
-import {MDXHeadingH2, MDXHeadingH3} from '../../ui/mdx/MDXHeading';
-import {MDXThematicBreak} from '../../ui/mdx/MDXThematicBreak';
-import {MDXCode, MDXCodeBlock} from '../../ui/mdx/MDXCode';
 import {MDXCallout} from '../../ui/mdx/MDXCallout';
-import {MDXFileTree} from '../../ui/mdx/MDXFileTree';
+import {MDXCode, MDXCodeBlock} from '../../ui/mdx/MDXCode';
 import {MDXFigure} from '../../ui/mdx/MDXFigure';
+import {MDXFileTree} from '../../ui/mdx/MDXFileTree';
+import {MDXHeadingH2, MDXHeadingH3} from '../../ui/mdx/MDXHeading';
+import {MDXLink} from '../../ui/mdx/MDXLink';
+import {
+  MDXListItem,
+  MDXListOrdered,
+  MDXListUnordered,
+} from '../../ui/mdx/MDXList';
+import {MDXParagraph} from '../../ui/mdx/MDXParagraph';
+import {MDXThematicBreak} from '../../ui/mdx/MDXThematicBreak';
 
 export const components = {
   a: MDXLink,

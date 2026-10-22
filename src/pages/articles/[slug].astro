@@ -1,9 +1,9 @@
 ---
-import type {GetStaticPaths} from 'astro';
 import {render} from 'astro:content';
-import LayoutArticle from '../../layouts/LayoutArticle.astro';
+import type {GetStaticPaths} from 'astro';
 import {ArticlePage, components} from '../../components/pages/article';
-import {AUTHOR, getArticles, type Article} from '../../lib/articles';
+import LayoutArticle from '../../layouts/LayoutArticle.astro';
+import {type Article, AUTHOR, getArticles} from '../../lib/articles';
 
 export const getStaticPaths = (async () => {
   const articles = await getArticles();

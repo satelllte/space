@@ -1,8 +1,8 @@
 import {useCallback, useState} from 'react';
-import {Demo, DemoControls} from './_shared/Demo';
-import {Canvas2D, type Canvas2DDraw} from './_shared/Canvas2D';
-import {FONT_FAMILY_MONO, getCSSVariable, getHSL} from '../../utils/css';
 import {Slider} from '../../ui/Slider/Slider';
+import {FONT_FAMILY_MONO, getCSSVariable, getHSL} from '../../utils/css';
+import {Canvas2D, type Canvas2DDraw} from './_shared/Canvas2D';
+import {Demo, DemoControls} from './_shared/Demo';
 
 const CELLS = 32;
 const ROW_HEIGHT = 30;

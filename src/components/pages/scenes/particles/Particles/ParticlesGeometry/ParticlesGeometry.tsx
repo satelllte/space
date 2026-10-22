@@ -21,7 +21,7 @@ export function ParticlesGeometry() {
       array.set([x, y, z], i * itemSize);
     }
     return array;
-  }, [count, itemSize, radius]);
+  }, []);
 
   return (
     <bufferGeometry>

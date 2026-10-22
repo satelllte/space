@@ -1,11 +1,11 @@
-import {test, expect, type Page} from '@playwright/test';
+import {expect, type Page, test} from '@playwright/test';
+import {ARTICLES, SITE} from './_constants';
 import {
   expectDescription,
   expectIndexing,
   expectNoIndexing,
   expectTitle,
 } from './_utils';
-import {ARTICLES, SITE} from './_constants';
 
 for (const article of ARTICLES) {
   const {name, href, title, description, publishedAt, tags} = article;

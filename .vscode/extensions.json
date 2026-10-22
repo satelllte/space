@@ -3,7 +3,7 @@
     "astro-build.astro-vscode",
     "bradlc.vscode-tailwindcss",
     "EditorConfig.EditorConfig",
-    "esbenp.prettier-vscode"
+    "biomejs.biome"
   ],
   "unwantedRecommendations": []
 }
