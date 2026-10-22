@@ -6,6 +6,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "format": "biome check --write",
+    "format:unsafe": "biome check --write --unsafe",
     "test:lint": "biome ci",
     "test:types": "astro sync && tsc --noEmit",
     "test:e2e": "playwright test"
